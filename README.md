@@ -7,7 +7,7 @@
 1. Setup RVM or equivalent for ruby version management. Install ruby version 2.6.3
 
 # Setup Application
-1. Clone the repo: `git clone https://github.com/Commit-Good/dashboard.git`
+1. Clone the repo: `git clone https://github.com/everetthinton1115/dashboard.git`
 1. Create a .env file in the outermost directory `touch ~/dashboard/.env`. Below I will paste a blank env copy. You will need Heroku credentials to get some of the actual values.
 1. Set RVM to use the correct ruby version: `rvm use ruby-2.6.3`. To prevent doing this everytime you can also create a file with the version at the outermost directory next to your `.env` file. `touch ~/dashboard/.ruby-version` then `echo "ruby-2.6.3" >> ~/dashboard/.ruby-version`.
 1. Install the bundler `gem install bundler -v 1.3.0`

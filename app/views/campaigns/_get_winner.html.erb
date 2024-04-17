@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="gx-wrapper">
+      <div class="animated slideInUpTiny animation-duration-3">
+        <div class="page-heading d-sm-flex justify-content-sm-between align-items-sm-center">
+          <nav class="mb-0 breadcrumb active">
+            <h4>Currency of Good Campaign Winner for <%=params[:month].present? ? Date::MONTHNAMES[params[:month].to_i] : (Date.today - 1.month).strftime("%B") %></h4>
+          </nav>
+        </div>
+        <!-- <label>Select previous month winner Campaign :</label> -->
+        <%#= select_tag :month, options_for_select(Campaign::MONTHS, ""),:class =>"modi" %>
+        <% if @campaign_winner.present? %>
+          <% @campaign_winner.each do |winner|  %>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="product-gallery-slider">
+                  <ul id="product-gallery" class="product-gslider cS-hidden">
+                    <% winner.campaign.images.each do |img| %>
+                      <li data-thumb="<%= img.image.url%>">
+                        <%= image_tag img.image.url %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="gx-card product-details">
+                  <div class="card-content">
+                    <h2 class="mb-2 mb-sm-4"><%= winner.campaign.name %></h2>
+                    <p>
+                      <%= winner.campaign.description %>
+                    </p>
+                    <div class="card-show-footer">
+                      <p class="mb-0 pt-0 pb-0 pr-4 pl-4">
+                      <ul class="card-lists m-0">
+                        <li>           
+                          <span><strong>Deadline</strong><%= winner.campaign.days_left %> days left</span>
+                        </li>
+                        <li>  
+                          <span><strong>Goal</strong><%= BigDecimal(winner.campaign.goal_amount.to_f.to_s).truncate(8).to_s('F') %> GOOD</span>
+                        </li>
+                      </ul>
+                      </p>  
+                    </div>
+                  </div>
+                    <%= social_share_button_tag(winner.campaign.name, :url => "https://commit-good-staging.herokuapp.com/", :image => "https://commitgood.com/img/logo-img/white_logo3_transparent@2x.png", desc: winner.campaign.description) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h2>There are not data for this month !</h2> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

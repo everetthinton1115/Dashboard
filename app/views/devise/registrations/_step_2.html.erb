@@ -1,0 +1,212 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_line1, "Address Line1", class: "control-label" %>
+			<%= f.text_field :address_line1, class: "form-control required", placeholder: "Address Line1" %>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_line2, "Address Line2", class: "control-label" %>
+			<%= f.text_field :address_line2, class: "form-control", placeholder: "Address Line2" %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :country, "Country", class: "control-label" %>
+			<%= f.collection_select :address_country, Hash[CS.countries.sort_by{|k, v| v}], :first, :last, {prompt: true}, {class: 'custom-select country-select required'} %>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :state, "State/Province", class: "control-label" %>
+			<div id="state_div">
+				<select id="user_address_state" class="custom-select state-select required" name="user[address_state]">
+					<option value="">Please select</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_city, "City", class: "control-label" %>
+			<div id="city_div">
+				<select class="custom-select city-select required" name="user[address_city]">
+					<option value="">Please select</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_zip, "Zip/Postal Code", class: "control-label" %>
+			<%= f.text_field :address_zip, class: "form-control", placeholder: "Zip/Postal Code" %>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-3">
+	<div class="col-4 col-md-2">
+		<button id="step-two-prev-button" type="button" class="btn btn-outline btn-warning btn-block prev-button">Back</button>
+	</div>
+	<div class="col-4 offset-4 offset-md-8 col-md-2 text-right">
+		<button id="step-two-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Next</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const addressTag = '#user_address_line1';
+	const addressLabelTag = 'label[for="user_address_line1"]';
+	const countryTag = '#user_address_country';
+	const countryLabelTag = 'label[for="user_country"]';
+	const stateTag = '#user_address_state';
+	const stateTagOuter = '#state_div'
+	const stateLabelTag = 'label[for="user_state"]';
+	const cityTag = '[name="user[address_city]"]';
+	const cityLabelTag = 'label[for="user_address_city"]';
+	const zipTag = '#user_address_zip';
+	const zipLabelTag = 'label[for="user_address_zip"]';
+
+	// Listen for Clicks to go to next
+	$('#step-two-next-button').on('click', function () {
+		let validAddress = validateAddress();
+		let validCountry = validateCountry();
+		// let validState = validateState();
+		// let validCity = validateCity();
+
+		// Check if we want to allow them to go to the next step
+		if (true) {
+			$('#user-new-smartwizard').smartWizard('next');
+		}
+		if (charityUser == true){
+			$('.identification_photo_container').hide();
+			$('.license_photo_container').hide();
+	    }		
+
+	});
+
+	// Listen for Clicks to go to prev
+	$('#step-two-prev-button').on('click', function () {
+		$('#user-new-smartwizard').smartWizard('prev');
+	});
+
+	// Validation for Project Country
+	$(addressTag).on('change', function () {
+		let valid = validateAddress();
+	});
+	function validateAddress() {
+		let valid = $(addressTag).val().length > 0;
+		toggleInvalidClass(addressTag, addressLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for Project Country
+	$(countryTag).on('change', function () {
+		let valid = validateCountry();
+		if (valid) {
+			getStatesByCountry($(countryTag).val());
+		}
+	});
+	function validateCountry() {
+		let valid = $(countryTag).val().length > 0;
+		toggleInvalidClass(countryTag, countryLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for Project State
+	$(stateTagOuter).on('change', function () {
+		let valid = validateState();
+		if (valid) {
+			getCitiesByState($(countryTag).val(), $(stateTag).val())
+		}
+	});
+	function validateState() {
+		let valid = $(stateTag).val().length > 0;
+		toggleInvalidClass(stateTag, stateLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for Project City
+	$(cityTag).on('change', function () {
+		validateCity();
+	});
+	function validateCity() {
+		let valid = $(cityTag).val().length > 0;
+		toggleInvalidClass(cityTag, cityLabelTag, valid);
+		return valid;
+	}
+
+	// Helper function for setting classes
+	function toggleInvalidClass(tag, label, valid) {
+		if (valid) {
+			$(tag).removeClass('is-invalid')
+			$(label).removeClass('text-danger');
+		} else {
+			$(tag).addClass('is-invalid');
+			$(label).addClass('text-danger');
+		}
+	}
+
+	// Make a call to get the states for the specific country
+	function getStatesByCountry(country_code) {
+		$.ajax({
+			method: 'POST',
+			url: '/states',
+			data: {
+				country_code: country_code
+			},
+			success: function (response) {
+				if ($.isEmptyObject(response.states)) {
+					$("#state_div").html('<input class="form-control" placeholder="State" type="text" name="user[address_state]" id="user_address_state">');
+					$("#city_div").html('<input class="form-control" placeholder="City" type="text" name="user[address_city]" id="user_address_city">');
+				} else {
+					$("#state_div").html('<select class="custom-select user-state-select required" name="user[address_state]" id="user_address_state"><option value="">Please select</option></select>');
+					if ($.isEmptyObject(response.cities)) {
+						$("#city_div").html('<input class="form-control" placeholder="City" type="text" name="user[address_city]" id="user_address_city">');
+					} else {
+						$("#city_div").html('<select class="custom-select user-city-select required" name="user[address_city]"> <option value="">Please select</option> </select>');
+					}
+					$('.user-state-select').html("");
+					$('.user-city-select').html("");
+					$.each(response.states, function (key, value) {
+						$('.user-state-select').append($('<option>', {
+							value: key,
+							text: value
+						}));
+					});
+					$.each(response.cities, function (key, value) {
+						$('.user-city-select').append($('<option>', {
+							value: key,
+							text: value
+						}));
+					});
+				}
+			}
+		});
+	}
+
+	// Ajax call to get cities for state and coutnry
+	function getCitiesByState(country_code, state_code) {
+		$.ajax({
+			method: 'POST',
+			url: '/cities',
+			data: {
+				state_code: state_code,
+				country_code: country_code
+			},
+			success: function (response) {
+				$('.user-city-select').html("");
+				$.each(response.cities, function (key, value) {
+					$('.user-city-select').append($('<option>', {
+						value: key,
+						text: value
+					}));
+				});
+			}
+		});
+	}
+</script>

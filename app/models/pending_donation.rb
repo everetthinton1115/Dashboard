@@ -1,0 +1,2 @@
+class PendingDonation < ApplicationRecord
+end

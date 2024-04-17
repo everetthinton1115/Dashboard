@@ -1,0 +1,12 @@
+{
+  "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.",
+  "external_url": "",
+  "image": "https://s3.us-east-1.amazonaws.com/commit-good-images-charity-staging/210/21.jpg?1669019483",
+  "name": "https://s3.us-east-1.amazonaws.com/commit-good-images-charity-staging/210/21.jpg?1669019483",
+  "attributes": [
+    {
+      "trait_type": "Base",
+      "value": "Starfish"
+    }
+  ]
+}

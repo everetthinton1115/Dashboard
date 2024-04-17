@@ -1,0 +1,3 @@
+$(".msg_history").append("<%=j render 'outgoing_msg', :message => @message %>");
+$("#message").val("");
+$('.msg_history').scrollTop($('.msg_history')[0].scrollHeight);

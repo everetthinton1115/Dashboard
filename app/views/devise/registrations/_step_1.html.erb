@@ -1,0 +1,416 @@
+<div class="row">
+	<div class="col-12 col-md-6">
+		<div class="form-group">
+			<%= f.label :name, class: "control-label", id: "first_name" %>
+			<%= f.text_field :name, class: "form-control required", placeholder: "Name" %>
+			<%= f.hidden_field :referral_code,value:params[:referral] if params[:referral].present? %>
+		</div>
+	</div>
+	<div class="col-12 col-md-6">
+		<div class="form-group">
+			<%= f.label :email, class: "control-label" %>
+			<%= f.email_field :email, class: "form-control required email", placeholder: "Email Address" %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-md-6">
+		<div class="form-group">
+			<%= f.label :password, class: "control-label" %>
+			<%= f.password_field :password, class: "form-control required", minlength: 6, placeholder: "Password" %>
+		</div>
+	</div>
+	<div class="col-12 col-md-6">
+		<div class="form-group">
+			<%= f.label :password_confirmation, 'Password Confirmation', class: "control-label" %>
+			<%= f.password_field :password_confirmation, class: "form-control required",placeholder: "Confirm Password" %>
+		</div>
+	</div>
+</div>
+<div class="row mb-3">
+	<label class="col-md-2">I am a</label>
+	<% if !params[:referral].present?%>
+		<div class="col-md-12">
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="volunteerRadio" name="user[member_type]" class="custom-control-input" value="individual">
+				<label class="custom-control-label" for="volunteerRadio">Volunteer</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="charityRadio" name="user[member_type]" class="custom-control-input" value="charity">
+				<label class="custom-control-label" for="charityRadio">Charity</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="charityCoordinatorRadio" name="user[member_type]" class="custom-control-input" value="charity_coordinator" checked="checked">
+				<label class="custom-control-label" for="charityCoordinatorRadio">Charity Coordinator</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="donorRadio" name="user[member_type]" class="custom-control-input" value="donor">
+				<label class="custom-control-label" for="donorRadio">Donor</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="nftRadio" name="user[member_type]" class="custom-control-input" value="nft">
+				<label class="custom-control-label" for="nftRadio">NFT</label>
+			</div>
+		</div>
+	<%else%>
+		<div class="custom-control custom-radio custom-control-inline">
+			<input type="radio" id="charityRadio" name="user[member_type]" class="custom-control-input" value="charity">
+			<label class="custom-control-label" for="charityRadio">Charity</label>
+		</div>
+	<%end%>
+</div>
+
+<!-- Handle Charity Registration -->
+<div id="alliance_form">
+	<%= f.fields_for :alliance_attributes do |alliance| %>
+	<div id="charity_attributes">
+		<hr />
+		<div class="row">
+			<div class="col text-center">
+				<h2>Your Charity Info</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<label for="coordinator_select">Project Coordinator</label>
+					<%= alliance.select :campaign_coordinator_id, (@coordinators ? @coordinators : []).map{ |c| [c[:name], c[:id] ] }, { :prompt => "Select Coordinator" }, { :id => "coordinator_select", :class => "form-control required"} %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="user_alliance_attributes_area_of_interest_id">Areas of Interest</label>
+					<select class="custom-select" name="user[alliance_attributes][area_of_interest_id]" id="user_alliance_attributes_area_of_interest_id">
+						<option value="">Please select</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="user_alliance_attributes_website_url">Website url</label>
+					<input class="form-control" placeholder="Website url" type="url" name="user[alliance_attributes][website_url]" id="user_alliance_attributes_website_url"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="user_alliance_attributes_facebook_url">Facebook url</label>
+					<input class="form-control" placeholder="Facebook url" type="url" name="user[alliance_attributes][facebook_url]" id="user_alliance_attributes_facebook_url"></div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" for="user_alliance_attributes_twitter_url">Twitter url</label>
+					<input class="form-control" placeholder="Twitter url" type="url" name="user[alliance_attributes][twitter_url]" id="user_alliance_attributes_twitter_url"></div>
+			</div>
+		</div>
+		<div class="form-group row" id="501c_doc_2">
+			<label class="control-label col-md-12 text-left" for="charity_verificiation_document">Charity Verification Document</label>
+			<div class="col-md-10 col-sm-9"></div>
+		</div>
+		<div style="margin-bottom: 10px" class="panel-body">
+			<div class="input-group"><input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled"/>
+				<div class="input-group-btn browse-file">
+					<div class="fileUpload btn btn-success">
+						<span>
+							<i class="glyphicon glyphicon-upload"></i>
+							Browse
+						</span>
+						<input id="uploadBtn" type="file" name="user[alliance_attributes][verification_doc]" class="upload required"/></div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="comment">Description</label>
+			<textarea class="form-control required" rows="5" name="user[alliance_attributes][description]" id="comment"></textarea>
+		</div>
+		<div class="form-group row" id="501c_doc_2">
+			<label class="control-label col-md-12 text-left" for="charity_logo">Charity Logo</label>
+			<div class="col-md-10 col-sm-9"></div>
+		</div>
+		<div class="panel-body">
+			<div class="input-group">
+				<input id="uploadFile1" class="form-control" placeholder="Choose File" disabled="disabled">
+				<div class="input-group-btn">
+					<div class="fileUpload btn btn-success">
+						<span>
+							<i class="glyphicon glyphicon-upload"></i>
+							Browse
+						</span>
+						<input id="uploadBtn1" type="file" name="user[alliance_attributes][logo]" class="upload"/>
+					</div>
+				</div>
+			</div>
+			<span class="img-err text-danger" style="display:none"></span>
+		</div>
+	<% end %>
+</div>
+</div>
+
+<!-- Charity Coordinator -->
+<div class="row mt-3" id="charity_coordinator_form">
+<div class="col">
+	<label style="margin-bottom: 10px;" for="user_profile_image">Profile Image</label>
+	<div class="input-group">
+		<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled"/>
+		<div class="input-group-btn browse-file">
+			<div class="fileUpload btn btn-success">
+				<span>
+					<i class="glyphicon glyphicon-upload"></i>
+					Browse
+				</span>
+				<input id="uploadBtn" type="file" name="user[profile]" class="profile-img" accept="image/png, image/jpeg" class="upload required" required/>
+			</div>
+		</div>
+	</div>
+	<span class="img-err text-danger" style="display:none"></span>
+</div>
+</div>
+
+<div class="row mt-3">
+<div class="col-4 offset-8 offset-md-10 col-md-2 text-right mt-3">
+	<button id="step-one-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Next</button>
+</div>
+</div>
+
+<script type="text/javascript">
+const nameTag = "#user_name";
+const nameLabelTag = "#first_name";
+const emailTag = "#user_email";
+const emailLabelTag = 'label[for="user_email"]';
+const passwordTag = "#user_password";
+const passwordLabelTag = 'label[for="user_password"]';
+const passwordConfirmTag = '#user_password_confirmation';
+const passwordConfirmLabelTag = 'label[for="user_password_confirmation"]';
+const charityCoordProfileImageLabelTag = 'label[for="user_profile_image"]';
+const charityCoordProfileImageTag = 'input[name="user[profile]"]';
+const userTypeTag = 'input[name="user[member_type]"]:checked';
+const charityAoiTag = '#user_alliance_attributes_area_of_interest_id';
+const charityAoiLabelTag = 'label[for="user_alliance_attributes_area_of_interest_id"]';
+const charityVerDocTag = '#uploadBtn';
+const charityVerDocLabelTag = 'label[for="charity_verificiation_document"]';
+const charityDescriptionTag = '#comment';
+const charityDescriptionLabelTag = 'label[for="comment"]';
+const charityLogoTag = '#uploadBtn1';
+const charityLogoLabelTag = 'label[for="charity_logo"]';
+let charityUser = false;
+var registered_emails;
+
+// On Init
+$(document).ready(function () {
+	// Start off hiding both forms for alliance and coordinator
+	$('#alliance_form').hide();
+	$('#charity_coordinator_form').hide();
+
+	$('#charityCoordinatorRadio').trigger('click');
+
+	// Grab a list of areas of interest for the charity
+	$.ajax({
+		method: 'GET',
+		url: '/area_of_interest',
+		data: {
+			interest_type: $(this).val()
+		},
+		success: function (response) {
+			$.each(response, function (key, value) {
+				$('#user_alliance_attributes_area_of_interest_id').append($('<option>', {
+					value: value.id,
+					text: value.name
+				}));
+			});
+		}
+	});
+
+	$.ajax({
+		method: 'GET',
+		url: '/all_emails',
+		success: function (response) {
+			registered_emails = response;
+		}
+	});
+});
+
+// Listen for Clicks to go to next
+$('#step-one-next-button').on('click', function () {
+	$('.img-err').hide();
+	let nameValid = validateName();
+	let emailValid = validateEmail();
+	let passwordValid = validatePassword();
+	let passwordConfirmValid = validateConfirmPassword();
+	let validStep = nameValid && emailValid && passwordValid && passwordConfirmValid;
+	console.log("userTypeTag: ", $(userTypeTag).val());
+
+	// If Charity More Checks If Charity Coordinator More Checks let
+	if ($(userTypeTag).val() === 'charity_coordinator') {
+		let validProfileImage = validateCharityCoordProfileImage();
+		validStep = validStep && validProfileImage;
+	}
+
+	//
+	else if ($(userTypeTag).val() === 'charity') {
+		let areasOfInterestValid = validateCharityAreasOfInterest();
+		let verDocValid = validateCharityVerDoc();
+		let descriptionValid = validateCharityDescription();
+		let imageValid = validateCharityImage();
+		validStep = validStep && areasOfInterestValid && verDocValid && descriptionValid && imageValid;
+	}
+
+	// Check if we want to allow them to go to the next step
+	if (validStep) {
+		$('#user-new-smartwizard').smartWizard('next');
+	}
+});
+
+// Validation for Name
+$(nameTag).on('input', function () {
+	validateName();
+});
+function validateName() {
+	let valid = $(nameTag).val().length > 0;
+	toggleInvalidClass(nameTag, nameLabelTag, valid);
+	return valid;
+}
+
+// Validation for Email
+$(emailTag).on('input', function () {
+	validateEmail();
+});
+function validateEmail() {
+	let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	let valid = regex.test($(emailTag).val());
+
+	if (valid)
+		if (registered_emails.includes($(emailTag).val()))
+		{
+			toggleInvalidClass(emailTag, emailLabelTag, false);
+			if (!$(emailLabelTag).children().length) 
+				$(emailLabelTag).append(`<span> (This email has been already taken.)</span>`)
+		}
+		else
+			toggleInvalidClass(emailTag, emailLabelTag, valid);
+	return valid;
+}
+
+// Validation for Password
+$(passwordTag).on('input', function () {
+	validatePassword();
+});
+function validatePassword() {
+	let valid = $(passwordTag).val().length > 5;
+	toggleInvalidClass(passwordTag, passwordLabelTag, valid);
+	return valid;
+}
+
+// Validation for Password
+$(passwordConfirmTag).on('input', function () {
+	validateConfirmPassword();
+});
+function validateConfirmPassword() {
+	let valid = ($(passwordConfirmTag).val().length > 0 && $(passwordConfirmTag).val() === $(passwordTag).val());
+	toggleInvalidClass(passwordConfirmTag, passwordConfirmLabelTag, valid);
+	return valid;
+}
+
+// Validation for Charity Coord Picture
+$(charityCoordProfileImageTag).on('input', function () {
+	validateCharityCoordProfileImage();
+});
+function validateCharityCoordProfileImage() {
+	let valid = ($(charityCoordProfileImageTag).val().length > 0);
+	toggleInvalidClass(charityCoordProfileImageTag, charityCoordProfileImageLabelTag, valid);
+	return valid;
+}
+
+// Validation for Areas of Interest
+$(charityAoiTag).on('change', function () {
+	validateCharityAreasOfInterest();
+});
+function validateCharityAreasOfInterest() {
+	let valid = ($(charityAoiTag).val().length > 0);
+	toggleInvalidClass(charityAoiTag, charityAoiLabelTag, valid);
+	return valid;
+}
+
+// Validation for Doc
+$(charityVerDocTag).on('input', function () {
+	validateCharityVerDoc();
+});
+function validateCharityVerDoc() {
+	let valid = ($(charityVerDocTag).val().length > 0);
+	toggleInvalidClass(charityVerDocTag, charityVerDocLabelTag, valid);
+	return valid;
+}
+
+// Validation for Description
+$(charityDescriptionTag).on('input', function () {
+	validateCharityDescription();
+});
+function validateCharityDescription() {
+	let valid = ($(charityDescriptionTag).val().length > 0);
+	toggleInvalidClass(charityDescriptionTag, charityDescriptionLabelTag, valid);
+	return valid;
+}
+
+// Validation for Charity Image
+$(charityLogoTag).on('input', function () {
+	validateCharityImage();
+});
+function validateCharityImage() {
+	let valid = ($(charityLogoTag).val().length > 0);
+	toggleInvalidClass(charityLogoTag, charityLogoLabelTag, valid);
+	return valid;
+}
+
+// Helper function for setting classes
+function toggleInvalidClass(tag, label, valid) {
+	if (valid) {
+		$(tag).removeClass('is-invalid')
+		$(label).removeClass('text-danger');
+	} else {
+		$(tag).addClass('is-invalid');
+		$(label).addClass('text-danger');
+	}
+}
+
+// Radio button user type
+$('#volunteerRadio').click(function () {
+	$('#alliance_form').hide()
+	$('#charity_coordinator_form').show();
+	charityUser = false;
+});
+$('#charityRadio').click(function () {
+	$('#alliance_form').show();
+	$('#charity_coordinator_form').hide();
+	charityUser = true;
+});
+$('#charityCoordinatorRadio').click(function () {
+	$('#alliance_form').hide();
+	$('#charity_coordinator_form').show();
+	charityUser = false;
+});
+$('#donorRadio').click(function () {
+	$('#alliance_form').hide();
+	$('#charity_coordinator_form').show();
+	charityUser = false;
+});
+
+$(":file").change(function() {
+	
+	var file = this.files[0];
+	var fileType = file["type"];
+	var validImageTypes = ["image/gif", "image/jpeg", "image/jpg", "image/png"];
+	
+	var targetElement = $(this).closest('.input-group').next()
+	
+	if(targetElement.length > 0)
+		if($.inArray(fileType, validImageTypes) < 0) {
+			$(targetElement).html('Invalid file type').show()
+			$('#step-one-next-button').prop('disabled', true);
+		}
+		else{
+			$(targetElement).html('').hide()
+			$('#step-one-next-button').prop('disabled', false);
+		}
+});
+</script>

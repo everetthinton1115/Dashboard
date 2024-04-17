@@ -1,0 +1,55 @@
+<div class="gx-wrapper">
+  <div class="login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
+    <div class="login-content">
+      <div class="login-header">
+        <a class="site-logo" href="javascript:void(0)" title="Jambo">
+          <%=image_tag("commit-good-logo.png", alt: "commit-good-logo")%>
+        </a>
+      </div>
+      <div class="mb-4">
+        <h2>Change Your Password</h2>
+      </div>
+      <div class="login-form">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, id: 'reset-password-form' }) do |f| %>
+          <% if !resource.errors.blank?%>
+            <div class="shadow-lg alert alert-danger alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <span> 
+                <%= devise_error_messages! %>
+              </span>
+            </div>
+          <%end%>
+          <%= f.hidden_field :reset_password_token %>
+          <div class="form-group mb-3">
+            <%= f.label :password, 'New Password', class: "control-label new-password-label" %>
+            <%= f.password_field :password, autofocus: true, class: 'form-control form-control-lg new-password', autocomplete: "off" %>
+            <span style="color: #ef5b5b;float: right;font-size: 10px;display: none;" id="password-error">password should have atleast 6 character.</span>
+          </div>
+          <%= f.submit 'Change My Password', class: "btn btn-info submit-button"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#reset-password-form').on('submit', function (e) {
+    if ($('.new-password').val().length < 6) {
+      e.preventDefault();
+      $('.new-password').addClass('is-invalid');
+      $('.new-password-label').addClass('text-danger');
+      $('#password-error').show();
+    }
+  });
+  $('.new-password').on('input', function (e) {
+    if ($('.new-password').val().length < 6) {
+      $('.new-password').addClass('is-invalid');
+      $('.new-password-label').addClass('text-danger');
+      $('#password-error').show();
+    } else {
+      $('.new-password').removeClass('is-invalid');
+      $('.new-password-label').removeClass('text-danger');
+      $('.submit-button').prop('disabled', false);
+      $('#password-error').hide();
+    }
+  })
+</script>

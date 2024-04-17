@@ -1,0 +1,21 @@
+<% if @messages.present? %>  
+  <div class="msg_history">
+		<% @messages.each do |message| %> 
+			<%= render :partial => 'outgoing_msg', :locals => { :message => message } %>	
+	  <% end %>
+  </div>
+<% else %>
+  <div>There is no messages here</div>
+<% end %>
+<div class="type_msg">
+	<div class="input_msg_write">
+		<%= form_tag create_message_messages_path, remote: true  do %>
+      <%= hidden_field_tag "receiver_id", @sender_user.try(:id) %>
+			<%= hidden_field_tag "sender_id", current_user.try(:id) %>
+			<%= text_field_tag :message, nil ,  placeholder: 'Type a message', class: 'write_msg', required: true %>
+		  <%= button_tag(type: "submit", class: "msg_send_btn") do %>
+			  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+			<% end %>
+		<% end %>  
+	</div>
+</div>

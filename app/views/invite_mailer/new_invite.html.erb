@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Invitation Mail</title>
+  </head>
+  <body>
+    <table width="600" border="0" align="center" style="padding:0px; background-color:#f3f4f5; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333; border: 1px solid #ccc;">
+      <tr style="background-color: #234480;">
+        <td align="center" style="padding: 20px 0;" colspan="3"><a href="#"><img width=""  ></a></td>
+      </tr>
+      <tr>
+        <td style="padding:0 10px;" colspan="3">
+          <div style="width: 80%; background-color: #fff; border-bottom: 2px solid #e3e6e9; padding: 20px; margin: 30px auto">
+            <h1 style="color: #4f687a; font-size: 18px;">Hello <%= @invite.receiver_email %> </h1>
+              <p style="font-size: 14px; line-height: 20px;">You have been referred by <%=@invite.user.name%> to join the Commit Good platform. Please click on the link below to get your organization signed up.</p>
+              <p> Your Referral code <b><%=@invite.referral_code %></b> Please use this code for Sign Up </p>
+            </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:5px 10px;" colspan="2">
+          <hr style="background-color: #ddd; color: #ddd" >
+        </td>
+
+      </tr>
+      <tr>
+        <td style="padding:10px;" colspan="3" align="center">
+          <p style="margin:  0 0 20px;"><a href="<%= root_url+"users/sign_up"+"?referral="+@invite.referral_code %>" style="font-size:18px; color:#4a4a4a; padding:15px 30px; background-color:#f2d800; letter-spacing:0.05em; border-radius:25px; text-decoration:none; line-height:40px;">Invitation Accept</a></p>
+        </td>
+      </tr>
+      <tr style="background-color: #234480; color: #fff; border: 0;">
+        <td style="padding: 15px;" colspan="3" align="center">
+          <a href="mailto:support@realosity.zendesk.com" style="color: #fff; text-decoration: none;">support@commitgood.com</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

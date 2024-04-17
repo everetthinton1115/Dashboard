@@ -1,0 +1,8 @@
+production:
+  azure_sb_namespace: <%= ENV["AZURE_SB_NAMESPACE"] %>
+  azure_sb_sas_key_name: <%= ENV["AZURE_SB_SAS_KEY_NAME"] %>
+  azure_sb_sas_key: <%= ENV["AZURE_SB_SAS_KEY"] %>
+  access_key_id: <%= ENV['AWS_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['AWS_SECRET'] %>
+  aws_region: <%= ENV['AWS_REGION'] %>
+  campaign_image: <%=  ENV['CAMPAIGN_IMAGE_BUCKET'] %>

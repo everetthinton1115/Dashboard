@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="animated slideInUpTiny animation-duration-3 projects_list">
+    <div class="page-heading d-sm-flex justify-content-sm-between align-items-sm-center">
+      <h2 class="title mb-3 mb-sm-0">Products</h2>
+      <%= form_tag products_path, method: 'get', remote: true do %>
+        <div class="head-rt-section d-flex flex-row float-right">
+          <div class="mr-2">
+            <%= select_tag "product_category", options_for_select(ProductCategory.all.collect{|x| [x.name , x.id]}, params[:product_category]), include_blank: 'Please Select', class: "form-control", :onchange=>"productFilter()" %>
+          </div>
+          <div class="mr-2">
+            <%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] }, params[:country] ), include_blank: 'Please Select', class: "form-control", :onchange=>"productFilter()"  %>
+          </div>
+          <div class="head-search mr-2">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for..." %>
+            <%= button_tag(type: "submit", name: nil, style: "border:0; padding:0; font-size:0; display: none;") do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%- if @products.present? %>
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-xl-3 col-md-5 col-12">
+            <div class="shadow border-0 card fixed-height">
+            <div class="row no-gutters card-head">
+             <!--  <div class="col-xl-5 col-md-5 col-5 card-top-1">
+                <h5>Charity's Name: </h5>
+              </div> -->
+              <div>  
+                <h3 class="card-title mb-2"><%= product.name %></h3>
+              </div>
+            </div>
+              
+              <%= image_tag load_image(product.images.first.try(:image)), alt: "Card image cap", class: "card-img-top" %>
+              <div class="card-body">
+                <p class="card-text text-muted">
+                <%= truncate(product.description, :length => 120, :omission => "" , :escape => false) { link_to "...",  product_path(product) } %>
+                </p>
+                <hr>
+              </div>
+              <div class="card-mt-footer">
+                <p class="mb-0 pt-0 pb-0 pr-4 pl-4">
+                <ul class="card-lists">
+                  <li>           
+                    <span><strong>Price</strong></span>
+                  </li>
+                  <% if false %>
+                    <li>  
+                      <span><strong>Vote</strong></span>
+                    </li>
+                  <% end %>
+                </ul>
+                <ul class="card-lists">
+                  <li><%= product.price %> GOOD</li>
+                  <% if false %>
+                    <li><% if current_user.present? %>
+                          <a href="javascript:void(0)" data-product-id="<%=product.id%>" class="set_vote">
+                            <i class="fa fa-thumbs-o-up"></i>
+                          </a>
+                        <% else %>
+                          <a class="login-alert" href="javascript:void(0)">
+                            <i class="fa fa-thumbs-o-up"></i>
+                          </a>
+                        <% end %>
+                        <span id="vote_<%=product.id%>"><%= product.votes.count %> Votes
+                    </li>
+                  <% end %>
+                </ul>
+                </p>  
+              </div>
+              <div class="gx-card-footer pr-4 pl-4 pb-3">
+                <%= link_to 'View', product_path(product), class: "btn btn-outline-success" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="not-found">No Products Found</p>
+              <%= link_to 'Reset Search Results', products_path, class: "btn btn-outline-info reset-btn" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <nav aria-label="navigation">
+      <ul class="pagination">        
+        <li class="digg_pagination"><%= will_paginate @products %></li>        
+      </ul>
+    </nav>
+  </div>
+</div>

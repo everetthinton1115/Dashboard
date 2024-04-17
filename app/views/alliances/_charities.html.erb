@@ -1,0 +1,70 @@
+<div class="container-fluid" id="charities">
+	<div class="row">
+		<!-- Charity Results and Search -->
+		<div class="col-12">
+			<div class="row">
+				<div class="col-12 col-md-9 mb-3 mb-md-0 pr-md-0">
+					<!-- Search -->
+					<div class="input-group input-search">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<%= icon('fas', 'search') %>
+							</span>
+						</div>
+						<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", id: "charity_search" %>
+						<div class="input-group-append">
+							<button id="clear_charity_search_button" class="btn bg-transparent" type="button">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-3">
+					<%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] }, params[:country] ), include_blank: 'All', prompt: "Filter by Country", class: "form-control", :onchange=>"charityFilter()", id: 'charity_country_select' %>
+				</div>
+			</div>
+			<div class="row mt-3" style="display: flex;flex-wrap: wrap;">
+				<!-- Projects -->
+				<%- if @alliances.present? %>
+					<% @alliances.each do |alliance| %>
+						<div class="col-lg-6 col-12 mb-3">
+							<div class="card campaign-card h-100">
+								<%= link_to alliance_path(alliance), class: "remove-anchor-tag-styling" do %>
+								<div class="card-body">
+									<div class="float-right campaign-link-button">
+										<i class="fas fa-external-link-alt"></i>
+									</div>
+									<div class="row my-4">
+										<div class="col-5">
+											<%= image_tag load_image(alliance.try(:logo)), alt: "Alliance Image", class: "img-thumbnail" %>
+										</div>
+										<div class="col-7 pt-2 pl-0">
+											<h5 class="card-title"><%= alliance.name %></h5>
+											<p class="card-text"><%= truncate(alliance.description, :length => 280, :omission => "" , :escape => false) %></p>
+										</div>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+				<div class="col-12">
+					<%= will_paginate @alliances, list_classes: %w(pagination justify-content-center), renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+				</div>
+			<% else %>
+				<!-- <div class="row justify-content-center"> -->
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body text-center">
+							<p class="not-found">No Charities Found</p>
+							<%= link_to 'Reset Search Results', alliances_path, class: "btn btn-outline-info reset-btn" %>
+						</div>
+					</div>
+				</div>
+				<!-- </div> -->
+			<% end %>
+
+		</div>
+	</div>
+</div>
+</div>

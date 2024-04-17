@@ -1,0 +1,157 @@
+<div class="container-fluid" id="login">
+	<div class="row">
+		<div class="col">
+			<div class="card campaign-card h-100">
+				<%=image_tag("commit-good-logo.png", alt: "commit-good-logo")%>
+				<fieldset>
+					<div class="form-group">
+						<%= f.email_field :email, autofocus: true, class: 'form-control form-control-lg', placeholder: "Email" %>
+					</div>
+					<div class="form-group">
+						<%= f.password_field :password, autocomplete: "off", class: 'form-control form-control-lg', placeholder: "Password"%>
+					</div>
+					<div class="form-group text-row-between">
+						<div class="custom-control custom-checkbox mr-2">
+							<input type="checkbox" class="custom-control-input" id="customControlInline">
+							<label class="custom-control-label" for="customControlInline">Remember me</label>
+						</div>
+						<p>
+							<%= link_to 'Forgot your password', new_user_password_path, title: "Reset Password"%>
+						</p>
+					</div>
+					<%= f.submit "Sign In", class: "btn btn-info" %>
+					<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-info float-right' %>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="gx-wrapper">
+	<div class="login-container d-flex justify-content-center align-items-center animated slideInUpTiny animation-duration-3">
+		<div class="login-content">
+			<div class="login-header">
+				<a class="site-logo" href="javascript:void(0)" title="Jambo">
+					<%=image_tag("commit-good-logo.png", alt: "commit-good-logo")%>
+				</a>
+			</div>
+			<div class="login-form">
+				<%= form_for(resource, as: resource_name, url: users_sign_in_path(resource_name)) do |f| %>
+				<% flash.each do |name, msg| %>
+					<% if msg != true %>
+						<%if name == "success" %>
+							<div class="shadow-lg alert alert-success alert-dismissible fade show">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span></button>
+								<% if msg.class == Array %>
+									<% msg.each do |message| %>
+										<%= content_tag :div, message, :id => "flash_#{name}" %>
+									<% end %>
+								<% else %>
+									<%= content_tag :div, msg, :id => "flash_#{name}" %>
+								<% end %>
+							</div>
+						<% else %>
+							<div class="shadow-lg alert alert-danger alert-dismissible fade show">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span></button>
+								<% if msg.class == Array %>
+									<% msg.each do |message| %>
+										<%= content_tag :div, message, :id => "flash_#{name}" %>
+									<% end %>
+								<% else %>
+									<%= content_tag :div, msg, :id => "flash_#{name}" %>
+								<% end %>
+							</div>
+						<%end%>
+					<% end %>
+				<% end %>
+				<%= devise_error_messages! %>
+				<fieldset>
+					<div class="form-group">
+						<%= f.email_field :email, autofocus: true, class: 'form-control form-control-lg', placeholder: "Email" %>
+					</div>
+					<div class="form-group">
+						<%= f.password_field :password, autocomplete: "off", class: 'form-control form-control-lg', placeholder: "Password"%>
+					</div>
+					<div class="form-group text-row-between">
+						<div class="custom-control custom-checkbox mr-2">
+							<input type="checkbox" class="custom-control-input" id="customControlInline">
+							<label class="custom-control-label" for="customControlInline">Remember me</label>
+						</div>
+						<p>
+							<%= link_to 'Forgot your password', new_user_password_path, title: "Reset Password"%>
+						</p>
+					</div>
+					<%= f.submit "Sign In", class: "btn btn-info" %>
+					<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-info float-right' %>
+				</fieldset>
+			<% end %>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</div>
+
+<style type="text/css">
+.login-header {
+	text-align: center;
+}
+.social-icons ul {
+	list-style: none;
+	margin: 15px auto;
+	padding: 0;
+	text-align: center;
+}
+.social-icons ul li {
+	display: inline-block;
+}
+.social-icons ul li a {
+	color: #fff;
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 4px;
+	margin: 0 10px;
+	font-size: 20px;
+}
+.social-icons ul li a:hover {
+	color: #f1f1f1;
+}
+.social-icons ul li.fb a {
+	background: #5c6bc0;
+}
+.social-icons ul li.tw a {
+	background: #40c4ff;
+}
+.social-icons ul li.gplus a {
+	background: #dc5043;
+}
+.divider {
+	text-align: center;
+	margin: 25px 0;
+	position: relative;
+	font-size: 15px;
+	color: #3bbdd4;
+}
+.divider-inner:after {
+	content: "";
+	position: absolute;
+	background: #3bbdd4;
+	width: 45%;
+	height: 1px;
+	right: 0;
+	top: 10px;
+}
+.divider-inner:before {
+	content: "";
+	position: absolute;
+	background: #3bbdd4;
+	width: 45%;
+	left: 0;
+	height: 1px;
+	top: 10px;
+}
+</style>

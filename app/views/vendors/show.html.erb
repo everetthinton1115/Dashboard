@@ -1,0 +1,45 @@
+<!--SHOW PAGE-->
+<div class="container">
+  <div class="row">
+    <div class="gx-wrapper">
+      <div class="animated slideInUpTiny animation-duration-3">
+        <div class="page-heading d-sm-flex justify-content-sm-between align-items-sm-center">
+          <nav class="mb-0 breadcrumb active">
+            <%= link_to 'Vendors', vendors_path, class: "breadcrumb-item" %>
+            <span class="active breadcrumb-item"><%= @vendor.name %></span>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="product-gallery-slider">
+              <ul id="product-gallery" class="product-gslider cS-hidden">
+                <li data-thumb="<%= load_image(@vendor.logo) %>">
+                  <%= image_tag load_image(@vendor.logo) %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="gx-card product-details">
+              <div class="card-content">
+                <h2 class="mb-2 mb-sm-4"><%= @vendor.name %></h2>
+                <p>
+                  <%= @vendor.description %>
+                </p>
+              </div>
+              <div class="gx-card-footer">
+                <%# <a class="btn btn-primary" href="javascript:void(0)">Donate</a> %>
+              </div>
+              <%= social_share_button_tag(@vendor.name, :url => "https://commit-good-staging.herokuapp.com/", :image => "https://commitgood.com/img/logo-img/white_logo3_transparent@2x.png", desc: @vendor.description) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .product-gallery-slider img:hover {
+    cursor: default;
+  }
+</style>

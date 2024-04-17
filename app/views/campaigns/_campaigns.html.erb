@@ -1,0 +1,163 @@
+<%
+	base_url = if Rails.env.development?
+		'https://34.226.140.175'
+	else
+		'https://commit-nft.herokuapp.com'
+	end
+%>
+<div class="container-fluid" id="campaigns">
+	<div class="row">
+		<!-- Filter Side Bar -->
+		<div class="col-lg-3 col-12 mb-3">
+			<div class="card filter-card">
+				<div class="card-body">
+					<div class="row mb-4">
+						<div class="col">
+							<h6>
+								Country
+							</h6>
+							<div class="row">
+								<div class="col">
+									<%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] }, params[:country] ), prompt: "Select Country", class: "form-control", :onchange=>"campaignFilter()", id: 'campaigns_country_select' %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<h6>
+								Categories
+							</h6>
+
+							<!-- Category Radios -->
+							<div class="row">
+								<div class="col">
+									<label class="control radio" for="all_categories">
+										<input type="radio" id="all_categories" name="filterByRadio" value="" <%= (String(params[:campaign_category]) == '') ? "checked" : ""%>/>
+										<span class="control-indicator"></span>
+										<span class="label-text">All</span>
+									</label>
+								</div>
+							</div>
+							<% CampaignCategory.all.each do |category| %>
+								<div class="row">
+									<div class="col">
+										<label class="control radio" for="<%= category[:name] %>">
+											<input type="radio" id="<%= category[:name] %>" name="filterByRadio" value="<%= category[:id] %>" <%= (String(params[:campaign_category]) == String(category[:id])) ? "checked" : ""%>/>
+											<span class="control-indicator"></span>
+											<span class="label-text"><%= category[:name] %></span>
+										</label>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Project Results and Search -->
+		<div class="col-lg-9 col-12">
+			<div class="row">
+				<div class="col">
+					<!-- Search -->
+					<div class="input-group input-search">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<%= icon('fas', 'search') %>
+							</span>
+						</div>
+						<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Project Name", id: "campaign_search" %>
+						<div class="input-group-append">
+							<button id="clear_campaign_search_button" class="btn bg-transparent" type="button">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3" style="display: flex;flex-wrap: wrap;">
+				<!-- Projects -->
+				<%- if @campaigns.present? %>
+					<% @campaigns.each do |campaign| %>
+						<div class="col-xl-6 col-12 mb-3">
+							<div class="card campaign-card h-100">
+								<%= link_to campaign_path(campaign), class: "remove-anchor-tag-styling" do %>
+								<div class="card-body">
+									<div class="float-right campaign-link-button">
+										<i class="fas fa-external-link-alt"></i>
+									</div>
+									
+									<div class="row">
+										<div class="col-5 px-0">
+										   <%- if campaign.images.present? %>
+											  <%= image_tag load_image(campaign.images.first.try(:image)), alt: "Project Image", class: "img-thumbnail" %>
+											<%-  else %>
+											  <%= image_tag campaign.image.url, alt: "Project Image", class: "img-thumbnail" %>
+											<% end %>
+										</div>
+										<div class="col-7 pt-3">
+											<h5 class="card-title"><%= campaign.name %></h5>
+											<p class="card-text"><%= truncate(campaign.description, :length => 120, :omission => "" , :escape => false) %></p>
+											<p class="px-1 card-text" style="font-size: 15px;"><i><%= User.find_by(id: campaign.user_id).try(:name) %></i> is the Charity of this project.</p>
+										</div>
+									</div>
+								</div>
+								<div class="card-footer">
+									<!-- <div class="row px-3 py-3 token-row">
+										<div class="col outer-column">
+											<div class="row">
+												<div class="col">
+													Good Token
+													<span class="float-right"><#%= campaign.good_goal_amount %></span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col">
+													Bitcoin
+													<span class="float-right"><#%= BigDecimal(campaign.goal_amount.to_f.to_s).truncate(8).to_s('F') %></span>
+												</div>
+											</div>
+										</div>
+									</div> -->
+									<div class="row px-3">
+										<div class="col">
+											<%= campaign.total_donations %>
+											<span class="details-label">Donations</span>
+										</div>
+										<div class="col">
+											<%= campaign.days_left %>
+											<span class="details-label">Days Left</span>
+										</div>
+									</div>
+									
+									<% if current_user&.roles&.pluck(:name)&.include?('nft') %>
+										<div class="col">
+<!--											<a class="btn btn-sm btn-block btn-outline-success add-nft" href=<%#= "#{base_url}/asset/create/#{campaign.id}" %>>-->
+											<a class="btn btn-sm btn-block btn-outline-success add-nft" href=<%= "#{base_url}/asset/create" %>>
+												Add NFT
+											</a>
+										</div>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+				<div class="col-12">
+					<%= will_paginate @campaigns, list_classes: %w(pagination justify-content-center), renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+				</div>
+			<% else %>
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body text-center">
+							<p class="not-found">No Projects Found</p>
+							<%= link_to 'Reset Search Results', campaigns_path, class: "btn btn-outline-info reset-btn" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,63 @@
+<!--SHOW PAGE-->
+<div class="container">
+  <div class="row">
+    <div class="gx-wrapper">
+      <div class="animated slideInUpTiny animation-duration-3">
+        <div class="page-heading d-sm-flex justify-content-sm-between align-items-sm-center">
+          <nav class="mb-0 breadcrumb active">
+            <%= link_to 'Products', products_path, class: "breadcrumb-item" %>
+            <span class="active breadcrumb-item"><%= @product.name %></span>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="product-gallery-slider">
+              <ul id="product-gallery" class="product-gslider cS-hidden">
+                <% if @product.images.present? %>
+                  <% @product.images.each do |img| %>
+                    <li data-thumb="<%= load_image(img.try(:image)) %>">
+                      <%= image_tag load_image(img.try(:image)) %>
+                    </li>
+                  <% end %>
+                <% else %>
+                    <li data-thumb="<%= load_image(@product.images.first.try(:image)) %>">
+                      <%= image_tag load_image(@product.images.first.try(:image)) %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="gx-card product-details">
+              <div class="card-content">
+                <h2 class="mb-2 mb-sm-4"><%= @product.name %></h2>
+                <p>
+                  <%= @product.description %>
+                </p>
+                <div class="card-show-footer">
+                  <p class="mb-0 pt-0 pb-0 pr-4 pl-4">
+                  <ul class="card-lists m-0">
+                    <li>  
+                      <span><strong>Price</strong><%= @product.price %> GOOD</span>
+                    </li>
+                  </ul>
+                  </p>  
+                </div>
+              </div>
+              <% if current_user.present? %>
+                <div class="gx-card-footer">
+                  <%= social_share_button_tag(@product.name, :url => "https://commit-good-staging.herokuapp.com/", :image => "https://commitgood.com/img/logo-img/white_logo3_transparent@2x.png", desc: @product.description) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .product-gallery-slider img:hover {
+    cursor: default;
+  }
+</style>

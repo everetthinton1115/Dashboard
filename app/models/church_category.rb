@@ -1,0 +1,2 @@
+class ChurchCategory < ApplicationRecord
+end

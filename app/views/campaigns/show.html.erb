@@ -1,0 +1,733 @@
+<!-- display flash message generated on the success of campaign donation -->
+<% flash.each do |message_type, message| %>
+	<% message_type = "danger" if message_type == "error" %>
+	<% if message_type == "notice" %>
+		<% message.each do |key, value| %>
+			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+		<% end %>
+	<% else %>
+		<%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+	<% end %>
+<% end %>
+<%
+	image_url = load_image(@campaign.images.present? ? @campaign.images.first.try(:image) : "https://commitgood.com/img/logo-img/white_logo3_transparent@2x.png")
+%>
+
+<% meta_tag :title, @campaign.name %>
+<% meta_tag :description, @campaign.description %>
+<% meta_tag :image, image_url %>
+
+<div class="container-fluid" id="campaign_show">
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card campaign-card px-0">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0 bg-white">
+						<li class="breadcrumb-item active" aria-current="page"><%= link_to 'Projects', campaigns_path, class: "breadcrumb-item" %></li>
+						<li class="breadcrumb-item active" aria-current="page"><%= @campaign.name %></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+	 
+	<div class="row">
+		<div class="col">
+			<div class="card campaign-card p-1">
+				<div class="row mx-0">
+					<div class="col">
+						<h2 class="campaign-title"><%= @campaign.name %></h2>
+					</div>
+					<div class="col col-md-2 text-right">
+						<h3 class="campaign-days-left"><%= @campaign.days_left %>
+							days left
+						</h3>
+					</div>
+				</div>
+
+				<!-- Images and Goal Info -->
+				<div class="row mx-0">
+					<div class="col-12 col-md-7">
+						<%= render :partial => 'campaigns/show/image_slideshow' %>
+					</div>
+					<div class="col-12 col-md-5">
+						<div class="row">
+							<div class="col">
+								<h6 class="text-center campaign-coordinator-name">
+									<span>
+										<%= image_tag load_image(@campaign_coordinator.try(:profile)), :class => "campaign-coordinator-image" %>
+									</span>
+									<%= @campaign_coordinator.try(:name) %>
+									is the Coordinator for this Project.
+								</h6>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row mx-0">
+					<div class="col">
+						<!-- <hr class="mt-0"/> <h3 class="campaign-section-title">About Our Project</h3> -->
+						<p class="campaign-description px-2">
+							<%= @campaign.description %>
+						</p>
+					</div>
+				</div>
+
+				<div class="row mx-0">
+					<div class="col text-right">
+						<%= social_share_button_tag(@campaign.name, 
+							url: request.original_url, 
+							image: image_url,
+							desc: @campaign.description) 
+						%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%= react_component("ShowProject") %>
+	
+	<%# if current_user.present? %>
+		<div class="row my-3">
+			<div class="col">
+				<div class="card campaign-card p-1">
+					<div class="row mx-0">
+						<div class="col">
+							<h2 class="campaign-title">Project Volunteer Opportunities</h2>
+						</div>
+					</div>
+
+					<div class="row mx-0">
+						<div class="col" style="overflow-x: auto;">
+							<table class="table table-boarder table-stripped">
+								<tr>
+									<th>Title</th>
+									<th>Description</th>
+									<th class="text-center">Hours Needed</th>
+									<th class="text-center">Spots Available</th>
+									<th></th>
+								</tr>
+								<% @volunteers.each_with_index do |volunteer, index| %>
+									<tr>
+										<td><%= volunteer.title %></td>
+										<td><%= volunteer.description %></td>
+										<td class="text-center"><%= volunteer.hours %></td>
+										<td class="text-center"><%= volunteer.number %></td>
+										<td class="text-right">
+											<%- if current_user.try(:id) == @campaign.user_id %>
+												<button class="btn btn-sm btn-info" value="<%= volunteer.id %>" id="open_number" data-toggle="modal" data-target="#volunteerModal" disabled="disabled">Volunteer</button>
+											<%else%>
+												<button class="btn btn-sm btn-info volunteer_btn" value="<%= volunteer.id %>" id="open_number" data-toggle="modal" data-target="#volunteerModal">Volunteer</button>
+											<%end%>
+										</td>
+									</tr>
+								<%end%>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<%# end %>
+</div>
+
+<!-- OLD CODE -->
+<div class="modal fade" id="" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-box" role="document">
+		<div class="modal-content">
+			<div class="modal-box-header bg-primary modal-header">
+				<h4 class="modal-title">
+					Donate
+					<a href="javascript:void(0)" class="action-btn text-white" data-dismiss="modal" aria-label="Close">
+						<i class="zmdi zmdi-close"></i>
+					</a>
+				</h4>
+			</div>
+			<%= form_for([@campaign, @campaign_donation], url: campaign_campaign_donations_path(@campaign), html: {id: "campaign-donation-form"}) do |f| %>
+			<div class="modal-box-content">
+				<div id="donate-msgs"></div>
+				<div class="row no-gutters mx-10">
+					<div class="col-lg-12 d-flex flex-column order-lg-1">
+						<div class="form-group">
+							<%= f.hidden_field :user_id, value: current_user.try(:id) %>
+							<%= f.hidden_field :email, value: current_user.try(:email) %>
+							<%= f.hidden_field :charity_wallet_address, value: @campaign.user.wallet.try(:meta_address) %>
+
+							<div class="row">
+								<label class="control-label">GOOD Tokens:</label>
+							</div>
+							<div class="row">
+								<%= f.text_field :donation_amount, class: "form-control", placeholder: "Number of tokens", number: true, min: 1 %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-box-footer">
+				<a class="btn btn-outline-primary donate-submit" href="javascript:void(0)">
+					<span>Ok</span>
+				</a>
+				<a class="btn btn-outline-success" href="javascript:void(0)" data-dismiss="modal">
+					<span>Cancel</span>
+				</a>
+			</div>
+		<% end %>
+	</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="donateGoodTokenModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<%= form_for([@campaign, @campaign_donation], url: campaign_campaign_donations_path(@campaign), method: "post", html: {id: "campaign-token-donation-form"}) do |f| %>
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Donate</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div id="volunteer-msgs"></div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="form-group">
+						<%= f.hidden_field :user_id, value: current_user.try(:id) %>
+						<%= f.hidden_field :email, value: current_user.try(:email) %>
+						<%= f.hidden_field :charity_wallet_address, value: @campaign.user.wallet.try(:meta_address) %>
+						<%= hidden_field_tag :eth_grand_total_amount %>
+						<%= hidden_field_tag 'good_currency', 'true'  %>
+						<div class="currency_amout-_box">
+							<div class="row">
+								<div class="col">
+									<div class="form-group">
+										<label class="control-label" style="padding-left: 13px;">Number of $GOOD tokens to be donated:</label>
+								  	<%= f.text_field :donation_amount, class: "form-control campaign_donation_donation_amount", placeholder: "Number of tokens", number: true, min: 1 %>
+								  </div>
+								</div>  
+							</div>
+							<div class="row">
+					    	
+					    </div>
+							
+						</div>
+
+						<div class="currency_amout-_box">
+							
+						    <% if current_user && current_user.donor? && current_user.bitcoin_address.present? %>	
+								<div class="box-shadow p-2 mb-2">    
+								    <div class="row">
+								    	<div class="col">
+											<label class="p-0 mb-0" for="usd_input">Donor Commit Good Address</label>
+										</div>
+										<div class="col">
+											<div class="p-0 mb-0 text-content" for="usd_input"><%= current_user.try(:commit_good_address) %></div>
+										</div>
+									</div>
+								</div>
+						    <% end %>	
+						    <div class="box-shadow p-2">	
+								<div class="row">
+							    	<div class="col">
+										<label class="p-0 mb-0" for="usd_input">Charity Commit Good Address</label>
+									</div>
+									<div class="col">
+										<div class="p-0 mb-0 text-content" for="usd_input"><%= @campaign.user.try(:commit_good_address) %></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="currency_amout-_box">
+							<div class="row">
+						    	<div class="col">
+									<label class="p-2 mb-0" for="usd_input">Total Amount</label>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<%= f.submit "Ok", class: "btn btn-outline-primary donate-token-submit"%>
+			<a class="btn btn-outline-danger" href="javascript:void(0)" data-dismiss="modal">
+				<span>Cancel</span>
+			</a>
+		</div>
+	<% end %>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<%= form_for([@campaign, @campaign_donation], url: campaign_campaign_donations_path(@campaign), method: "post", html: {id: "campaign-donation-form"}) do |f| %>
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Donate</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div id="volunteer-msgs"></div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="form-group">
+						<%= f.hidden_field :user_id, value: current_user.try(:id) %>
+						<%= f.hidden_field :email, value: current_user.try(:email) %>
+						<%= f.hidden_field :charity_wallet_address, value: @campaign.user.wallet.try(:meta_address) %>
+						<%= hidden_field_tag :btc_grand_total_amount %>
+						<%= hidden_field_tag 'btc_currency', 'true'  %>
+						<div class="currency_amout-_box">
+	                        <div class="row">
+								<div class="col">
+									<div class="form-group">
+										<label for="usd_input">USD</label>
+										<input type="number" step="0.01" name="" class="form-control" id="usd_input" <%= f.object.persisted? ? 'readonly' : ''%>>
+									</div>
+								</div>
+								<div class="col-1 text-center" style="padding-top: 36px;">
+									<span><%= icon('fas', 'exchange-alt') %></span>
+								</div>
+								<div class="col">
+									<div class="form-group">
+										<%= f.label :donation_amount, "BTC", class: "control-label" %>
+										<%= f.text_field :donation_amount, class: "form-control required", id: 'btc_input', :readonly => f.object.persisted?, :disabled => f.object.persisted? %>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+						    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">BTC Donation Amount</label>
+										<%= text_field_tag :bit_donation_amount, '', class: "form-control", :readonly => true %>
+									</div>
+								</div>
+						    </div>
+						   <div class="row">
+					    	
+					    </div>
+						</div>
+						<div class="currency-content-details">
+						    <% if current_user && current_user.donor? && current_user.bitcoin_address.present? %>
+						    	<div class="box-shadow p-2 mb-2">
+								    <div class="row">
+								    	<div class="col">
+											<label class="mb-0 p-0" for="usd_input">Donor Bitcoin Address</label>
+										</div>
+										<div class="col">
+											<div class="p-0 mb-0 text-content" for="usd_input"><%= current_user.try(:bitcoin_address) %></div>
+										</div>
+									</div>
+								</div>
+						    <% end %>	
+						    <div class="box-shadow p-2 mb-2">	
+								<div class="row">
+							    	<div class="col">
+										<label class="mb-0 p-0" for="usd_input">Charity Bitcoin Address</label>
+									</div>
+									<div class="col">
+											<div class="p-0 mb-0 text-content" for="usd_input"><%= @campaign.user.try(:bitcoin_address) %></div>
+									</div>
+								</div>
+							</div>	
+             
+    					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			
+			<%= f.submit "Ok", class: "btn btn-outline-primary donate-submit" %>
+
+			<a class="btn btn-outline-danger" href="javascript:void(0)" data-dismiss="modal">
+				<span>Cancel</span>
+			</a>
+		</div>
+	<% end %>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="volunteerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Volunteer Request</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<% if current_user %>
+				<!-- chat -->
+				<div class="messaging">
+			      <div class="inbox_msg">
+			        <div class="mesgs">
+			          <div class="msg_history" id="msg_history">
+			          	<% @messages.each do |message| %>
+			          	  <%= render :partial => 'message', :locals => { :message => message } %>
+				          <% end %>  
+			          </div>
+			          <div class="type_msg">
+			            <div class="input_msg_write">
+			            	<%= form_tag create_message_campaign_path(@campaign), remote: true, class: 'comment-form-id'  do %>
+			            	  <%= hidden_field_tag "receiver_id", @campaign.user_id %>
+					            <%= hidden_field_tag "sender_id", current_user.try(:id) %>
+			              	<%= text_field_tag :message, nil ,  placeholder: 'Type a message', class: 'write_msg', required: true %>
+			              	<%= button_tag(type: "submit", class: "msg_send_btn submit-message") do %>
+											  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+											<% end %>
+			              <% end %>	
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			  </div>
+			  <!-- chat end -->	
+			<% else %>
+			  <div>You need to register as a volunteer</div>
+			<% end %>  
+		</div>
+		<% unless current_user %>
+		  <div class="modal-footer">
+				<a class="btn btn-outline-danger" href="javascript:void(0)" data-dismiss="modal">
+					<span>Cancel</span>
+				</a>
+			</div>
+		<% end %>
+	</div>
+		
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="inkindModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-box" role="document">
+<div class="modal-content">
+	<div class="modal-box-header bg-primary modal-header">
+		<h4 class="modal-title">
+			In-Kind Donation
+			<a href="javascript:void(0)" class="action-btn text-white" data-dismiss="modal" aria-label="Close">
+				<i class="zmdi zmdi-close"></i>
+			</a>
+		</h4>
+	</div>
+	<%= form_tag need_contributions_path, id: "resource-donation-form" do %>
+	<div class="modal-box-content">
+		<div id="resource-msgs"></div>
+		<div class="row no-gutters">
+			<div class="col-lg-12 d-flex flex-column order-lg-1">
+				<div class="form-group d-flex">
+					<%= hidden_field_tag :campaign_id, @campaign.try(:id) %>
+					<%= hidden_field_tag :user_id, current_user.try(:id) %>
+					<label class="control-label mr-2">Item</label>
+					<%= select_tag :need_id, options_for_select(@needs.all.collect{|x| [x.title , x.id]}, ""), class: "form-control", :onchange=>"showDescription($(this).val())" %>
+				</div>
+			</div>
+			<div class="col-lg-12 d-flex flex-column order-lg-1">
+				<label>Description</label>
+				<div class="modal-text">
+					<p id="need-des"><%=@needs[0].try(:description)%></p>
+				</div>
+
+				<div class="form-group d-flex">
+					<label class="control-label mr-2">Drop Off Date</label>
+					<div class='input-group date' id='datetimepicker1'>
+						<%= text_field_tag :drop_off_date, DateTime.now.strftime("%m/%d/%Y %l:%M %p"), class: "form-control"%>
+						<span class="input-group-addon">
+							<i class="zmdi zmdi-calendar"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 d-flex flex-column order-lg-1">
+				<div class="form-group d-flex">
+					<div class="checkbox checkbox-inline checkbox-replace">
+						<input type="checkbox" value="option1" id="inlineCheckbox1">
+						<label for="inlineCheckbox1">Requires Delivery</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-box-footer">
+		<a class="btn btn-outline-primary resource-submit" href="javascript:void(0)">
+			<span>Ok</span>
+		</a>
+		<a class="btn btn-outline-success" href="javascript:void(0)" data-dismiss="modal">
+			<span>Cancel</span>
+		</a>
+	</div>
+<% end %>
+</div>
+</div>
+</div>
+
+<style type="text/css">
+	#donateModal .modal-header {
+		background: #353637;
+	    padding: 10px;
+	    color: #fff;
+	    border-top-right-radius: 10px;
+	    border-top-left-radius: 10px;
+	}
+	#donateGoodTokenModal .modal-header {
+		background: #353637;
+	    padding: 10px;
+	    color: #fff;
+	    border-top-right-radius: 10px;
+	    border-top-left-radius: 10px;
+	}
+	#donateModal .modal-content {
+	    border: none;
+	    border-radius: 15px;
+	    outline: 0;
+	}
+	#donateModal .modal-title {
+		font-size: 16px;
+	}
+	#donateModal  .modal-header .close {
+		padding: 0px;
+		color: #ddd;
+		opacity: 1;
+		margin: 0px;
+	}
+	#donateGoodTokenModal  .modal-header .close {
+		padding: 0px;
+		color: #ddd;
+		opacity: 1;
+		margin: 0px;
+	}
+	#donateGoodTokenModal .modal-title {
+		font-size: 16px;
+	}
+	#donateGoodTokenModal .modal-content {
+	    border: none;
+	    border-radius: 15px;
+	    outline: 0;
+	}
+	.currency_amout-_box{
+		border-radius: 4px;
+	    padding: 15px;
+	    margin-bottom: 15px;
+	    box-shadow: 1px 1px 14px #ddd;
+	}
+	.currency_amout-_box .form-control {
+		height: 45px;
+	    border: 1px solid #ddd;
+	    box-shadow: 0px 2px 5px #d4d4d4;
+	}
+	#donateModal .currency-content-details {
+		border-radius: 4px;
+	    padding: 15px;
+	    margin-bottom: 15px;
+	    box-shadow: 1px 1px 14px #ddd;
+	}
+	#donateModal .currency-content-details label {
+		font-size: 14px;
+    	font-weight: bold;
+	}
+	.total_btc_amount {
+		font-size: 14px;
+	}
+	.currency-content-details .text-content, .currency_amout-_box .text-content{
+		font-size: 14px;
+		color: #666;
+	}
+	.currency_amout-_box label {
+		font-size: 14px;
+    	font-weight: bold;
+	}
+	#donateModal .currency_amout-_box i.fa-exchange-alt{
+	    background: #353637;
+	    color: #fff;
+	    width: 40px;
+	    height: 40px;
+	    line-height: 40px;
+	    border-radius: 50%;
+	}
+	.box-shadow {
+		box-shadow: 0px 2px 5px #d4d4d4;
+	}
+
+
+	/*message chat css*/
+	#volunteerModal .modal-header {
+		background: #353637;
+		padding: 10px;
+		color: #fff;
+		border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
+	}
+	#volunteerModal .modal-content {
+		border: none;
+		border-radius: 15px;
+		outline: 0;
+	}
+	#volunteerModal .modal-title {
+		font-size: 16px;
+	}
+	#volunteerModal .modal-dialog {
+		max-width: 600px;
+	}
+	#volunteerModal .modal-header .close {
+		padding: 0px;
+		color: #ddd;
+		opacity: 1;
+		margin: 0px;
+	}
+	.messaging img{ max-width:100%;}
+
+	.inbox_people {
+		background: #f8f8f8 none repeat scroll 0 0;
+		float: left;
+		overflow: hidden;
+		width: 40%; border-right:1px solid #c4c4c4;
+	}
+	.inbox_msg {
+		border: 1px solid #c4c4c4;
+		clear: both;
+		overflow: hidden;
+	}
+	.top_spac{ margin: 20px 0 0;}
+
+	.recent_heading {float: left; width:40%;}
+
+	.srch_bar {
+		display: inline-block;
+		text-align: right;
+		width: 60%; padding:
+	}
+	.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+
+	.recent_heading h4 {
+		color: #05728f;
+		font-size: 21px;
+		margin: auto;
+	}
+	.srch_bar input{ 
+		border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;
+	}
+	.srch_bar .input-group-addon button {
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+		border: medium none;
+		padding: 0;
+		color: #707070;
+		font-size: 18px;
+	}
+	.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+
+	.chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+	.chat_ib h5 span{ font-size:13px; float:right;}
+	.chat_ib p{ font-size:14px; color:#989898; margin:auto}
+	.chat_img {
+		float: left;
+		width: 11%;
+	}
+	.chat_ib {
+		float: left;
+		padding: 0 0 0 15px;
+		width: 88%;
+	}
+	.chat_people{ overflow:hidden; clear:both;}
+
+	.chat_list {
+		border-bottom: 1px solid #c4c4c4;
+		margin: 0;
+		padding: 18px 16px 10px;
+	}
+	.inbox_chat { height: 550px; overflow-y: scroll;}
+
+	.active_chat{ background:#ebebeb;}
+
+	.incoming_msg_img {
+		display: inline-block;
+		width: 6%;
+	}
+	.received_msg {
+		display: inline-block;
+		padding: 0 0 0 10px;
+		vertical-align: top;
+		width: 92%;
+	}
+	.received_withd_msg p {
+		background: #ebebeb none repeat scroll 0 0;
+		border-radius: 3px;
+		color: #646464;
+		font-size: 13px;
+		margin: 0;
+		padding: 5px 10px 5px 12px;
+		width: 100%;
+	}
+	.time_date {
+		color: #747474;
+		display: block;
+		font-size: 12px;
+		margin: 8px 0 0;
+	}
+	.received_withd_msg { width: 57%;}
+	.mesgs {
+		float: left;
+		padding: 10px;
+		width: 100%;
+	}
+	.sent_msg p {
+		background: #085090 none repeat scroll 0 0;
+		border-radius: 3px;
+		font-size: 13px;
+		margin: 0; color:#fff;
+		padding: 5px 10px 5px 12px;
+		width:100%;
+	}
+	.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+
+	.sent_msg {
+		float: right;
+		width: 46%;
+	}
+	.input_msg_write input {
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+		border: medium none;
+		color: #4c4c4c;
+		font-size: 15px;
+		min-height: 48px;
+		width: 100%;
+	}
+	.input_msg_write input:focus {
+		outline: none;
+	}
+	.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+
+	.msg_send_btn {
+		background: #171819 none repeat scroll 0 0;
+		border: medium none;
+		border-radius: 50%;
+		color: #fff;
+		cursor: pointer;
+		font-size: 17px;
+		height: 33px;
+		position: absolute;
+		right: 0;
+		top: 11px;
+		width: 33px;
+	}
+
+	.msg_send_btn:focus {
+		outline: none;
+	}
+
+	.msg_history {
+		height: 400px;
+		overflow-y: auto;
+	}
+</style>

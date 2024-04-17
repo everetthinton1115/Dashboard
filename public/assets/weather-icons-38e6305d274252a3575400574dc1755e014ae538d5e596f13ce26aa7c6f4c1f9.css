@@ -1,0 +1,3025 @@
+/*!
+ *  Weather Icons 2.0.8
+ *  Updated September 19, 2015
+ *  Weather themed icons for Bootstrap
+ *  Author - Erik Flowers - erik@helloerik.com
+ *  Email: erik@helloerik.com
+ *  Twitter: http://twitter.com/Erik_UX
+ *  ------------------------------------------------------------------------------
+ *  Maintained at http://erikflowers.github.io/weather-icons
+ *
+ *  License
+ *  ------------------------------------------------------------------------------
+ *  - Font licensed under SIL OFL 1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - CSS, SCSS and LESS are licensed under MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - Documentation licensed under CC BY 3.0 -
+ *    http://creativecommons.org/licenses/by/3.0/
+ *  - Inspired by and works great as a companion with Font Awesome
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ */
+@font-face {
+  font-family: 'weathericons';
+  src: url(/assets/fonts/weathericons-regular-webfont-3afed4f78c201830d945410a7e27a9feb483282555b2870aafc99d2db65f4c2c.eot);
+  src: url(/assets/fonts/weathericons-regular-webfont-3afed4f78c201830d945410a7e27a9feb483282555b2870aafc99d2db65f4c2c.eot?#iefix) format("embedded-opentype"), url(/assets/fonts/weathericons-regular-webfont-9327647771c09df82095dba3591c77cca41a9cedca948ae01e7fb70c690dcbd5.woff2) format("woff2"), url(/assets/fonts/weathericons-regular-webfont-d4e90136fa6f4b26d5613c85b84f823af1d7b34fc3d2e3549740b3aea510caad.woff) format("woff"), url(/assets/fonts/weathericons-regular-webfont-176bda6661f213dde47c2114d76e476ec8ca9aae07dd54f9550d2d28fe02b4fd.ttf) format("truetype"), url(/assets/fonts/weathericons-regular-webfont-6832c6004ed47a6832b67681382d3e3b0674449ee8135fa4863a5a435c51adfb.svg#weather_iconsregular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 30, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi {
+  display: inline-block;
+  font-family: 'weathericons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 39, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-fw {
+  text-align: center;
+  width: 1.4em;
+}
+
+/* line 43, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* line 49, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 55, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+/* line 61, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+/* line 67, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+/* line 73, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-sunny:before {
+  content: "\f00d";
+}
+
+/* line 76, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-cloudy:before {
+  content: "\f002";
+}
+
+/* line 79, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-cloudy-gusts:before {
+  content: "\f000";
+}
+
+/* line 82, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-cloudy-windy:before {
+  content: "\f001";
+}
+
+/* line 85, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-fog:before {
+  content: "\f003";
+}
+
+/* line 88, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-hail:before {
+  content: "\f004";
+}
+
+/* line 91, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-haze:before {
+  content: "\f0b6";
+}
+
+/* line 94, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-lightning:before {
+  content: "\f005";
+}
+
+/* line 97, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-rain:before {
+  content: "\f008";
+}
+
+/* line 100, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-rain-mix:before {
+  content: "\f006";
+}
+
+/* line 103, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-rain-wind:before {
+  content: "\f007";
+}
+
+/* line 106, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-showers:before {
+  content: "\f009";
+}
+
+/* line 109, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-sleet:before {
+  content: "\f0b2";
+}
+
+/* line 112, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-sleet-storm:before {
+  content: "\f068";
+}
+
+/* line 115, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-snow:before {
+  content: "\f00a";
+}
+
+/* line 118, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-snow-thunderstorm:before {
+  content: "\f06b";
+}
+
+/* line 121, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-snow-wind:before {
+  content: "\f065";
+}
+
+/* line 124, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-sprinkle:before {
+  content: "\f00b";
+}
+
+/* line 127, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-storm-showers:before {
+  content: "\f00e";
+}
+
+/* line 130, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-sunny-overcast:before {
+  content: "\f00c";
+}
+
+/* line 133, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-thunderstorm:before {
+  content: "\f010";
+}
+
+/* line 136, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-windy:before {
+  content: "\f085";
+}
+
+/* line 139, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-solar-eclipse:before {
+  content: "\f06e";
+}
+
+/* line 142, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-hot:before {
+  content: "\f072";
+}
+
+/* line 145, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-cloudy-high:before {
+  content: "\f07d";
+}
+
+/* line 148, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-day-light-wind:before {
+  content: "\f0c4";
+}
+
+/* line 151, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-clear:before {
+  content: "\f02e";
+}
+
+/* line 154, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-cloudy:before {
+  content: "\f086";
+}
+
+/* line 157, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-cloudy-gusts:before {
+  content: "\f022";
+}
+
+/* line 160, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-cloudy-windy:before {
+  content: "\f023";
+}
+
+/* line 163, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-hail:before {
+  content: "\f024";
+}
+
+/* line 166, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-lightning:before {
+  content: "\f025";
+}
+
+/* line 169, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-rain:before {
+  content: "\f028";
+}
+
+/* line 172, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-rain-mix:before {
+  content: "\f026";
+}
+
+/* line 175, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-rain-wind:before {
+  content: "\f027";
+}
+
+/* line 178, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-showers:before {
+  content: "\f029";
+}
+
+/* line 181, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-sleet:before {
+  content: "\f0b4";
+}
+
+/* line 184, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-sleet-storm:before {
+  content: "\f06a";
+}
+
+/* line 187, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-snow:before {
+  content: "\f02a";
+}
+
+/* line 190, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-snow-thunderstorm:before {
+  content: "\f06d";
+}
+
+/* line 193, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-snow-wind:before {
+  content: "\f067";
+}
+
+/* line 196, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-sprinkle:before {
+  content: "\f02b";
+}
+
+/* line 199, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-storm-showers:before {
+  content: "\f02c";
+}
+
+/* line 202, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-thunderstorm:before {
+  content: "\f02d";
+}
+
+/* line 205, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-cloudy:before {
+  content: "\f031";
+}
+
+/* line 208, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-cloudy-gusts:before {
+  content: "\f02f";
+}
+
+/* line 211, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-cloudy-windy:before {
+  content: "\f030";
+}
+
+/* line 214, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-fog:before {
+  content: "\f04a";
+}
+
+/* line 217, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-hail:before {
+  content: "\f032";
+}
+
+/* line 220, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-lightning:before {
+  content: "\f033";
+}
+
+/* line 223, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-partly-cloudy:before {
+  content: "\f083";
+}
+
+/* line 226, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-rain:before {
+  content: "\f036";
+}
+
+/* line 229, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-rain-mix:before {
+  content: "\f034";
+}
+
+/* line 232, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-rain-wind:before {
+  content: "\f035";
+}
+
+/* line 235, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-showers:before {
+  content: "\f037";
+}
+
+/* line 238, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-sleet:before {
+  content: "\f0b3";
+}
+
+/* line 241, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-sleet-storm:before {
+  content: "\f069";
+}
+
+/* line 244, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-snow:before {
+  content: "\f038";
+}
+
+/* line 247, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-snow-thunderstorm:before {
+  content: "\f06c";
+}
+
+/* line 250, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-snow-wind:before {
+  content: "\f066";
+}
+
+/* line 253, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-sprinkle:before {
+  content: "\f039";
+}
+
+/* line 256, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-storm-showers:before {
+  content: "\f03a";
+}
+
+/* line 259, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-thunderstorm:before {
+  content: "\f03b";
+}
+
+/* line 262, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-lunar-eclipse:before {
+  content: "\f070";
+}
+
+/* line 265, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-stars:before {
+  content: "\f077";
+}
+
+/* line 268, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-storm-showers:before {
+  content: "\f01d";
+}
+
+/* line 271, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-thunderstorm:before {
+  content: "\f01e";
+}
+
+/* line 274, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-cloudy-high:before {
+  content: "\f07e";
+}
+
+/* line 277, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-cloudy-high:before {
+  content: "\f080";
+}
+
+/* line 280, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-night-alt-partly-cloudy:before {
+  content: "\f081";
+}
+
+/* line 283, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloud:before {
+  content: "\f041";
+}
+
+/* line 286, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloudy:before {
+  content: "\f013";
+}
+
+/* line 289, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloudy-gusts:before {
+  content: "\f011";
+}
+
+/* line 292, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloudy-windy:before {
+  content: "\f012";
+}
+
+/* line 295, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-fog:before {
+  content: "\f014";
+}
+
+/* line 298, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-hail:before {
+  content: "\f015";
+}
+
+/* line 301, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rain:before {
+  content: "\f019";
+}
+
+/* line 304, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rain-mix:before {
+  content: "\f017";
+}
+
+/* line 307, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-rain-wind:before {
+  content: "\f018";
+}
+
+/* line 310, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-showers:before {
+  content: "\f01a";
+}
+
+/* line 313, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-sleet:before {
+  content: "\f0b5";
+}
+
+/* line 316, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-snow:before {
+  content: "\f01b";
+}
+
+/* line 319, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-sprinkle:before {
+  content: "\f01c";
+}
+
+/* line 322, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-storm-showers:before {
+  content: "\f01d";
+}
+
+/* line 325, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-thunderstorm:before {
+  content: "\f01e";
+}
+
+/* line 328, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-snow-wind:before {
+  content: "\f064";
+}
+
+/* line 331, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-snow:before {
+  content: "\f01b";
+}
+
+/* line 334, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-smog:before {
+  content: "\f074";
+}
+
+/* line 337, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-smoke:before {
+  content: "\f062";
+}
+
+/* line 340, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-lightning:before {
+  content: "\f016";
+}
+
+/* line 343, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-raindrops:before {
+  content: "\f04e";
+}
+
+/* line 346, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-raindrop:before {
+  content: "\f078";
+}
+
+/* line 349, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-dust:before {
+  content: "\f063";
+}
+
+/* line 352, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-snowflake-cold:before {
+  content: "\f076";
+}
+
+/* line 355, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-windy:before {
+  content: "\f021";
+}
+
+/* line 358, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-strong-wind:before {
+  content: "\f050";
+}
+
+/* line 361, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-sandstorm:before {
+  content: "\f082";
+}
+
+/* line 364, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-earthquake:before {
+  content: "\f0c6";
+}
+
+/* line 367, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-fire:before {
+  content: "\f0c7";
+}
+
+/* line 370, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-flood:before {
+  content: "\f07c";
+}
+
+/* line 373, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-meteor:before {
+  content: "\f071";
+}
+
+/* line 376, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-tsunami:before {
+  content: "\f0c5";
+}
+
+/* line 379, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-volcano:before {
+  content: "\f0c8";
+}
+
+/* line 382, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-hurricane:before {
+  content: "\f073";
+}
+
+/* line 385, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-tornado:before {
+  content: "\f056";
+}
+
+/* line 388, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-small-craft-advisory:before {
+  content: "\f0cc";
+}
+
+/* line 391, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-gale-warning:before {
+  content: "\f0cd";
+}
+
+/* line 394, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-storm-warning:before {
+  content: "\f0ce";
+}
+
+/* line 397, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-hurricane-warning:before {
+  content: "\f0cf";
+}
+
+/* line 400, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-direction:before {
+  content: "\f0b1";
+}
+
+/* line 403, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-alien:before {
+  content: "\f075";
+}
+
+/* line 406, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-celsius:before {
+  content: "\f03c";
+}
+
+/* line 409, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-fahrenheit:before {
+  content: "\f045";
+}
+
+/* line 412, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-degrees:before {
+  content: "\f042";
+}
+
+/* line 415, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-thermometer:before {
+  content: "\f055";
+}
+
+/* line 418, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-thermometer-exterior:before {
+  content: "\f053";
+}
+
+/* line 421, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-thermometer-internal:before {
+  content: "\f054";
+}
+
+/* line 424, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloud-down:before {
+  content: "\f03d";
+}
+
+/* line 427, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloud-up:before {
+  content: "\f040";
+}
+
+/* line 430, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-cloud-refresh:before {
+  content: "\f03e";
+}
+
+/* line 433, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-horizon:before {
+  content: "\f047";
+}
+
+/* line 436, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-horizon-alt:before {
+  content: "\f046";
+}
+
+/* line 439, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-sunrise:before {
+  content: "\f051";
+}
+
+/* line 442, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-sunset:before {
+  content: "\f052";
+}
+
+/* line 445, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moonrise:before {
+  content: "\f0c9";
+}
+
+/* line 448, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moonset:before {
+  content: "\f0ca";
+}
+
+/* line 451, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-refresh:before {
+  content: "\f04c";
+}
+
+/* line 454, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-refresh-alt:before {
+  content: "\f04b";
+}
+
+/* line 457, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-umbrella:before {
+  content: "\f084";
+}
+
+/* line 460, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-barometer:before {
+  content: "\f079";
+}
+
+/* line 463, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-humidity:before {
+  content: "\f07a";
+}
+
+/* line 466, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-na:before {
+  content: "\f07b";
+}
+
+/* line 469, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-train:before {
+  content: "\f0cb";
+}
+
+/* line 472, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-new:before {
+  content: "\f095";
+}
+
+/* line 475, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-1:before {
+  content: "\f096";
+}
+
+/* line 478, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-2:before {
+  content: "\f097";
+}
+
+/* line 481, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-3:before {
+  content: "\f098";
+}
+
+/* line 484, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-4:before {
+  content: "\f099";
+}
+
+/* line 487, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-5:before {
+  content: "\f09a";
+}
+
+/* line 490, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-crescent-6:before {
+  content: "\f09b";
+}
+
+/* line 493, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-first-quarter:before {
+  content: "\f09c";
+}
+
+/* line 496, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-1:before {
+  content: "\f09d";
+}
+
+/* line 499, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-2:before {
+  content: "\f09e";
+}
+
+/* line 502, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-3:before {
+  content: "\f09f";
+}
+
+/* line 505, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-4:before {
+  content: "\f0a0";
+}
+
+/* line 508, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-5:before {
+  content: "\f0a1";
+}
+
+/* line 511, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waxing-gibbous-6:before {
+  content: "\f0a2";
+}
+
+/* line 514, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-full:before {
+  content: "\f0a3";
+}
+
+/* line 517, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-1:before {
+  content: "\f0a4";
+}
+
+/* line 520, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-2:before {
+  content: "\f0a5";
+}
+
+/* line 523, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-3:before {
+  content: "\f0a6";
+}
+
+/* line 526, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-4:before {
+  content: "\f0a7";
+}
+
+/* line 529, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-5:before {
+  content: "\f0a8";
+}
+
+/* line 532, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-gibbous-6:before {
+  content: "\f0a9";
+}
+
+/* line 535, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-third-quarter:before {
+  content: "\f0aa";
+}
+
+/* line 538, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-1:before {
+  content: "\f0ab";
+}
+
+/* line 541, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-2:before {
+  content: "\f0ac";
+}
+
+/* line 544, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-3:before {
+  content: "\f0ad";
+}
+
+/* line 547, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-4:before {
+  content: "\f0ae";
+}
+
+/* line 550, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-5:before {
+  content: "\f0af";
+}
+
+/* line 553, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-waning-crescent-6:before {
+  content: "\f0b0";
+}
+
+/* line 556, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-new:before {
+  content: "\f0eb";
+}
+
+/* line 559, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-1:before {
+  content: "\f0d0";
+}
+
+/* line 562, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-2:before {
+  content: "\f0d1";
+}
+
+/* line 565, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-3:before {
+  content: "\f0d2";
+}
+
+/* line 568, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-4:before {
+  content: "\f0d3";
+}
+
+/* line 571, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-5:before {
+  content: "\f0d4";
+}
+
+/* line 574, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-crescent-6:before {
+  content: "\f0d5";
+}
+
+/* line 577, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-first-quarter:before {
+  content: "\f0d6";
+}
+
+/* line 580, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-1:before {
+  content: "\f0d7";
+}
+
+/* line 583, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-2:before {
+  content: "\f0d8";
+}
+
+/* line 586, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-3:before {
+  content: "\f0d9";
+}
+
+/* line 589, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-4:before {
+  content: "\f0da";
+}
+
+/* line 592, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-5:before {
+  content: "\f0db";
+}
+
+/* line 595, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waxing-gibbous-6:before {
+  content: "\f0dc";
+}
+
+/* line 598, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-full:before {
+  content: "\f0dd";
+}
+
+/* line 601, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-1:before {
+  content: "\f0de";
+}
+
+/* line 604, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-2:before {
+  content: "\f0df";
+}
+
+/* line 607, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-3:before {
+  content: "\f0e0";
+}
+
+/* line 610, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-4:before {
+  content: "\f0e1";
+}
+
+/* line 613, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-5:before {
+  content: "\f0e2";
+}
+
+/* line 616, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-gibbous-6:before {
+  content: "\f0e3";
+}
+
+/* line 619, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-third-quarter:before {
+  content: "\f0e4";
+}
+
+/* line 622, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-1:before {
+  content: "\f0e5";
+}
+
+/* line 625, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-2:before {
+  content: "\f0e6";
+}
+
+/* line 628, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-3:before {
+  content: "\f0e7";
+}
+
+/* line 631, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-4:before {
+  content: "\f0e8";
+}
+
+/* line 634, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-5:before {
+  content: "\f0e9";
+}
+
+/* line 637, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-alt-waning-crescent-6:before {
+  content: "\f0ea";
+}
+
+/* line 640, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-0:before {
+  content: "\f095";
+}
+
+/* line 643, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-1:before {
+  content: "\f096";
+}
+
+/* line 646, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-2:before {
+  content: "\f097";
+}
+
+/* line 649, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-3:before {
+  content: "\f098";
+}
+
+/* line 652, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-4:before {
+  content: "\f099";
+}
+
+/* line 655, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-5:before {
+  content: "\f09a";
+}
+
+/* line 658, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-6:before {
+  content: "\f09b";
+}
+
+/* line 661, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-7:before {
+  content: "\f09c";
+}
+
+/* line 664, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-8:before {
+  content: "\f09d";
+}
+
+/* line 667, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-9:before {
+  content: "\f09e";
+}
+
+/* line 670, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-10:before {
+  content: "\f09f";
+}
+
+/* line 673, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-11:before {
+  content: "\f0a0";
+}
+
+/* line 676, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-12:before {
+  content: "\f0a1";
+}
+
+/* line 679, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-13:before {
+  content: "\f0a2";
+}
+
+/* line 682, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-14:before {
+  content: "\f0a3";
+}
+
+/* line 685, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-15:before {
+  content: "\f0a4";
+}
+
+/* line 688, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-16:before {
+  content: "\f0a5";
+}
+
+/* line 691, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-17:before {
+  content: "\f0a6";
+}
+
+/* line 694, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-18:before {
+  content: "\f0a7";
+}
+
+/* line 697, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-19:before {
+  content: "\f0a8";
+}
+
+/* line 700, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-20:before {
+  content: "\f0a9";
+}
+
+/* line 703, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-21:before {
+  content: "\f0aa";
+}
+
+/* line 706, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-22:before {
+  content: "\f0ab";
+}
+
+/* line 709, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-23:before {
+  content: "\f0ac";
+}
+
+/* line 712, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-24:before {
+  content: "\f0ad";
+}
+
+/* line 715, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-25:before {
+  content: "\f0ae";
+}
+
+/* line 718, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-26:before {
+  content: "\f0af";
+}
+
+/* line 721, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-moon-27:before {
+  content: "\f0b0";
+}
+
+/* line 724, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-1:before {
+  content: "\f08a";
+}
+
+/* line 727, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-2:before {
+  content: "\f08b";
+}
+
+/* line 730, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-3:before {
+  content: "\f08c";
+}
+
+/* line 733, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-4:before {
+  content: "\f08d";
+}
+
+/* line 736, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-5:before {
+  content: "\f08e";
+}
+
+/* line 739, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-6:before {
+  content: "\f08f";
+}
+
+/* line 742, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-7:before {
+  content: "\f090";
+}
+
+/* line 745, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-8:before {
+  content: "\f091";
+}
+
+/* line 748, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-9:before {
+  content: "\f092";
+}
+
+/* line 751, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-10:before {
+  content: "\f093";
+}
+
+/* line 754, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-11:before {
+  content: "\f094";
+}
+
+/* line 757, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-time-12:before {
+  content: "\f089";
+}
+
+/* line 760, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-up:before {
+  content: "\f058";
+}
+
+/* line 763, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-up-right:before {
+  content: "\f057";
+}
+
+/* line 766, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-right:before {
+  content: "\f04d";
+}
+
+/* line 769, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-down-right:before {
+  content: "\f088";
+}
+
+/* line 772, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-down:before {
+  content: "\f044";
+}
+
+/* line 775, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-down-left:before {
+  content: "\f043";
+}
+
+/* line 778, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-left:before {
+  content: "\f048";
+}
+
+/* line 781, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-direction-up-left:before {
+  content: "\f087";
+}
+
+/* line 784, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-0:before {
+  content: "\f0b7";
+}
+
+/* line 787, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-1:before {
+  content: "\f0b8";
+}
+
+/* line 790, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-2:before {
+  content: "\f0b9";
+}
+
+/* line 793, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-3:before {
+  content: "\f0ba";
+}
+
+/* line 796, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-4:before {
+  content: "\f0bb";
+}
+
+/* line 799, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-5:before {
+  content: "\f0bc";
+}
+
+/* line 802, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-6:before {
+  content: "\f0bd";
+}
+
+/* line 805, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-7:before {
+  content: "\f0be";
+}
+
+/* line 808, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-8:before {
+  content: "\f0bf";
+}
+
+/* line 811, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-9:before {
+  content: "\f0c0";
+}
+
+/* line 814, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-10:before {
+  content: "\f0c1";
+}
+
+/* line 817, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-11:before {
+  content: "\f0c2";
+}
+
+/* line 820, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wind-beaufort-12:before {
+  content: "\f0c3";
+}
+
+/* line 823, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-0:before {
+  content: "\f056";
+}
+
+/* line 826, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-1:before {
+  content: "\f00e";
+}
+
+/* line 829, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-2:before {
+  content: "\f073";
+}
+
+/* line 832, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-3:before {
+  content: "\f01e";
+}
+
+/* line 835, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-4:before {
+  content: "\f01e";
+}
+
+/* line 838, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-5:before {
+  content: "\f017";
+}
+
+/* line 841, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-6:before {
+  content: "\f017";
+}
+
+/* line 844, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-7:before {
+  content: "\f017";
+}
+
+/* line 847, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-8:before {
+  content: "\f015";
+}
+
+/* line 850, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-9:before {
+  content: "\f01a";
+}
+
+/* line 853, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-10:before {
+  content: "\f015";
+}
+
+/* line 856, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-11:before {
+  content: "\f01a";
+}
+
+/* line 859, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-12:before {
+  content: "\f01a";
+}
+
+/* line 862, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-13:before {
+  content: "\f01b";
+}
+
+/* line 865, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-14:before {
+  content: "\f00a";
+}
+
+/* line 868, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-15:before {
+  content: "\f064";
+}
+
+/* line 871, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-16:before {
+  content: "\f01b";
+}
+
+/* line 874, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-17:before {
+  content: "\f015";
+}
+
+/* line 877, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-18:before {
+  content: "\f017";
+}
+
+/* line 880, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-19:before {
+  content: "\f063";
+}
+
+/* line 883, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-20:before {
+  content: "\f014";
+}
+
+/* line 886, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-21:before {
+  content: "\f021";
+}
+
+/* line 889, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-22:before {
+  content: "\f062";
+}
+
+/* line 892, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-23:before {
+  content: "\f050";
+}
+
+/* line 895, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-24:before {
+  content: "\f050";
+}
+
+/* line 898, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-25:before {
+  content: "\f076";
+}
+
+/* line 901, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-26:before {
+  content: "\f013";
+}
+
+/* line 904, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-27:before {
+  content: "\f031";
+}
+
+/* line 907, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-28:before {
+  content: "\f002";
+}
+
+/* line 910, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-29:before {
+  content: "\f031";
+}
+
+/* line 913, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-30:before {
+  content: "\f002";
+}
+
+/* line 916, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-31:before {
+  content: "\f02e";
+}
+
+/* line 919, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-32:before {
+  content: "\f00d";
+}
+
+/* line 922, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-33:before {
+  content: "\f083";
+}
+
+/* line 925, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-34:before {
+  content: "\f00c";
+}
+
+/* line 928, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-35:before {
+  content: "\f017";
+}
+
+/* line 931, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-36:before {
+  content: "\f072";
+}
+
+/* line 934, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-37:before {
+  content: "\f00e";
+}
+
+/* line 937, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-38:before {
+  content: "\f00e";
+}
+
+/* line 940, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-39:before {
+  content: "\f00e";
+}
+
+/* line 943, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-40:before {
+  content: "\f01a";
+}
+
+/* line 946, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-41:before {
+  content: "\f064";
+}
+
+/* line 949, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-42:before {
+  content: "\f01b";
+}
+
+/* line 952, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-43:before {
+  content: "\f064";
+}
+
+/* line 955, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-44:before {
+  content: "\f00c";
+}
+
+/* line 958, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-45:before {
+  content: "\f00e";
+}
+
+/* line 961, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-46:before {
+  content: "\f01b";
+}
+
+/* line 964, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-47:before {
+  content: "\f00e";
+}
+
+/* line 967, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-yahoo-3200:before {
+  content: "\f077";
+}
+
+/* line 970, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-clear-day:before {
+  content: "\f00d";
+}
+
+/* line 973, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-clear-night:before {
+  content: "\f02e";
+}
+
+/* line 976, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-rain:before {
+  content: "\f019";
+}
+
+/* line 979, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-snow:before {
+  content: "\f01b";
+}
+
+/* line 982, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-sleet:before {
+  content: "\f0b5";
+}
+
+/* line 985, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-wind:before {
+  content: "\f050";
+}
+
+/* line 988, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-fog:before {
+  content: "\f014";
+}
+
+/* line 991, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-cloudy:before {
+  content: "\f013";
+}
+
+/* line 994, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-partly-cloudy-day:before {
+  content: "\f002";
+}
+
+/* line 997, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-partly-cloudy-night:before {
+  content: "\f031";
+}
+
+/* line 1000, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-hail:before {
+  content: "\f015";
+}
+
+/* line 1003, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-thunderstorm:before {
+  content: "\f01e";
+}
+
+/* line 1006, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-forecast-io-tornado:before {
+  content: "\f056";
+}
+
+/* line 1009, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-0:before,
+.wi-wmo4680-00:before {
+  content: "\f055";
+}
+
+/* line 1013, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-1:before,
+.wi-wmo4680-01:before {
+  content: "\f013";
+}
+
+/* line 1017, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-2:before,
+.wi-wmo4680-02:before {
+  content: "\f055";
+}
+
+/* line 1021, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-3:before,
+.wi-wmo4680-03:before {
+  content: "\f013";
+}
+
+/* line 1025, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-4:before,
+.wi-wmo4680-04:before {
+  content: "\f014";
+}
+
+/* line 1029, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-5:before,
+.wi-wmo4680-05:before {
+  content: "\f014";
+}
+
+/* line 1033, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-10:before {
+  content: "\f014";
+}
+
+/* line 1036, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-11:before {
+  content: "\f014";
+}
+
+/* line 1039, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-12:before {
+  content: "\f016";
+}
+
+/* line 1042, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-18:before {
+  content: "\f050";
+}
+
+/* line 1045, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-20:before {
+  content: "\f014";
+}
+
+/* line 1048, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-21:before {
+  content: "\f017";
+}
+
+/* line 1051, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-22:before {
+  content: "\f017";
+}
+
+/* line 1054, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-23:before {
+  content: "\f019";
+}
+
+/* line 1057, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-24:before {
+  content: "\f01b";
+}
+
+/* line 1060, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-25:before {
+  content: "\f015";
+}
+
+/* line 1063, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-26:before {
+  content: "\f01e";
+}
+
+/* line 1066, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-27:before {
+  content: "\f063";
+}
+
+/* line 1069, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-28:before {
+  content: "\f063";
+}
+
+/* line 1072, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-29:before {
+  content: "\f063";
+}
+
+/* line 1075, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-30:before {
+  content: "\f014";
+}
+
+/* line 1078, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-31:before {
+  content: "\f014";
+}
+
+/* line 1081, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-32:before {
+  content: "\f014";
+}
+
+/* line 1084, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-33:before {
+  content: "\f014";
+}
+
+/* line 1087, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-34:before {
+  content: "\f014";
+}
+
+/* line 1090, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-35:before {
+  content: "\f014";
+}
+
+/* line 1093, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-40:before {
+  content: "\f017";
+}
+
+/* line 1096, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-41:before {
+  content: "\f01c";
+}
+
+/* line 1099, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-42:before {
+  content: "\f019";
+}
+
+/* line 1102, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-43:before {
+  content: "\f01c";
+}
+
+/* line 1105, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-44:before {
+  content: "\f019";
+}
+
+/* line 1108, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-45:before {
+  content: "\f015";
+}
+
+/* line 1111, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-46:before {
+  content: "\f015";
+}
+
+/* line 1114, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-47:before {
+  content: "\f01b";
+}
+
+/* line 1117, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-48:before {
+  content: "\f01b";
+}
+
+/* line 1120, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-50:before {
+  content: "\f01c";
+}
+
+/* line 1123, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-51:before {
+  content: "\f01c";
+}
+
+/* line 1126, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-52:before {
+  content: "\f019";
+}
+
+/* line 1129, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-53:before {
+  content: "\f019";
+}
+
+/* line 1132, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-54:before {
+  content: "\f076";
+}
+
+/* line 1135, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-55:before {
+  content: "\f076";
+}
+
+/* line 1138, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-56:before {
+  content: "\f076";
+}
+
+/* line 1141, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-57:before {
+  content: "\f01c";
+}
+
+/* line 1144, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-58:before {
+  content: "\f019";
+}
+
+/* line 1147, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-60:before {
+  content: "\f01c";
+}
+
+/* line 1150, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-61:before {
+  content: "\f01c";
+}
+
+/* line 1153, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-62:before {
+  content: "\f019";
+}
+
+/* line 1156, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-63:before {
+  content: "\f019";
+}
+
+/* line 1159, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-64:before {
+  content: "\f015";
+}
+
+/* line 1162, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-65:before {
+  content: "\f015";
+}
+
+/* line 1165, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-66:before {
+  content: "\f015";
+}
+
+/* line 1168, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-67:before {
+  content: "\f017";
+}
+
+/* line 1171, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-68:before {
+  content: "\f017";
+}
+
+/* line 1174, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-70:before {
+  content: "\f01b";
+}
+
+/* line 1177, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-71:before {
+  content: "\f01b";
+}
+
+/* line 1180, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-72:before {
+  content: "\f01b";
+}
+
+/* line 1183, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-73:before {
+  content: "\f01b";
+}
+
+/* line 1186, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-74:before {
+  content: "\f076";
+}
+
+/* line 1189, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-75:before {
+  content: "\f076";
+}
+
+/* line 1192, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-76:before {
+  content: "\f076";
+}
+
+/* line 1195, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-77:before {
+  content: "\f01b";
+}
+
+/* line 1198, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-78:before {
+  content: "\f076";
+}
+
+/* line 1201, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-80:before {
+  content: "\f019";
+}
+
+/* line 1204, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-81:before {
+  content: "\f01c";
+}
+
+/* line 1207, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-82:before {
+  content: "\f019";
+}
+
+/* line 1210, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-83:before {
+  content: "\f019";
+}
+
+/* line 1213, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-84:before {
+  content: "\f01d";
+}
+
+/* line 1216, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-85:before {
+  content: "\f017";
+}
+
+/* line 1219, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-86:before {
+  content: "\f017";
+}
+
+/* line 1222, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-87:before {
+  content: "\f017";
+}
+
+/* line 1225, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-89:before {
+  content: "\f015";
+}
+
+/* line 1228, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-90:before {
+  content: "\f016";
+}
+
+/* line 1231, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-91:before {
+  content: "\f01d";
+}
+
+/* line 1234, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-92:before {
+  content: "\f01e";
+}
+
+/* line 1237, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-93:before {
+  content: "\f01e";
+}
+
+/* line 1240, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-94:before {
+  content: "\f016";
+}
+
+/* line 1243, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-95:before {
+  content: "\f01e";
+}
+
+/* line 1246, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-96:before {
+  content: "\f01e";
+}
+
+/* line 1249, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wmo4680-99:before {
+  content: "\f056";
+}
+
+/* line 1252, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-200:before {
+  content: "\f01e";
+}
+
+/* line 1255, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-201:before {
+  content: "\f01e";
+}
+
+/* line 1258, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-202:before {
+  content: "\f01e";
+}
+
+/* line 1261, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-210:before {
+  content: "\f016";
+}
+
+/* line 1264, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-211:before {
+  content: "\f016";
+}
+
+/* line 1267, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-212:before {
+  content: "\f016";
+}
+
+/* line 1270, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-221:before {
+  content: "\f016";
+}
+
+/* line 1273, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-230:before {
+  content: "\f01e";
+}
+
+/* line 1276, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-231:before {
+  content: "\f01e";
+}
+
+/* line 1279, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-232:before {
+  content: "\f01e";
+}
+
+/* line 1282, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-300:before {
+  content: "\f01c";
+}
+
+/* line 1285, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-301:before {
+  content: "\f01c";
+}
+
+/* line 1288, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-302:before {
+  content: "\f019";
+}
+
+/* line 1291, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-310:before {
+  content: "\f017";
+}
+
+/* line 1294, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-311:before {
+  content: "\f019";
+}
+
+/* line 1297, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-312:before {
+  content: "\f019";
+}
+
+/* line 1300, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-313:before {
+  content: "\f01a";
+}
+
+/* line 1303, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-314:before {
+  content: "\f019";
+}
+
+/* line 1306, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-321:before {
+  content: "\f01c";
+}
+
+/* line 1309, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-500:before {
+  content: "\f01c";
+}
+
+/* line 1312, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-501:before {
+  content: "\f019";
+}
+
+/* line 1315, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-502:before {
+  content: "\f019";
+}
+
+/* line 1318, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-503:before {
+  content: "\f019";
+}
+
+/* line 1321, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-504:before {
+  content: "\f019";
+}
+
+/* line 1324, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-511:before {
+  content: "\f017";
+}
+
+/* line 1327, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-520:before {
+  content: "\f01a";
+}
+
+/* line 1330, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-521:before {
+  content: "\f01a";
+}
+
+/* line 1333, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-522:before {
+  content: "\f01a";
+}
+
+/* line 1336, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-531:before {
+  content: "\f01d";
+}
+
+/* line 1339, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-600:before {
+  content: "\f01b";
+}
+
+/* line 1342, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-601:before {
+  content: "\f01b";
+}
+
+/* line 1345, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-602:before {
+  content: "\f0b5";
+}
+
+/* line 1348, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-611:before {
+  content: "\f017";
+}
+
+/* line 1351, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-612:before {
+  content: "\f017";
+}
+
+/* line 1354, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-615:before {
+  content: "\f017";
+}
+
+/* line 1357, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-616:before {
+  content: "\f017";
+}
+
+/* line 1360, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-620:before {
+  content: "\f017";
+}
+
+/* line 1363, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-621:before {
+  content: "\f01b";
+}
+
+/* line 1366, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-622:before {
+  content: "\f01b";
+}
+
+/* line 1369, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-701:before {
+  content: "\f01a";
+}
+
+/* line 1372, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-711:before {
+  content: "\f062";
+}
+
+/* line 1375, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-721:before {
+  content: "\f0b6";
+}
+
+/* line 1378, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-731:before {
+  content: "\f063";
+}
+
+/* line 1381, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-741:before {
+  content: "\f014";
+}
+
+/* line 1384, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-761:before {
+  content: "\f063";
+}
+
+/* line 1387, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-762:before {
+  content: "\f063";
+}
+
+/* line 1390, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-771:before {
+  content: "\f011";
+}
+
+/* line 1393, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-781:before {
+  content: "\f056";
+}
+
+/* line 1396, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-800:before {
+  content: "\f00d";
+}
+
+/* line 1399, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-801:before {
+  content: "\f011";
+}
+
+/* line 1402, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-802:before {
+  content: "\f011";
+}
+
+/* line 1405, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-803:before {
+  content: "\f012";
+}
+
+/* line 1408, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-804:before {
+  content: "\f013";
+}
+
+/* line 1411, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-900:before {
+  content: "\f056";
+}
+
+/* line 1414, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-901:before {
+  content: "\f01d";
+}
+
+/* line 1417, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-902:before {
+  content: "\f073";
+}
+
+/* line 1420, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-903:before {
+  content: "\f076";
+}
+
+/* line 1423, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-904:before {
+  content: "\f072";
+}
+
+/* line 1426, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-905:before {
+  content: "\f021";
+}
+
+/* line 1429, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-906:before {
+  content: "\f015";
+}
+
+/* line 1432, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-957:before {
+  content: "\f050";
+}
+
+/* line 1435, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-200:before {
+  content: "\f010";
+}
+
+/* line 1438, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-201:before {
+  content: "\f010";
+}
+
+/* line 1441, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-202:before {
+  content: "\f010";
+}
+
+/* line 1444, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-210:before {
+  content: "\f005";
+}
+
+/* line 1447, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-211:before {
+  content: "\f005";
+}
+
+/* line 1450, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-212:before {
+  content: "\f005";
+}
+
+/* line 1453, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-221:before {
+  content: "\f005";
+}
+
+/* line 1456, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-230:before {
+  content: "\f010";
+}
+
+/* line 1459, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-231:before {
+  content: "\f010";
+}
+
+/* line 1462, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-232:before {
+  content: "\f010";
+}
+
+/* line 1465, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-300:before {
+  content: "\f00b";
+}
+
+/* line 1468, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-301:before {
+  content: "\f00b";
+}
+
+/* line 1471, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-302:before {
+  content: "\f008";
+}
+
+/* line 1474, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-310:before {
+  content: "\f008";
+}
+
+/* line 1477, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-311:before {
+  content: "\f008";
+}
+
+/* line 1480, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-312:before {
+  content: "\f008";
+}
+
+/* line 1483, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-313:before {
+  content: "\f008";
+}
+
+/* line 1486, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-314:before {
+  content: "\f008";
+}
+
+/* line 1489, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-321:before {
+  content: "\f00b";
+}
+
+/* line 1492, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-500:before {
+  content: "\f00b";
+}
+
+/* line 1495, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-501:before {
+  content: "\f008";
+}
+
+/* line 1498, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-502:before {
+  content: "\f008";
+}
+
+/* line 1501, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-503:before {
+  content: "\f008";
+}
+
+/* line 1504, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-504:before {
+  content: "\f008";
+}
+
+/* line 1507, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-511:before {
+  content: "\f006";
+}
+
+/* line 1510, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-520:before {
+  content: "\f009";
+}
+
+/* line 1513, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-521:before {
+  content: "\f009";
+}
+
+/* line 1516, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-522:before {
+  content: "\f009";
+}
+
+/* line 1519, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-531:before {
+  content: "\f00e";
+}
+
+/* line 1522, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-600:before {
+  content: "\f00a";
+}
+
+/* line 1525, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-601:before {
+  content: "\f0b2";
+}
+
+/* line 1528, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-602:before {
+  content: "\f00a";
+}
+
+/* line 1531, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-611:before {
+  content: "\f006";
+}
+
+/* line 1534, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-612:before {
+  content: "\f006";
+}
+
+/* line 1537, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-615:before {
+  content: "\f006";
+}
+
+/* line 1540, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-616:before {
+  content: "\f006";
+}
+
+/* line 1543, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-620:before {
+  content: "\f006";
+}
+
+/* line 1546, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-621:before {
+  content: "\f00a";
+}
+
+/* line 1549, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-622:before {
+  content: "\f00a";
+}
+
+/* line 1552, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-701:before {
+  content: "\f009";
+}
+
+/* line 1555, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-711:before {
+  content: "\f062";
+}
+
+/* line 1558, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-721:before {
+  content: "\f0b6";
+}
+
+/* line 1561, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-731:before {
+  content: "\f063";
+}
+
+/* line 1564, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-741:before {
+  content: "\f003";
+}
+
+/* line 1567, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-761:before {
+  content: "\f063";
+}
+
+/* line 1570, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-762:before {
+  content: "\f063";
+}
+
+/* line 1573, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-781:before {
+  content: "\f056";
+}
+
+/* line 1576, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-800:before {
+  content: "\f00d";
+}
+
+/* line 1579, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-801:before {
+  content: "\f000";
+}
+
+/* line 1582, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-802:before {
+  content: "\f000";
+}
+
+/* line 1585, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-803:before {
+  content: "\f000";
+}
+
+/* line 1588, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-804:before {
+  content: "\f00c";
+}
+
+/* line 1591, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-900:before {
+  content: "\f056";
+}
+
+/* line 1594, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-902:before {
+  content: "\f073";
+}
+
+/* line 1597, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-903:before {
+  content: "\f076";
+}
+
+/* line 1600, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-904:before {
+  content: "\f072";
+}
+
+/* line 1603, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-906:before {
+  content: "\f004";
+}
+
+/* line 1606, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-day-957:before {
+  content: "\f050";
+}
+
+/* line 1609, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-200:before {
+  content: "\f02d";
+}
+
+/* line 1612, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-201:before {
+  content: "\f02d";
+}
+
+/* line 1615, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-202:before {
+  content: "\f02d";
+}
+
+/* line 1618, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-210:before {
+  content: "\f025";
+}
+
+/* line 1621, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-211:before {
+  content: "\f025";
+}
+
+/* line 1624, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-212:before {
+  content: "\f025";
+}
+
+/* line 1627, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-221:before {
+  content: "\f025";
+}
+
+/* line 1630, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-230:before {
+  content: "\f02d";
+}
+
+/* line 1633, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-231:before {
+  content: "\f02d";
+}
+
+/* line 1636, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-232:before {
+  content: "\f02d";
+}
+
+/* line 1639, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-300:before {
+  content: "\f02b";
+}
+
+/* line 1642, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-301:before {
+  content: "\f02b";
+}
+
+/* line 1645, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-302:before {
+  content: "\f028";
+}
+
+/* line 1648, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-310:before {
+  content: "\f028";
+}
+
+/* line 1651, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-311:before {
+  content: "\f028";
+}
+
+/* line 1654, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-312:before {
+  content: "\f028";
+}
+
+/* line 1657, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-313:before {
+  content: "\f028";
+}
+
+/* line 1660, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-314:before {
+  content: "\f028";
+}
+
+/* line 1663, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-321:before {
+  content: "\f02b";
+}
+
+/* line 1666, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-500:before {
+  content: "\f02b";
+}
+
+/* line 1669, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-501:before {
+  content: "\f028";
+}
+
+/* line 1672, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-502:before {
+  content: "\f028";
+}
+
+/* line 1675, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-503:before {
+  content: "\f028";
+}
+
+/* line 1678, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-504:before {
+  content: "\f028";
+}
+
+/* line 1681, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-511:before {
+  content: "\f026";
+}
+
+/* line 1684, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-520:before {
+  content: "\f029";
+}
+
+/* line 1687, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-521:before {
+  content: "\f029";
+}
+
+/* line 1690, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-522:before {
+  content: "\f029";
+}
+
+/* line 1693, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-531:before {
+  content: "\f02c";
+}
+
+/* line 1696, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-600:before {
+  content: "\f02a";
+}
+
+/* line 1699, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-601:before {
+  content: "\f0b4";
+}
+
+/* line 1702, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-602:before {
+  content: "\f02a";
+}
+
+/* line 1705, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-611:before {
+  content: "\f026";
+}
+
+/* line 1708, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-612:before {
+  content: "\f026";
+}
+
+/* line 1711, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-615:before {
+  content: "\f026";
+}
+
+/* line 1714, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-616:before {
+  content: "\f026";
+}
+
+/* line 1717, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-620:before {
+  content: "\f026";
+}
+
+/* line 1720, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-621:before {
+  content: "\f02a";
+}
+
+/* line 1723, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-622:before {
+  content: "\f02a";
+}
+
+/* line 1726, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-701:before {
+  content: "\f029";
+}
+
+/* line 1729, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-711:before {
+  content: "\f062";
+}
+
+/* line 1732, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-721:before {
+  content: "\f0b6";
+}
+
+/* line 1735, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-731:before {
+  content: "\f063";
+}
+
+/* line 1738, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-741:before {
+  content: "\f04a";
+}
+
+/* line 1741, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-761:before {
+  content: "\f063";
+}
+
+/* line 1744, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-762:before {
+  content: "\f063";
+}
+
+/* line 1747, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-781:before {
+  content: "\f056";
+}
+
+/* line 1750, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-800:before {
+  content: "\f02e";
+}
+
+/* line 1753, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-801:before {
+  content: "\f022";
+}
+
+/* line 1756, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-802:before {
+  content: "\f022";
+}
+
+/* line 1759, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-803:before {
+  content: "\f022";
+}
+
+/* line 1762, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-804:before {
+  content: "\f086";
+}
+
+/* line 1765, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-900:before {
+  content: "\f056";
+}
+
+/* line 1768, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-902:before {
+  content: "\f073";
+}
+
+/* line 1771, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-903:before {
+  content: "\f076";
+}
+
+/* line 1774, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-904:before {
+  content: "\f072";
+}
+
+/* line 1777, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-906:before {
+  content: "\f024";
+}
+
+/* line 1780, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-owm-night-957:before {
+  content: "\f050";
+}
+
+/* line 1783, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-chanceflurries:before {
+  content: "\f064";
+}
+
+/* line 1786, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-chancerain:before {
+  content: "\f019";
+}
+
+/* line 1789, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-chancesleat:before {
+  content: "\f0b5";
+}
+
+/* line 1792, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-chancesnow:before {
+  content: "\f01b";
+}
+
+/* line 1795, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-chancetstorms:before {
+  content: "\f01e";
+}
+
+/* line 1798, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-clear:before {
+  content: "\f00d";
+}
+
+/* line 1801, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-cloudy:before {
+  content: "\f002";
+}
+
+/* line 1804, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-flurries:before {
+  content: "\f064";
+}
+
+/* line 1807, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-hazy:before {
+  content: "\f0b6";
+}
+
+/* line 1810, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-mostlycloudy:before {
+  content: "\f002";
+}
+
+/* line 1813, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-mostlysunny:before {
+  content: "\f00d";
+}
+
+/* line 1816, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-partlycloudy:before {
+  content: "\f002";
+}
+
+/* line 1819, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-partlysunny:before {
+  content: "\f00d";
+}
+
+/* line 1822, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-rain:before {
+  content: "\f01a";
+}
+
+/* line 1825, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-sleat:before {
+  content: "\f0b5";
+}
+
+/* line 1828, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-snow:before {
+  content: "\f01b";
+}
+
+/* line 1831, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-sunny:before {
+  content: "\f00d";
+}
+
+/* line 1834, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-tstorms:before {
+  content: "\f01e";
+}
+
+/* line 1837, /home/yuva/Desktop/new-clay/commit-good-staging/app/assets/stylesheets/weather-icons.scss */
+.wi-wu-unknown:before {
+  content: "\f00d";
+}

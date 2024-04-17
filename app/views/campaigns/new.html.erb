@@ -1,0 +1,17 @@
+<div class="container-fluid px-0" id="campaign_form">
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card campaign-card px-0">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0 bg-white">
+						<li class="breadcrumb-item active" aria-current="page"><%= link_to 'My Projects', user_campaigns_campaigns_path, class: "breadcrumb-item" %></li>
+						<% if current_user.roles.map(&:name).include? "charity_admin" %>
+							<li class="breadcrumb-item active" aria-current="page">New Project</li>
+						<% end %>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<%= render 'campaigns/form/form' %>
+</div>

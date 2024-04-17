@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="animated slideInUpTiny animation-duration-3 projects_list">
+    <%- if @campaigns.present? %>
+      <div class="row">
+        <% @campaigns.each do |user_campaign| %>
+          <div class="col-xl-3 col-md-5 col-12">
+            <div class="shadow border-0 card fixed-height">
+              <%= image_tag load_image(user_campaign.campaign.images.first.try(:image)), alt: "Card image cap", class: "card-img-top" %>
+
+              <div class="card-body">
+                <h3 class="card-title mb-2"><%= user_campaign.campaign.name %></h3>
+                <p class="card-text text-muted"><%= user_campaign.campaign.description %></p>
+                <hr>
+              </div>
+              <div class="card-mt-footer">
+                <p class="mb-0 pt-0 pb-0 pr-4 pl-4">
+                <ul class="card-lists">
+                  <li>           
+                    <span><strong>Deadline</strong><%= user_campaign.campaign.days_left %> days left</span>
+                  </li>
+                  <li>  
+                    <span><strong>Goal</strong><%= BigDecimal(user_campaign.campaign.goal_amount.to_f.to_s).truncate(8).to_s('F') %> GOOD</span>
+                  </li>
+                  <% if false %>
+                    <li>  
+                      <span><strong>Vote</strong><i class="fa fa-thumbs-o-up"></i> 0 - Votes</span>
+                    </li>
+                  <% end %>
+                </ul>
+                </p>  
+              </div>
+              <div style="width: 100%;" class="gx-card-footer pr-4 pl-4 pb-3">
+                <div class="row">
+                  <%- if user_campaign.status === "approved" %>
+                    <button style="width: 100%;" class="btn btn-outline-info" disabled>Approved</button>
+                  <%- elsif user_campaign.status === "pending"%>
+                    <button class="btn btn-outline-warning" disabled>Pending</button>
+                  <%- elsif user_campaign.status === "reject"%>
+                    <button class="btn btn-outline-danger" disabled>Reject</button>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+      <nav aria-label="navigation">
+        <ul class="pagination">        
+          <li class="digg_pagination"><%= will_paginate @campaigns %></li>        
+        </ul>
+      </nav>
+    <%end%>
+  </div>
+</div>

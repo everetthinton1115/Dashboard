@@ -1,0 +1,224 @@
+<div class="row">
+	<div class="col text-center">
+		<h2>Project Footprint</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :country, "Country", class: "control-label" %>
+			<%= f.collection_select :address_country, Hash[CS.countries.sort_by{|k, v| v}], :first, :last, {prompt: true}, {class: 'custom-select campaign-country-select required'} %>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :state, "State/Province", class: "control-label" %>
+			<div id="state_div">
+				<%= f.select :address_state, raw(""), { :prompt => "Select State/Province" }, { :id => "campaign-state-select", :class => "form-control required"} %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_city, "City", class: "control-label" %>
+			<div id="city_div">
+				<select class="custom-select campaign-city-select required" name="campaign[address_city]">
+					<option value="">Please select</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :address_zip, "Zip/Postal Code", class: "control-label" %>
+			<%= f.text_field :address_zip, class: "form-control", placeholder: "Zip/Postal Code" %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= f.label :campaign_category_ids, "Project Category", class: "control-label" %>
+		<%= f.collection_select :campaign_category_ids, CampaignCategory.order(:name), :id, :name, {prompt: true}, {class: 'select2 custom-select required', multiple: true}%>
+	</div>
+</div>
+
+<div class="row mt-3">
+	<div class="col-4 col-md-2">
+		<button id="step-three-prev-button" type="button" class="btn btn-outline btn-warning btn-block prev-button">Back</button>
+	</div>
+	<div class="col-4 offset-4 offset-md-8 col-md-2 text-right">
+		<button id="step-three-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Save</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const countryTag = '#campaign_address_country';
+	const countryLabelTag = 'label[for="campaign_country"]';
+	const stateTag = '#campaign-state-select';
+	const stateTagOuter = '#state_div'
+	const stateLabelTag = 'label[for="campaign_state"]';
+	const cityTag = '[name="campaign[address_city]"]';
+	const cityLabelTag = 'label[for="campaign_address_city"]';
+	const zipTag = '[name="campaign[address_zip]"]';
+	const zipLabelTag = 'label[for="campaign_address_zip"]';
+	const categoryTag = '#campaign_campaign_category_ids';
+	const categoryLabelTag = 'label[for="campaign_campaign_category_ids"]';
+
+	$(document).ready(function () {
+		let country = "<%= raw (@campaign.address_country) %>";
+        let state = "<%= raw (@campaign.address_state) %>";
+
+		// Listen for Clicks to go to next
+		$('#step-three-next-button').on('click', function () {
+			let validCountry = validateCountry();
+			// let validState = validateState();
+			// let validCity = validateCity();
+			let validCat = validateCategories();
+
+			if (true) {
+				$('#campaign-new-smartwizard').submit();
+			}
+		});
+
+		// Listen for Clicks to go to prev
+		$('#step-three-prev-button').on('click', function () {
+			$('#campaign-new-smartwizard').smartWizard('prev');
+		});
+
+		// Validation for Project Country
+		$(countryTag).on('change', function () {
+			let valid = validateCountry();
+			if (valid) {
+				getStatesByCountry($(countryTag).val());
+			}
+		});
+		function validateCountry() {
+			let valid = $(countryTag).val().length > 0;
+			toggleInvalidClass(countryTag, countryLabelTag, valid);
+			return valid;
+		}
+
+		// Try to fire country change immediatly when partial loads if on edit
+		if ($(countryTag).val().length > 0) {
+			$(countryTag).trigger("change");
+		}
+
+		// Validation for Project State
+		$(stateTagOuter).on('change', function () {
+			let valid = validateState();
+			if (valid) {
+				getCitiesByState($(countryTag).val(), $(stateTag).val())
+			}
+		});
+		function validateState() {
+			let valid = $(stateTag).val().length > 0;
+			toggleInvalidClass(stateTag, stateLabelTag, valid);
+			return valid;
+		}
+
+		// Validation for Project City
+		$(cityTag).on('change', function () {
+			validateCity();
+		});
+		function validateCity() {
+			let valid = $(cityTag).val().length > 0;
+			toggleInvalidClass(cityTag, cityLabelTag, valid);
+			return valid;
+		}
+
+		// Validation for Project Category
+		$(categoryTag).on('change', function () {
+			validateCategories();
+		});
+		function validateCategories() {
+			let valid = $(categoryTag).val().length > 0;
+			toggleInvalidClass(categoryTag, categoryLabelTag, valid);
+			return valid;
+		}
+
+		// Helper function for setting classes
+		function toggleInvalidClass(tag, label, valid) {
+			if (valid) {
+				$(tag).removeClass('is-invalid')
+				$(label).removeClass('text-danger');
+			} else {
+				$(tag).addClass('is-invalid');
+				$(label).addClass('text-danger');
+			}
+		}
+
+		// Make a call to get the states for the specific country
+		function getStatesByCountry(country_code) {
+			$.ajax({
+				method: 'POST',
+				url: '/states',
+				data: {
+					country_code: country_code,
+					state_code: state,
+				},
+				success: function (response) {
+					if ($.isEmptyObject(response.states)) {
+						$("#state_div").html('<input class="form-control" placeholder="State" type="text" name="campaign[address_state]" id="campaign-state-select">');
+						$("#city_div").html('<input class="form-control" placeholder="City" type="text" name="campaign[address_city]" id="user_address_city">');
+					} else {
+						$("#state_div").html('<select class="custom-select campaign-state-select required" name="campaign[address_state]" id="campaign-state-select"><option value="">Please select</option></select>');
+						if ($.isEmptyObject(response.cities)) {
+							$("#city_div").html('<input class="form-control" placeholder="City" type="text" name="campaign[address_city]" id="user_address_city">');
+						} else {
+							$("#city_div").html('<select class="custom-select campaign-city-select required" name="campaign[address_city]"> <option value="">Please select</option> </select>');
+						}
+						$('.campaign-state-select').html("");
+						$('.campaign-city-select').html("");
+						$.each(response.states, function (key, value) {
+							$('.campaign-state-select').append($('<option>', {
+								value: key,
+								text: value
+							}));
+						});
+						$.each(response.cities, function (key, value) {
+							$('.campaign-city-select').append($('<option>', {
+								value: key,
+								text: value
+							}));
+						});
+
+						// Now that you have a list of states we need to check to see if this is an edit and set the state
+						let addressState = "<%= @campaign.address_state.blank? ? " " : @campaign.address_state.to_str %>";
+						if (addressState) {
+							$('#campaign-state-select').val(addressState);
+						}
+
+						// Set your city on edit
+						let addressCity = "<%= @campaign.address_city.blank? ? " " : @campaign.address_city.to_str %>";
+						if (addressCity) {
+							$('.campaign-city-select').val(addressCity);
+						}
+					}
+				}
+			});
+		}
+
+		// Ajax call to get cities for state and coutnry
+		function getCitiesByState(country_code, state_code) {
+			$.ajax({
+				method: 'POST',
+				url: '/cities',
+				data: {
+					state_code: state_code,
+					country_code: country_code
+				},
+				success: function (response) {
+					$('.campaign-city-select').html("");
+					$.each(response.cities, function (key, value) {
+						$('.campaign-city-select').append($('<option>', {
+							value: key,
+							text: value
+						}));
+					});
+				}
+			});
+		}
+	});
+</script>

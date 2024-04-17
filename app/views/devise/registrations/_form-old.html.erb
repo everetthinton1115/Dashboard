@@ -1,0 +1,321 @@
+<!--gx-wrapper-->
+HELLO
+<% unless (referral_validity(params[:referral]) && params[:referral].present?) %>
+  <div class="gx-wrapper contentSection">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="gx-card sign-up-form">
+          <div class="gx-card-header">
+            <h3 class="card-heading"></h3>
+          </div>
+          <div class="gx-card-body">
+            <% if !resource.errors.blank?%>
+              <div class="shadow-lg alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <span>
+                  <%= devise_error_messages! %>
+                </span>
+              </div>
+            <%end%>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-wizard validate-form-wizard validate', id: "rootwizard-2", multipart: true}) do |f| %>
+              <div class="wizard-navbar">
+                <ul>
+                  <li class="active"><a class="active show tab_check" href="#tab2-1" data-toggle="tab"><span class="wz-number">1</span> <span class="wz-label">Your Info</span></a></li>
+                  <li><a href="#tab2-2" class="tab_check" data-toggle="tab"><span class="wz-number">2</span> <span class="wz-label">Region</span></a></li>
+                  <li><a href="#tab2-3" class="tab_check" data-toggle="tab"><span class="wz-number">3</span> <span class="wz-label">Wallet</span></a></li>
+                  <li><a href="#tab2-4" class="tab_check" data-toggle="tab"><span class="wz-number">4</span> <span class="wz-label">Confirm</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane  active" id="tab2-1">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :name, class: "control-label", id: "first_name" %>
+                        <%= f.text_field :name, class: "form-control required", placeholder: "Name" %>
+                        <%= f.hidden_field :referral_code,value:params[:referral] if params[:referral].present? %>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :email, class: "control-label" %>
+                        <%= f.email_field :email, class: "form-control required email", placeholder: "Please enter your email" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :password, class: "control-label" %>
+                        <%= f.password_field :password, class: "form-control required", minlength: 6, placeholder: "Password" %>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :password_confirmation, class: "control-label" %>
+                        <%= f.password_field :password_confirmation, class: "form-control required",placeholder: "Confirm Password" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-md-2">I am a</label>
+                    <%if !params[:referral].present?%>
+                      <div class="col-md-12">
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="customRadioInline1" name="user[member_type]" class="custom-control-input" value="individual" checked>
+                          <label class="custom-control-label" for="customRadioInline1">Volunteer</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="customRadioInline2" name="user[member_type]" class="custom-control-input" value="charity">
+                          <label class="custom-control-label" for="customRadioInline2">Charity</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="customRadioInline3" name="user[member_type]" class="custom-control-input" value="charity_coordinator">
+                          <label class="custom-control-label" for="customRadioInline3">Charity Coordinator</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="customRadioInline4" name="user[member_type]" class="custom-control-input" value="donor">
+                          <label class="custom-control-label" for="customRadioInline4">Donor</label>
+                        </div>
+                      </div>
+                    <%else%>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="user[member_type]" class="custom-control-input" value="charity">
+                        <label class="custom-control-label" for="customRadioInline2">Charity</label>
+                      </div>
+                    <%end%>
+                  </div>
+                  <%= f.fields_for :alliance_attributes do |alliance| %>
+                    <div id="charity_form">
+                    </div>
+                  <% end %>
+                  <ul class="pager wizard">
+                    <li class="previous"><a class="changeItem"><i class="icon-left-open"></i>Previous</a></li>
+                    <li id="on_next" class="next"><a class="changeItem">Next<i class="icon-right-open"></i></a> </li>
+                  </ul>
+                </div>
+                <div class="tab-pane" id="tab2-2">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :address_line1, "Address Line1", class: "control-label" %>
+                        <%= f.text_field :address_line1, class: "form-control required", placeholder: "Address Line1" %>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :address_line2, "Address Line2", class: "control-label" %>
+                        <%= f.text_field :address_line2, class: "form-control", placeholder: "Address Line2" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :country, "Country", class: "control-label" %>
+                        <%= f.collection_select :address_country, Hash[CS.countries.sort_by{|k, v| v}], :first, :last, {prompt: true}, {class: 'custom-select country-select required'} %>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :state, "State/Province", class: "control-label" %>
+                        <div id="state_div">
+                          <select class="custom-select state-select required" name="user[address_state]">
+                            <option value="">Please select</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :address_city, "City", class: "control-label" %>
+                        <div id="city_div">
+                          <select class="custom-select city-select required" name="user[address_city]">
+                            <option value="">Please select</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :address_zip, "Zip/Postal Code", class: "control-label" %>
+                        <%= f.text_field :address_zip, class: "form-control required", placeholder: "Zip/Postal Code" %>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="pager wizard">
+                    <li class="previous"><a class="changeItem"><i class="icon-left-open"></i>Previous</a></li>
+                    <li id="on_next" class="next"><a class="changeItem">Next<i class="icon-right-open"></i></a> </li>
+                  </ul>
+                </div>
+                <div class="tab-pane" id="tab2-3">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-group">
+                        <%= f.label :meta_address, "Wallet Address", class: "control-label" %>
+                        <%= text_field_tag :meta_address, nil, class: "form-control required", placeholder: "Wallet Address" %>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <button type="button" class="btn btn-primary text-uppercase mrt-35" data-toggle="modal" data-target="#walletModal">
+                        <span>Wallet setup instructions</span>
+                      </button>
+                    </div>
+                  </div>
+                  <ul class="pager wizard">
+                    <li class="previous"><a class="changeItem"><i class="icon-left-open"></i>Previous</a></li>
+                    <li id="on_next" class="next"><a class="changeItem">Next<i class="icon-right-open"></i></a> </li>
+                  </ul>
+                </div>
+                <div class="tab-pane" id="tab2-4">
+                  <div id="501c_doc_1">
+                  </div>
+                  <div class="form-check">
+                    <input name="user[terms_accepted]" class="form-check-input required" type="checkbox">
+                    <label class="form-check-label">I agree with the <%= link_to "Terms and Conditions.", "javascript:void(0)", "data-target" => "#termsModal", "data-toggle" => "modal" %>
+                    </label>
+                  </div>
+                  <ul class="pager wizard">
+                    <li class="previous"><a class="changeItem"><i class="icon-left-open"></i>Previous</a></li>
+                    <li class="next">
+                      <button id="on_next" type="submit" class="btn btn-info float-right">Register</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <a href="#" id="btm_check"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/gx-wrapper-->
+
+  <div class="modal fade" id="walletModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-box" role="document">
+      <div class="modal-content">
+        <div class="modal-box-header bg-primary modal-header">
+          <h4 class="modal-title">
+            Wallet Setup Instructions
+            <a href="javascript:void(0)" class="action-btn text-white" data-dismiss="modal" aria-label="Close"><i class="zmdi zmdi-close"></i></a>
+          </h4>
+        </div>
+        <div class="modal-box-content instructions-modal">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <h3 class="title">Step 1 : <span>Install MetaMask <a target="_blank" href="https://metamask.io">https://metamask.io/</a></span></h3>
+              <h3 class="title">Step 2 : <span>Read and watch any important information during the installation of the browser extension.</span></h3>
+              <h3 class="title">Step 3 :
+                <span>Add the GOOD token address to your wallet - <span id="wallet_address">0x1ad8e98a828d8c460e994f279e35fbe4cf213ba6</span>
+                  <a href="javascript:void(0)" class="clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#wallet_address">
+                    <i class="zmdi zmdi-copy zmdi-hc-fw"></i>
+                  </a>
+                </span>
+              </h3>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%=image_tag("metamask-images/metamask-01.png", alt: "metamask-01", class: 'img-thumbnail')%>
+              </div>
+              <div class="col-md-6">
+                <%=image_tag("metamask-images/metamask-02.png", alt: "metamask-02", class: 'img-thumbnail')%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="title">Step 4 : <span>Copy the address of your GOOD wallet from the extension and input it into this form.</span></h3>
+              </div>
+              <div class="col-md-6">
+                <%=image_tag("metamask-images/metamask-03.png", alt: "metamask-03", class: 'img-thumbnail')%>
+              </div>
+              <div class="col-md-6">
+                <%=image_tag("metamask-images/metamask-04.png", alt: "metamask-04", class: 'img-thumbnail')%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-box-footer d-flex">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-box" role="document">
+      <div class="modal-content">
+        <div class="modal-box-content">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <object type="application/pdf" data="/commit-good-terms-and-conditions.pdf" width="100%" height="500">No Support</object>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h1> This referral code has already been used.</h1>
+<% end %>
+<script type="text/javascript">
+  window.onload = function() {
+    var scrolled=0;
+
+    if (window.location.search.includes('referral')){
+      $("#customRadioInline2").click();
+    }
+
+    // $('#customRadioInline2').click(function() {
+    //   setTimeout(function(){
+    //     $(".changeItem").focus();
+    //   }, 500)
+    // })
+
+      $('.changeItem').click(function (e) {
+        e.preventDefault();
+        console.log("TRIGGEREDE")
+        // tab_check
+        $(".tab_check").focus();
+        // var target = $(this).attr('href');
+        // $('html, body').animate({scrollTop: '0px'}, 300);
+
+      });
+
+
+
+
+
+
+
+
+    $("#customRadioInline2").click(function() {
+      if(($("#customRadioInline2").val()) == "charity")
+        {
+          $('#first_name').html("Charity Name");
+        }
+
+        setTimeout(function(){
+          console.log('ssssssssss')
+          $('#btm_check').focus();
+        }, 1000)
+
+    });
+    $("#customRadioInline3").click(function() {
+      if(($("#customRadioInline3").val()) == "vendor")
+        {
+          $('#first_name').html("Name");
+        }
+    });
+
+    $("#customRadioInline1").click(function() {
+      if(($("#customRadioInline1").val()) == "individual")
+        {
+          $('#first_name').html("Name");
+        }
+    });
+    $(document).on('nested:fieldAdded', function(event){
+      $('.logo_btn .error').css('display', 'inline')
+    })
+  }
+</script>

@@ -1,0 +1,118 @@
+<!-- <div class="row mt-3"> -->
+	<!-- Identification Photo -->
+<!-- 	<div class="col col-md-6 mb-3 identification_photo_container">
+		<label style="font-size: 18px;font-weight: 500;font-family: 'Cabin';" for="identification-photo">Identification Photo</label>
+		<p style="font-size: 14px;font-weight: 100;min-height: 50px;">Please upload a 'selfie' for account identification purposes. This image will only be used internally for comparison to your Government Issued ID to meet KYC/AML requirements.</p>
+		<div class="input-group">
+			<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" style="display:none;"/>
+			<div class="input-group-btn browse-file" style="max-width:100%">
+				<div class="fileUpload btn btn-success" style="max-width:100%">
+					<span>
+						<i class="glyphicon glyphicon-upload"></i>
+						Browse
+					</span>
+					<input id="uploadBtn" type="file" name="user[identification_photo]" accept="image/png,
+image/jpeg" class="upload required"/></div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- License Photo -->
+<!-- 	<div class="col col-md-6 mb-3 license_photo_container">
+		<label style="font-size: 18px;font-weight: 500;font-family: 'Cabin';" for="license-photo">Government Issued ID</label>
+		<p style="font-size: 14px;font-weight: 100;min-height: 50px;">Please upload a picture of your Driver License or other valid Government issued form of identification.</p>
+		<div class="input-group">
+			<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled" style="display:none;"/>
+			<div class="input-group-btn browse-file" style="max-width:100%">
+				<div class="fileUpload btn btn-success" style="max-width:100%">
+					<span>
+						<i class="glyphicon glyphicon-upload"></i>
+						Browse
+					</span>
+					<input id="uploadBtn" type="file" name="user[license_photo]" accept="image/png,
+image/jpeg" class="upload required"/></div>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!-- <hr /> -->
+<!-- <div class="row mt-3">
+	<div class="col">
+		<label style="font-size: 18px;font-weight: 500;font-family: 'Cabin';">Wallet Generation</label>
+		<p style="font-size: 14px;font-weight: 100;min-height: 50px;">Commit Good uses a custom integration to simplify your cryptocurrency experience. Upon registering we generate a wallet to manage both BTC and $GOOD tokens for use on the platform.</p>
+	</div>
+</div> -->
+
+
+<div class="row mt-3">
+	<div class="col">
+		<label style="font-size: 18px;font-weight: 500;font-family: 'Cabin';">Wallet Generation</label>
+		<p style="font-size: 14px;font-weight: 100;min-height: 50px;">Currently Wallet is in under progress. Will be available very soon.</p>
+	</div>
+</div>
+
+<div class="row mt-3">
+	<div class="col-4 col-md-2">
+		<button id="step-three-prev-button" type="button" class="btn btn-outline btn-warning btn-block prev-button">Back</button>
+	</div>
+	<div class="col-4 offset-4 offset-md-8 col-md-2 text-right">
+		<button id="step-three-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Register</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const identificationPhotoLabelTag = 'label[for="identification-photo"]';
+	const identificationPhotoTag = 'input[name="user[identification_photo]"]';
+	const licensePhotoLabelTag = 'label[for="license-photo"]';
+	const licensePhotoTag = 'input[name="user[license_photo]"]';
+
+	$(document).ready(function () {
+		// $('.identification-photo').imageUploader({imagesInputName: 'user[identification_photo]', maxFiles: 1, label: 'Drag & Drop Image Here or Click to Browse'});
+		// $('.license-photo').imageUploader({imagesInputName: 'user[license_photo]', maxFiles: 1, label: 'Drag & Drop Image Here or Click to Browse'});
+	});
+
+	// Listen for Clicks to go to next
+	$('#step-three-next-button').on('click', function () {
+		// let validIdentificationImage = validateIdentificationImage();
+		// let validLicenseImage = validateLicenseImage();
+		// if ((validIdentificationImage && validLicenseImage) || charityUser == true) {
+			$('#user-new-smartwizard').submit();
+		// }
+	});
+
+	// Listen for Clicks to go to prev
+	$('#step-three-prev-button').on('click', function () {
+		$('#user-new-smartwizard').smartWizard('prev');
+	});
+
+	// Validation for ID
+	$(identificationPhotoTag).on('input', function () {
+		validateIdentificationImage();
+	});
+	function validateIdentificationImage() {
+		let valid = ($(identificationPhotoTag).val().length > 0);
+		toggleInvalidClass(identificationPhotoTag, identificationPhotoLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for License
+	$(licensePhotoTag).on('input', function () {
+		validateLicenseImage();
+	});
+	function validateLicenseImage() {
+		let valid = ($(licensePhotoTag).val().length > 0);
+		toggleInvalidClass(licensePhotoTag, licensePhotoLabelTag, valid);
+		return valid;
+	}
+
+	// Helper function for setting classes
+	function toggleInvalidClass(tag, label, valid) {
+		if (valid) {
+			$(tag).removeClass('is-invalid')
+			$(label).removeClass('text-danger');
+		} else {
+			$(tag).addClass('is-invalid');
+			$(label).addClass('text-danger');
+		}
+	}
+</script>

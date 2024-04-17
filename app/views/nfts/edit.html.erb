@@ -1,0 +1,59 @@
+<%= nested_form_for @nft, url: campaign_nft_path, html: {class: '', id: "", multipart: true} do |f| %>
+	<div class="row">
+		<div class="col text-center">
+			<h2>NFT</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= f.label :title, class: "control-label" %>
+				<%= f.text_field :name, class: "form-control required", placeholder: "Title" %>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= f.label :price, class: "control-label" %>
+				<%= f.text_field :price, class: "form-control required", placeholder: "Price" %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-group">
+				<%= f.label :description, class: "control-label" %>
+				<%= f.text_area :description, class: "form-control required", placeholder: "Description" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<label style="margin-bottom: 10px;" for="user_profile_image">Image</label>
+			<div class="input-group">
+				<input id="uploadFile" class="form-control" placeholder="Choose File" disabled="disabled"/>
+				<div class="input-group-btn browse-file">
+					<div class="fileUpload btn btn-success">
+						<span>
+							<i class="glyphicon glyphicon-upload"></i>
+							Browse
+						</span>
+						<input id="uploadBtn" type="file" name="nft[image]" class="profile-img" accept="image/png, image/jpeg" class="upload required" required/>
+					</div>
+				</div>
+			</div>
+			<span class="img-err text-danger" style="display:none"></span>
+		</div>
+	</div>
+
+	<!-- Field passed in from the controller on new -->
+	<%= f.hidden_field :campaign_id %>
+
+	<!-- Where going to place a flag on the form so that the backend doesnt delete all images for other update calls -->
+
+	<div class="row">
+		<div class="col-4 offset-8 offset-md-10 col-md-2 text-right mt-3">
+			<%= f.submit "save creature", class: "btn btn-outline btn-primary btn-block next-button" %>
+		</div>
+	</div>
+<% end %>

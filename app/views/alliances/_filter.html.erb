@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="animated slideInUpTiny animation-duration-3 projects_list">
+    <div class="page-heading d-sm-flex justify-content-sm-between align-items-sm-center">
+      <h2 class="title mb-3 mb-sm-0">Charities</h2>
+      <%= form_tag alliances_path, method: 'get', remote: true do %>
+        <div class="head-rt-section d-flex flex-row float-right">
+          <div class="mr-2">
+            <%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] }, params[:country] ), include_blank: 'Please Select', class: "form-control", :onchange=>"allianceFilter($(this).val())"  %>
+          </div>
+          <div class="head-search mr-2">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for..." %>
+            <%= button_tag(type: "submit", name: nil, style: "border:0; padding:0; font-size:0; display: none;") do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%- if @alliances.present? %>
+      <div class="row">
+        <% @alliances.each do |alliance| %>
+          <div class="col-xl-3 col-md-5 col-12">
+            <div class="shadow border-0 card fixed-height">
+              <div class="row no-gutters card-head">
+                <div>
+                  <%= image_tag load_image(alliance.logo), alt: "Card image cap", class: "card-img-top" %>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title mb-2"><%= alliance.name %></h3>
+                <p class="card-text text-muted">
+                <%= truncate(alliance.description, :length => 120, :omission => "" , :escape => false) { link_to "...",  "#" } %>
+                </p>
+                <hr>
+              </div>
+              <div class="gx-card-footer pr-4 pl-4 pb-3">
+                <%= link_to 'View', alliance_path(alliance), class: "btn btn-outline-success" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="not-found">No Charity Found</p>
+              <%#= link_to 'Reset Search Results', campaigns_path, class: "btn btn-outline-info reset-btn" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <nav aria-label="navigation">
+      <ul class="pagination">
+        <li class="digg_pagination"><%#= will_paginate @campaigns %></li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<% if message.sender_id != current_user.id %>
+	<div class="incoming_msg">
+	  <div class="incoming_msg_img">
+	    <%- if @sender_user[:profile_file_name] %>
+			<%= image_tag @sender_user.profile.url(:thumb) %>
+		<% elsif @sender_user.roles.first.name == "charity_admin" %>
+			<%= image_tag load_image(@sender_user.alliance.try(:logo)), alt: "Alliance logo", class: "img-thumbnail" %>
+		<% else %>
+			<%= icon('fas', 'user') %>
+		<% end %>
+	  </div>
+	  <div class="received_msg">
+		<div class="received_withd_msg">
+		  <p><%= message.text %></p>
+		  <span class="time_date"><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></span></div>
+	  </div>
+	</div>
+<% else %>	
+	<div class="outgoing_msg">
+	  <div class="sent_msg">
+			<p><%= message.text %></p>
+			<span class="time_date"><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></span> 
+		</div>
+	</div>
+<% end %>

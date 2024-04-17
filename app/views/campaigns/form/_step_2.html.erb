@@ -1,0 +1,296 @@
+<div class="row">
+	<div class="col text-center">
+		<h2>How Can We Help?</h2>
+	</div>
+</div>
+
+<!-- <div class="row my-3">
+	<div class="col">
+		<div class="field-banner w-100 h-100">
+			<h3>Goal Amount in Bitcoin (BTC)</h3>
+			<p>Project's Monetary Donations are funded with Bitcoin (BTC) and current price is based on US Dollar. Enter the amount of funding required based on USD to determine the amount of BTC needed.</p>
+		</div>
+	</div>
+</div> -->
+
+<!-- <div class="row">
+	<div class="col">
+		<div class="form-group">
+			<label for="usd_input">USD</label>
+			<input type="number" name="" class="form-control" id="usd_input" <#%= f.object.persisted? ? 'readonly' : ''%>>
+		</div>
+	</div>
+	<div class="col-1 text-center" style="padding-top: 36px;">
+		<span><#%= icon('fas', 'exchange-alt') %></span>
+	</div>
+	<div class="col">
+		<div class="form-group">
+			<#%= f.label :goal_amount, "BTC", class: "control-label" %>
+			<#%= f.text_field :goal_amount, class: "form-control required", id: 'btc_input', :readonly => f.object.persisted?, :disabled => f.object.persisted?, value: f.object.persisted? ? BigDecimal(f.object.goal_amount.to_f.to_s).truncate(8).to_s('F'): nil %>
+		</div>
+	</div>
+</div> -->
+<!-- remove this after adding currency -->
+<%= f.hidden_field :goal_amount, value: 0 %>
+
+<!-- <div class="row my-3">
+	<div class="col">
+		<div class="field-banner w-100 h-100">
+			<h3>Volunteer Reward Donation GOOD Token ($GOOD)</h3>
+			<p>Project's Volunteer Donations are funded with GOOD Token ($GOOD). This field is automatically calculated for you based on the Volunteer Opportunities Added. Note: $GOOD cryptocurrency is based on the number of volunteer hours needed (Ex. 50
+				volunteer hours would be a goal amount of 50 $GOOD)</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<div class="form-group">
+			<label>$GOOD</label>
+			<#%= f.text_field :good_goal_amount, class: "form-control required", id: 'good_input', readonly: "readonly" %>
+		</div>
+	</div>
+</div> -->
+<!-- remove this after adding currency -->
+<%= f.hidden_field :good_goal_amount, value: 0 %>
+
+<div class="row my-3">
+	<div class="col">
+		<div class="field-banner w-100 h-100">
+			<h3>Volunteer Opportunities</h3>
+			<p>Project's may need volunteers to accomplish their task. Please add each Volunteer Opportunity or Job below.</p>
+		</div>
+	</div>
+</div>
+<div id="volunteers">
+	<%= f.fields_for :volunteers do |v_form| %>
+	<div class="row">
+		<div class="col-6 col-md-12">
+			<div class="form-group">
+				<%= v_form.label :title, "Title", class: "control-label volunteer-title-label" %>
+				<%= v_form.text_field :title, class: "form-control volunteer-title-input required", placeholder: "Title" %>
+			</div>
+		</div>
+		<div class="col-6 col-md-12">
+			<div class="form-group">
+				<%= v_form.label :description, "Description", class: "control-label volunteer-description-label" %>
+				<%= v_form.text_area :description, class: "form-control volunteer-description-input required", placeholder: "Description" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-md-6">
+			<%= v_form.label :number, "Number of Volunteers", class: "control-label volunteer-number-label" %>
+			<%= v_form.number_field :number, class: "form-control required num_vol volunteer-number-input", placeholder: "Number of Volunteers", number: true, min: 1, onkeypress: "return isNumberKey(event)" %>
+		</div>
+		<div class="form-group col-md-6">
+			<%= v_form.label :hours, "Number of Hours per Volunteer", class: "control-label volunteer-hours-label" %>
+			<%= v_form.number_field :hours, class: "form-control required num_hrs volunteer-hours-input", placeholder: "Number of Hours", number: true, min: 1, onkeypress: "return isNumberKey(event)" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col text-right">
+			<%= v_form.link_to_remove "Remove Opportunity", class: "btn btn-sm btn-outline-danger hide_btn"%>
+		</div>
+	</div>
+	<hr/>
+<% end %>
+</div>
+<div class="row">
+<div class="col text-center">
+	<%= f.link_to_add "Add Additional Volunteers ", :volunteers, class: "btn btn-sm btn-outline-primary add-volunteer-btn", :data => { :target => "#volunteers" } %>
+</div>
+</div>
+
+<div class="row mt-3">
+<div class="col-4 col-md-2">
+	<button id="step-two-prev-button" type="button" class="btn btn-outline btn-warning btn-block prev-button">Back</button>
+</div>
+<div class="col-4 offset-4 offset-md-8 col-md-2 text-right">
+	<button id="step-two-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Next</button>
+</div>
+</div>
+
+<script type="text/javascript">
+const usdTag = '#usd_input';
+const usdLabelTag = 'label[for="usd_input"]';
+const btcTag = '#btc_input';
+const btcLabelTag = 'label[for="campaign_goal_amount"]';
+const goodTag = '#good_input';
+const volunteersTag = '#volunteers';
+const volunteerTitleTag = '.volunteer-title-input';
+const volunteerTitleLabelTag = 'label.volunteer-title-label';
+const volunteerDescTag = '.volunteer-description-input';
+const volunteerDescLabelTag = 'label.volunteer-description-label';
+const volunteerNumberTag = '.volunteer-number-input';
+const volunteerNumberLabelTag = 'label.volunteer-number-label';
+const volunteerHoursTag = '.volunteer-hours-input';
+const volunteerHoursLabelTag = 'label.volunteer-hours-label';
+
+$(document).ready(function () {
+	// Need the current USD to bitcoin conversion rate
+	var bitcoinValue = ""
+	$.ajax({
+		url: 'https://cex.io/api/last_price/BTC/USD',
+		method: 'GET',
+		success: function (res) {
+			bitcoinValue = res.lprice
+
+			// Fill in usd amount based on your btc amount for edit
+			if ($(btcTag).val() > 0) {
+				$(btcTag).trigger("change");
+			}
+		}
+	});
+
+	// Listen to keep btc and usd in sync
+	$(usdTag).keyup(function (e) {
+		// accept only 8 decimals in btc
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcTag).val(btc);
+		validateBtc();
+	});
+	$(btcTag).keyup(function (e) {
+		// accepts only 2 decimals in usd
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdTag).val(usd);
+		validateUsd();
+	});
+	$(usdTag).change(function (e) {
+		// accept only 8 decimals in btc
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcTag).val(btc);
+		validateBtc();
+	});
+	$(btcTag).change(function (e) {
+		// accepts only 2 decimals in usd
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdTag).val(usd);
+		validateUsd();
+	});
+
+	// Listen for Clicks to go to next
+	$('#step-two-next-button').on('click', function () {
+		let usdValid = validateUsd();
+		let btcValid = validateBtc();
+		let volunteersValid = validateVolunteers();
+
+		if (volunteersValid) {
+			$('#campaign-new-smartwizard').smartWizard('next');
+		}
+	});
+
+	// Listen for Clicks to go to prev
+	$('#step-two-prev-button').on('click', function () {
+		$('#campaign-new-smartwizard').smartWizard('prev');
+	});
+
+	// Validation for Project USD Goal Amount
+	$(usdTag).on('input blur keypress', function () {
+		validateUsd();
+	});
+	function validateUsd() {
+		let valid = $(usdTag).val() > 0;
+		toggleInvalidClass(usdTag, usdLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for Project BTC Goal Amount
+	$(btcTag).on('blur keypress', function () {
+		validateBtc();
+	});
+	function validateBtc() {
+		let valid = $(btcTag).val() > 0;
+		toggleInvalidClass(btcTag, btcLabelTag, valid);
+		return valid;
+	}
+
+	truncateDecimals = function (number, digits) {
+    var multiplier = Math.pow(10, digits),
+        adjustedNum = number * multiplier,
+        truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+    return truncatedNum / multiplier;
+	};
+	// Validation for Project Volunteers
+	function validateVolunteers() {
+		let volunteersValid = true;
+
+		// Loop over all sets of volunteer fields
+		let volOpportunityCount = $(volunteersTag).children().length;
+		for (let i = 0; i < volOpportunityCount; i++) {
+
+			// Get Volunteer Title
+			let title = $(volunteersTag).find(volunteerTitleTag).eq(i);
+			let titleLabel = $(volunteersTag).find(volunteerTitleLabelTag).eq(i);
+			let titleValid = volunteersValid = title.val().length > 0;
+			toggleInvalidClass(title, titleLabel, titleValid);
+
+			// Get Volunteer Description
+			let description = $(volunteersTag).find(volunteerDescTag).eq(i);
+			let descriptionLabel = $(volunteersTag).find(volunteerDescLabelTag).eq(i);
+			let descriptionValid = volunteersValid = description.val().length > 0;
+			toggleInvalidClass(description, descriptionLabel, descriptionValid);
+
+			// Get Volunteer Number Needed
+			let number = $(volunteersTag).find(volunteerNumberTag).eq(i);
+			let numberLabel = $(volunteersTag).find(volunteerNumberLabelTag).eq(i);
+			let numberValid = volunteersValid = number.val() > 0;
+			toggleInvalidClass(number, numberLabel, numberValid);
+
+			// Get Volunteer Hours Needed
+			let hours = $(volunteersTag).find(volunteerHoursTag).eq(i);
+			let hoursLabel = $(volunteersTag).find(volunteerHoursLabelTag).eq(i);
+			let hoursValid = volunteersValid = hours.val() > 0;
+			toggleInvalidClass(hours, hoursLabel, hoursValid);
+		}
+
+		return volunteersValid;
+	}
+
+	// Helper function for setting classes
+	function toggleInvalidClass(tag, label, valid) {
+		if (valid) {
+			$(tag).removeClass('is-invalid')
+			$(label).removeClass('text-danger');
+		} else {
+			$(tag).addClass('is-invalid');
+			$(label).addClass('text-danger');
+		}
+	}
+
+	// Listen for changes to Volunteer huors and numbers $(volunteerTitleTag + ', ' + volunteerDescTag).on('input', function (e) { 	validateVolunteers(); }); Listen for changes to Volunteer huors and numbers
+	$(volunteerHoursTag + ', ' + volunteerNumberTag).on('blur keypress change input', function (e) {
+		updateGoodAmount();
+	});
+
+	// This will fire everytime you add a new set of volunteer fields
+	$(document).on('nested:fieldAdded', function (event) {
+		// Reistablish listener on Volunteer hours and numbers
+		$(volunteerHoursTag + ', ' + volunteerNumberTag).off();
+		$(volunteerHoursTag + ', ' + volunteerNumberTag).on('blur keypress change input', function (e) {
+			updateGoodAmount();
+		});
+	});
+
+	function updateGoodAmount() {
+		let goodTokens = 0;
+		let hourTags = $(volunteerHoursTag).length;
+		for (let i = 0; i < hourTags; i++) {
+			let hours = parseInt($(volunteersTag).find(volunteerHoursTag).eq(i).val());
+			let number = parseInt($(volunteersTag).find(volunteerNumberTag).eq(i).val());
+			goodTokens += (hours * number);
+		}
+		if (goodTokens) $(goodTag).val(goodTokens);
+	}
+});
+
+function isNumberKey(evt)
+{
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+	return false;
+
+	return true;
+}
+</script>

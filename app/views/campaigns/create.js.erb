@@ -1,0 +1,14 @@
+<% if @campaign.errors.blank? %>
+  <% if @campaign.is_fund_raiser? %>
+    window._events_in_progress = window._events_in_progress + 1
+    createFundRaiserCampaign(<%= @message_hash.to_json.html_safe %>);
+  <% end %>
+  <% if @campaign.is_volunteer? %>
+    window._events_in_progress = window._events_in_progress + 1
+    createVolunteerCampaign(<%= @message_hash.to_json.html_safe %>);
+  <% end %>
+  <% if @campaign.is_in_kind_donation? %>
+    window._events_in_progress = window._events_in_progress + 1
+    createInKindCampaign(<%= @message_hash.to_json.html_safe %>);
+  <% end %>
+<% end %>

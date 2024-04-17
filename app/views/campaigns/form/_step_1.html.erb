@@ -1,0 +1,150 @@
+<div class="row">
+	<div class="col text-center">
+		<h2>Project Details</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label :title, class: "control-label" %>
+			<%= f.text_field :name, class: "form-control required", placeholder: "Title" %>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.label "Timeframe", class: "control-label" %>
+			<%= f.collection_select :time_length, Campaign::TIMEFRAME,:first,:last,{prompt: false}, {class: 'custom-select required', :readonly => f.object.persisted?, :disabled => f.object.persisted? } %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<div class="form-group">
+			<%= f.label :description, class: "control-label" %>
+			<%= f.text_area :description, class: "form-control required", placeholder: "Description" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div class="input-field">
+			<label for="image_upload">Images</label>
+			<div class="input-images-2" style="padding-top: .5rem;"></div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col text-center"><div id="add-more-images" class="btn btn-sm btn-info mt-2">Add More Images</div></div>
+</div>
+
+<!-- Field passed in from the controller on new -->
+<%= f.hidden_field :region_id %>
+<%= f.hidden_field :campaign_coordinator_id %>
+
+<!-- Where going to place a flag on the form so that the backend doesnt delete all images for other update calls -->
+<input id="placeholder-for-empty" name="update_images_attributes" type="hidden" value="true"/>
+
+<div class="row">
+	<div class="col-4 offset-8 offset-md-10 col-md-2 text-right mt-3">
+		<button id="step-one-next-button" type="button" class="btn btn-outline btn-primary btn-block next-button">Next</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const titleTag = '#campaign_name';
+	const titleLabelTag = 'label[for="campaign_title"]';
+	const timeTag = '#campaign_time_length';
+	const timeLabelTag = 'label[for="campaign_Timeframe"]';
+	const coordinatorTag = '#coordinator_select';
+	const coordinatorLabelTag = 'label[for="coordinator_select"]';
+	const descriptionTag = '#campaign_description';
+	const descriptionLabelTag = 'label[for="campaign_description"]';
+	const imageTag = '.uploaded-image';
+	const imageLabelTag = 'label[for="image_upload"]';
+
+	$(document).ready(function () {
+		// First we need to decide if we have any images to add (aka is this an edit)
+		let existing_images_array = <%= raw (@campaign.images.map { |attachment| {'id': attachment.id, 'src': attachment.image.url} }).to_json %>;
+
+		// Setup the jquery multi image uploader
+		$('.input-images-2').imageUploader({imagesInputName: 'images_attributes', preloadedInputName: 'images_attributes_existing', preloaded: existing_images_array, extensions:[".jpg",".JPG",".jpeg",".JPEG",".png",".PNG",".gif",".GIF",".svg",".SVG"]});
+
+		// Listen for Clicks to go to next
+		$('#step-one-next-button').on('click', function () {
+			let titleValue = $(titleTag).val().length;
+			let timeLengthValue = $(timeTag).val().length;
+			let descriptionValue = $(descriptionTag).val().length;
+			let imageValue = $(imageTag).length;
+            
+			// Check if we want to allow them to go to the next step
+			if (titleValue > 0 && timeLengthValue > 0 && descriptionValue > 0 && imageValue > 0) {
+				$('#campaign-new-smartwizard').smartWizard('next');
+			} else {
+				validateTitle();
+				validateTime();
+				validateDescription();
+				validateImage();
+			}
+		});
+
+		// Listen for clicks to add more images (could just click on area this if for slow people)
+		$('#add-more-images').click(function () {
+			$('.uploaded').click();
+			toggleInvalidClass(imageTag, imageLabelTag, true);
+		});
+
+		// Validation for Project Title
+		$(titleTag).on('blur keypress', function () {
+			validateTitle();
+		});
+		function validateTitle() {
+			let valid = $(titleTag).val().trim().length > 0;
+			toggleInvalidClass(titleTag, titleLabelTag, valid);
+		}
+
+		// Validation for Time Frame
+		$(timeTag).change(function () {
+			validateTime();
+		});
+		function validateTime() {
+			let valid = $(timeTag).val().length > 0;
+			toggleInvalidClass(timeTag, timeLabelTag, valid);
+		}
+
+		// Validation for Description
+		$(descriptionTag).on('blur keypress', function () {
+			validateDescription();
+		});
+		function validateDescription() {
+			let valid = $(descriptionTag).val().trim().length > 0;
+			toggleInvalidClass(descriptionTag, descriptionLabelTag, valid);
+		}
+
+		// Validation for Description
+		$(imageTag).change(function () {
+			validateImage();
+		});
+		function validateImage() {
+			let valid = $(imageTag).length > 0;
+			toggleInvalidClass(imageTag, imageLabelTag, valid);
+		}
+
+		// Helper function for setting classes
+		function toggleInvalidClass(tag, label, valid) {
+			if (valid) {
+				$(tag).removeClass('is-invalid')
+				$(label).removeClass('text-danger');
+			} else {
+				$(tag).addClass('is-invalid');
+				$(label).addClass('text-danger');
+			}
+		}
+
+		$('.upload-text').click(function(){
+			$(imageTag).removeClass('is-invalid')
+			$(imageLabelTag).removeClass('text-danger');
+		})
+	});
+	
+</script>

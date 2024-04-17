@@ -1,0 +1,1748 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'fontello';
+  src: url(/assets/fonts/fontello-b044b35172b603b32205eb338d63476c25be542809cff1a12c875118e9abc177.eot);
+  src: url(/assets/fonts/fontello-b044b35172b603b32205eb338d63476c25be542809cff1a12c875118e9abc177.eot) format("embedded-opentype"), url(/assets/fonts/fontello-c808e9e18620c0066b4d34f39d9d61401ed2cf8a1790bcb66e663857bf3b9327.woff) format("woff"), url(/assets/fonts/fontello-bed7adca0b1050bb37656f8778cad17b7ab9be8653233382abadc36586ac191a.ttf) format("truetype"), url(/assets/fonts/fontello-403eca4a119a4dd59d713deb6fa5bdc6be4aaee8a0d4647e1bc23c69d20b9160.svg) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: asset-url('fonts/fontello.svg') format('svg');
+  }
+}
+*/
+/* line 22, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 53, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-note:before {
+  content: '\e800';
+}
+
+/* '' */
+/* line 54, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-note-beamed:before {
+  content: '\e801';
+}
+
+/* '' */
+/* line 55, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-music:before {
+  content: '\e802';
+}
+
+/* '' */
+/* line 56, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-search:before {
+  content: '\e803';
+}
+
+/* '' */
+/* line 57, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flashlight:before {
+  content: '\e804';
+}
+
+/* '' */
+/* line 58, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mail:before {
+  content: '\e805';
+}
+
+/* '' */
+/* line 59, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-heart:before {
+  content: '\e806';
+}
+
+/* '' */
+/* line 60, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-heart-empty:before {
+  content: '\e807';
+}
+
+/* '' */
+/* line 61, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-star:before {
+  content: '\e808';
+}
+
+/* '' */
+/* line 62, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-star-empty:before {
+  content: '\e809';
+}
+
+/* '' */
+/* line 63, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-user:before {
+  content: '\e80a' !important;
+}
+
+/* '' */
+/* line 64, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-users:before {
+  content: '\e80b';
+}
+
+/* '' */
+/* line 65, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-user-add:before {
+  content: '\e80c';
+}
+
+/* '' */
+/* line 66, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-video:before {
+  content: '\e80d';
+}
+
+/* '' */
+/* line 67, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-picture:before {
+  content: '\e80e';
+}
+
+/* '' */
+/* line 68, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-camera:before {
+  content: '\e80f';
+}
+
+/* '' */
+/* line 69, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-layout:before {
+  content: '\e810';
+}
+
+/* '' */
+/* line 70, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-menu:before {
+  content: '\e811';
+}
+
+/* '' */
+/* line 71, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-check:before {
+  content: '\e812';
+}
+
+/* '' */
+/* line 72, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cancel:before {
+  content: '\e813';
+}
+
+/* '' */
+/* line 73, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-tag:before {
+  content: '\e814';
+}
+
+/* '' */
+/* line 74, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-eye:before {
+  content: '\e815';
+}
+
+/* '' */
+/* line 75, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lock-open:before {
+  content: '\e816';
+}
+
+/* '' */
+/* line 76, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lock:before {
+  content: '\e817';
+}
+
+/* '' */
+/* line 77, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-attach:before {
+  content: '\e818';
+}
+
+/* '' */
+/* line 78, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-link:before {
+  content: '\e819';
+}
+
+/* '' */
+/* line 79, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-back:before {
+  content: '\e81a';
+}
+
+/* '' */
+/* line 80, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-info-circled:before {
+  content: '\e81b';
+}
+
+/* '' */
+/* line 81, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-info:before {
+  content: '\e81c';
+}
+
+/* '' */
+/* line 82, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-help-circled:before {
+  content: '\e81d';
+}
+
+/* '' */
+/* line 83, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-help:before {
+  content: '\e81e';
+}
+
+/* '' */
+/* line 84, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-minus-squared:before {
+  content: '\e81f';
+}
+
+/* '' */
+/* line 85, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-minus-circled:before {
+  content: '\e820';
+}
+
+/* '' */
+/* line 86, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-minus:before {
+  content: '\e821';
+}
+
+/* '' */
+/* line 87, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-plus-squared:before {
+  content: '\e822';
+}
+
+/* '' */
+/* line 88, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-plus-circled:before {
+  content: '\e823';
+}
+
+/* '' */
+/* line 89, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-plus:before {
+  content: '\e824' !important;
+}
+
+/* '' */
+/* line 90, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cancel-squared:before {
+  content: '\e825';
+}
+
+/* '' */
+/* line 91, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cancel-circled:before {
+  content: '\e826';
+}
+
+/* '' */
+/* line 92, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-bookmark:before {
+  content: '\e827';
+}
+
+/* '' */
+/* line 93, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-bookmarks:before {
+  content: '\e828';
+}
+
+/* '' */
+/* line 94, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flag:before {
+  content: '\e829';
+}
+
+/* '' */
+/* line 95, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-thumbs-up:before {
+  content: '\e82a';
+}
+
+/* '' */
+/* line 96, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-thumbs-down:before {
+  content: '\e82b';
+}
+
+/* '' */
+/* line 97, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-download:before {
+  content: '\e82c';
+}
+
+/* '' */
+/* line 98, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-upload:before {
+  content: '\e82d';
+}
+
+/* '' */
+/* line 99, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-upload-cloud:before {
+  content: '\e82e';
+}
+
+/* '' */
+/* line 100, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-reply:before {
+  content: '\e82f';
+}
+
+/* '' */
+/* line 101, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-quote:before {
+  content: '\e830';
+}
+
+/* '' */
+/* line 102, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-forward:before {
+  content: '\e831';
+}
+
+/* '' */
+/* line 103, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-reply-all:before {
+  content: '\e832';
+}
+
+/* '' */
+/* line 104, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-export:before {
+  content: '\e833';
+}
+
+/* '' */
+/* line 105, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-pencil:before {
+  content: '\e834';
+}
+
+/* '' */
+/* line 106, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-feather:before {
+  content: '\e835';
+}
+
+/* '' */
+/* line 107, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-print:before {
+  content: '\e836';
+}
+
+/* '' */
+/* line 108, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-keyboard:before {
+  content: '\e837';
+}
+
+/* '' */
+/* line 109, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-comment:before {
+  content: '\e838';
+}
+
+/* '' */
+/* line 110, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-book:before {
+  content: '\e839';
+}
+
+/* '' */
+/* line 111, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-book-open:before {
+  content: '\e83a';
+}
+
+/* '' */
+/* line 112, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-newspaper:before {
+  content: '\e83b';
+}
+
+/* '' */
+/* line 113, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-retweet:before {
+  content: '\e83c';
+}
+
+/* '' */
+/* line 114, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-doc-text:before {
+  content: '\e83d';
+}
+
+/* '' */
+/* line 115, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-doc-landscape:before {
+  content: '\e83e';
+}
+
+/* '' */
+/* line 116, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-doc-text-inv:before {
+  content: '\e83f';
+}
+
+/* '' */
+/* line 117, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-doc:before {
+  content: '\e840';
+}
+
+/* '' */
+/* line 118, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-docs:before {
+  content: '\e841';
+}
+
+/* '' */
+/* line 119, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-trash:before {
+  content: '\e842';
+}
+
+/* '' */
+/* line 120, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cup:before {
+  content: '\e843';
+}
+
+/* '' */
+/* line 121, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-compass:before {
+  content: '\e844';
+}
+
+/* '' */
+/* line 122, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-direction:before {
+  content: '\e845';
+}
+
+/* '' */
+/* line 123, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-location:before {
+  content: '\e846';
+}
+
+/* '' */
+/* line 124, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-address:before {
+  content: '\e847';
+}
+
+/* '' */
+/* line 125, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-vcard:before {
+  content: '\e848';
+}
+
+/* '' */
+/* line 126, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-map:before {
+  content: '\e849';
+}
+
+/* '' */
+/* line 127, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-alert:before {
+  content: '\e84a';
+}
+
+/* '' */
+/* line 128, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-attention:before {
+  content: '\e84b';
+}
+
+/* '' */
+/* line 129, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-bell:before {
+  content: '\e84c';
+}
+
+/* '' */
+/* line 130, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-code:before {
+  content: '\e84d';
+}
+
+/* '' */
+/* line 131, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-home:before {
+  content: '\e84e';
+}
+
+/* '' */
+/* line 132, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-chat:before {
+  content: '\e84f';
+}
+
+/* '' */
+/* line 133, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-folder:before {
+  content: '\e850';
+}
+
+/* '' */
+/* line 134, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-light-down:before {
+  content: '\e851';
+}
+
+/* '' */
+/* line 135, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-box:before {
+  content: '\e852';
+}
+
+/* '' */
+/* line 136, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-block:before {
+  content: '\e853';
+}
+
+/* '' */
+/* line 137, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-adjust:before {
+  content: '\e854';
+}
+
+/* '' */
+/* line 138, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-rss:before {
+  content: '\e855';
+}
+
+/* '' */
+/* line 139, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cog:before {
+  content: '\e856';
+}
+
+/* '' */
+/* line 140, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-tools:before {
+  content: '\e857';
+}
+
+/* '' */
+/* line 141, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-resize-full:before {
+  content: '\e858';
+}
+
+/* '' */
+/* line 142, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-popup:before {
+  content: '\e859';
+}
+
+/* '' */
+/* line 143, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-share:before {
+  content: '\e85a';
+}
+
+/* '' */
+/* line 144, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-shareable:before {
+  content: '\e85b';
+}
+
+/* '' */
+/* line 145, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-publish:before {
+  content: '\e85c';
+}
+
+/* '' */
+/* line 146, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-resize-small:before {
+  content: '\e85d';
+}
+
+/* '' */
+/* line 147, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-basket:before {
+  content: '\e85e';
+}
+
+/* '' */
+/* line 148, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-arrow-combo:before {
+  content: '\e85f';
+}
+
+/* '' */
+/* line 149, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-calendar:before {
+  content: '\e860';
+}
+
+/* '' */
+/* line 150, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-window:before {
+  content: '\e861';
+}
+
+/* '' */
+/* line 151, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-circled:before {
+  content: '\e862';
+}
+
+/* '' */
+/* line 152, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-bag:before {
+  content: '\e863';
+}
+
+/* '' */
+/* line 153, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-login:before {
+  content: '\e864';
+}
+
+/* '' */
+/* line 154, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-circled:before {
+  content: '\e865';
+}
+
+/* '' */
+/* line 155, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-circled:before {
+  content: '\e866';
+}
+
+/* '' */
+/* line 156, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mic:before {
+  content: '\e867';
+}
+
+/* '' */
+/* line 157, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-circled:before {
+  content: '\e868';
+}
+
+/* '' */
+/* line 158, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mute:before {
+  content: '\e869';
+}
+
+/* '' */
+/* line 159, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-open:before {
+  content: '\e86a';
+}
+
+/* '' */
+/* line 160, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-sound:before {
+  content: '\e86b';
+}
+
+/* '' */
+/* line 161, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-volume:before {
+  content: '\e86c';
+}
+
+/* '' */
+/* line 162, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-open:before {
+  content: '\e86d';
+}
+
+/* '' */
+/* line 163, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-open:before {
+  content: '\e86e';
+}
+
+/* '' */
+/* line 164, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-open:before {
+  content: '\e86f';
+}
+
+/* '' */
+/* line 165, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-clock:before {
+  content: '\e870';
+}
+
+/* '' */
+/* line 166, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-hourglass:before {
+  content: '\e871';
+}
+
+/* '' */
+/* line 167, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-open-mini:before {
+  content: '\e872';
+}
+
+/* '' */
+/* line 168, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lamp:before {
+  content: '\e873';
+}
+
+/* '' */
+/* line 169, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-light-up:before {
+  content: '\e874';
+}
+
+/* '' */
+/* line 170, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-phone:before {
+  content: '\e875';
+}
+
+/* '' */
+/* line 171, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-logout:before {
+  content: '\e876';
+}
+
+/* '' */
+/* line 172, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-archive:before {
+  content: '\e877';
+}
+
+/* '' */
+/* line 173, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-open-mini:before {
+  content: '\e878';
+}
+
+/* '' */
+/* line 174, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-open-mini:before {
+  content: '\e879';
+}
+
+/* '' */
+/* line 175, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-open-mini:before {
+  content: '\e87a';
+}
+
+/* '' */
+/* line 176, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-thin:before {
+  content: '\e87b';
+}
+
+/* '' */
+/* line 177, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-thin:before {
+  content: '\e87c';
+}
+
+/* '' */
+/* line 178, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-thin:before {
+  content: '\e87d';
+}
+
+/* '' */
+/* line 179, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-open-big:before {
+  content: '\e87e';
+}
+
+/* '' */
+/* line 180, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-ccw:before {
+  content: '\e87f';
+}
+
+/* '' */
+/* line 181, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cw:before {
+  content: '\e880';
+}
+
+/* '' */
+/* line 182, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-open-big:before {
+  content: '\e881';
+}
+
+/* '' */
+/* line 183, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-arrows-ccw:before {
+  content: '\e882';
+}
+
+/* '' */
+/* line 184, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-level-down:before {
+  content: '\e883';
+}
+
+/* '' */
+/* line 185, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left:before {
+  content: '\e884';
+}
+
+/* '' */
+/* line 186, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-open-big:before {
+  content: '\e885';
+}
+
+/* '' */
+/* line 187, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-open-big:before {
+  content: '\e886';
+}
+
+/* '' */
+/* line 188, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-level-up:before {
+  content: '\e887';
+}
+
+/* '' */
+/* line 189, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down:before {
+  content: '\e888';
+}
+
+/* '' */
+/* line 190, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right:before {
+  content: '\e889';
+}
+
+/* '' */
+/* line 191, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-loop:before {
+  content: '\e88a';
+}
+
+/* '' */
+/* line 192, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up:before {
+  content: '\e88b';
+}
+
+/* '' */
+/* line 193, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-dir:before {
+  content: '\e88c';
+}
+
+/* '' */
+/* line 194, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-play:before {
+  content: '\e88d';
+}
+
+/* '' */
+/* line 195, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-dir:before {
+  content: '\e88e';
+}
+
+/* '' */
+/* line 196, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-stop:before {
+  content: '\e88f';
+}
+
+/* '' */
+/* line 197, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-dir:before {
+  content: '\e890';
+}
+
+/* '' */
+/* line 198, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-pause:before {
+  content: '\e891';
+}
+
+/* '' */
+/* line 199, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-switch:before {
+  content: '\e892';
+}
+
+/* '' */
+/* line 200, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-shuffle:before {
+  content: '\e893';
+}
+
+/* '' */
+/* line 201, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-record:before {
+  content: '\e894';
+}
+
+/* '' */
+/* line 202, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-dir:before {
+  content: '\e895';
+}
+
+/* '' */
+/* line 203, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-bold:before {
+  content: '\e896';
+}
+
+/* '' */
+/* line 204, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-to-end:before {
+  content: '\e897';
+}
+
+/* '' */
+/* line 205, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-to-start:before {
+  content: '\e898';
+}
+
+/* '' */
+/* line 206, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-right-bold:before {
+  content: '\e899';
+}
+
+/* '' */
+/* line 207, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-fast-forward:before {
+  content: '\e89a';
+}
+
+/* '' */
+/* line 208, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-fast-backward:before {
+  content: '\e89b';
+}
+
+/* '' */
+/* line 209, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-up-bold:before {
+  content: '\e89c';
+}
+
+/* '' */
+/* line 210, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-left-bold:before {
+  content: '\e89d';
+}
+
+/* '' */
+/* line 211, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-down-thin:before {
+  content: '\e89e';
+}
+
+/* '' */
+/* line 212, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-progress-0:before {
+  content: '\e89f';
+}
+
+/* '' */
+/* line 213, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-progress-1:before {
+  content: '\e8a0';
+}
+
+/* '' */
+/* line 214, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flash:before {
+  content: '\e8a1';
+}
+
+/* '' */
+/* line 215, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-tape:before {
+  content: '\e8a2';
+}
+
+/* '' */
+/* line 216, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-graduation-cap:before {
+  content: '\e8a3';
+}
+
+/* '' */
+/* line 217, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-progress-2:before {
+  content: '\e8a4';
+}
+
+/* '' */
+/* line 218, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-progress-3:before {
+  content: '\e8a5';
+}
+
+/* '' */
+/* line 219, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flight:before {
+  content: '\e8a6';
+}
+
+/* '' */
+/* line 220, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-ticket:before {
+  content: '\e8a7';
+}
+
+/* '' */
+/* line 221, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-paper-plane:before {
+  content: '\e8a8';
+}
+
+/* '' */
+/* line 222, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-moon:before {
+  content: '\e8a9';
+}
+
+/* '' */
+/* line 223, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-language:before {
+  content: '\e8aa';
+}
+
+/* '' */
+/* line 224, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-palette:before {
+  content: '\e8ab';
+}
+
+/* '' */
+/* line 225, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-target:before {
+  content: '\e8ac';
+}
+
+/* '' */
+/* line 226, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-leaf:before {
+  content: '\e8ad';
+}
+
+/* '' */
+/* line 227, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-water:before {
+  content: '\e8ae';
+}
+
+/* '' */
+/* line 228, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-droplet:before {
+  content: '\e8af';
+}
+
+/* '' */
+/* line 229, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lifebuoy:before {
+  content: '\e8b0';
+}
+
+/* '' */
+/* line 230, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-list:before {
+  content: '\e8b1';
+}
+
+/* '' */
+/* line 231, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-list-add:before {
+  content: '\e8b2';
+}
+
+/* '' */
+/* line 232, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mouse:before {
+  content: '\e8b3';
+}
+
+/* '' */
+/* line 233, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-air:before {
+  content: '\e8b4';
+}
+
+/* '' */
+/* line 234, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-credit-card:before {
+  content: '\e8b5';
+}
+
+/* '' */
+/* line 235, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-briefcase:before {
+  content: '\e8b6';
+}
+
+/* '' */
+/* line 236, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-signal:before {
+  content: '\e8b7';
+}
+
+/* '' */
+/* line 237, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-trophy:before {
+  content: '\e8b8';
+}
+
+/* '' */
+/* line 238, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-suitcase:before {
+  content: '\e8b9';
+}
+
+/* '' */
+/* line 239, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-floppy:before {
+  content: '\e8ba';
+}
+
+/* '' */
+/* line 240, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-clipboard:before {
+  content: '\e8bb';
+}
+
+/* '' */
+/* line 241, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dot:before {
+  content: '\e8bc';
+}
+
+/* '' */
+/* line 242, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-battery:before {
+  content: '\e8bd';
+}
+
+/* '' */
+/* line 243, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dot-2:before {
+  content: '\e8be';
+}
+
+/* '' */
+/* line 244, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-megaphone:before {
+  content: '\e8bf';
+}
+
+/* '' */
+/* line 245, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dot-3:before {
+  content: '\e8c0';
+}
+
+/* '' */
+/* line 246, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-monitor:before {
+  content: '\e8c1';
+}
+
+/* '' */
+/* line 247, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mobile:before {
+  content: '\e8c2';
+}
+
+/* '' */
+/* line 248, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-brush:before {
+  content: '\e8c3';
+}
+
+/* '' */
+/* line 249, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-drive:before {
+  content: '\e8c4';
+}
+
+/* '' */
+/* line 250, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-bucket:before {
+  content: '\e8c5';
+}
+
+/* '' */
+/* line 251, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-magnet:before {
+  content: '\e8c6';
+}
+
+/* '' */
+/* line 252, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-database:before {
+  content: '\e8c7';
+}
+
+/* '' */
+/* line 253, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cd:before {
+  content: '\e8c8';
+}
+
+/* '' */
+/* line 254, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-infinity:before {
+  content: '\e8c9';
+}
+
+/* '' */
+/* line 255, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-thermometer:before {
+  content: '\e8ca';
+}
+
+/* '' */
+/* line 256, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-network:before {
+  content: '\e8cb';
+}
+
+/* '' */
+/* line 257, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-inbox:before {
+  content: '\e8cc';
+}
+
+/* '' */
+/* line 258, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-erase:before {
+  content: '\e8cd';
+}
+
+/* '' */
+/* line 259, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-key:before {
+  content: '\e8ce';
+}
+
+/* '' */
+/* line 260, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flow-cascade:before {
+  content: '\e8cf';
+}
+
+/* '' */
+/* line 261, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-chart-pie:before {
+  content: '\e8d0';
+}
+
+/* '' */
+/* line 262, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-install:before {
+  content: '\e8d1';
+}
+
+/* '' */
+/* line 263, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-globe:before {
+  content: '\e8d2';
+}
+
+/* '' */
+/* line 264, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-chart-line:before {
+  content: '\e8d3';
+}
+
+/* '' */
+/* line 265, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flow-branch:before {
+  content: '\e8d4';
+}
+
+/* '' */
+/* line 266, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flow-tree:before {
+  content: '\e8d5';
+}
+
+/* '' */
+/* line 267, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cloud:before {
+  content: '\e8d6';
+}
+
+/* '' */
+/* line 268, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cloud-thunder:before {
+  content: '\e8d7';
+}
+
+/* '' */
+/* line 269, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-chart-area:before {
+  content: '\e8d8';
+}
+
+/* '' */
+/* line 270, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flow-line:before {
+  content: '\e8d9';
+}
+
+/* '' */
+/* line 271, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-chart-bar:before {
+  content: '\e8da';
+}
+
+/* '' */
+/* line 272, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-back-in-time:before {
+  content: '\e8db';
+}
+
+/* '' */
+/* line 273, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-rdio:before {
+  content: '\e8dc';
+}
+
+/* '' */
+/* line 274, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-vimeo-circled:before {
+  content: '\e8dd';
+}
+
+/* '' */
+/* line 275, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flow-parallel:before {
+  content: '\e8de';
+}
+
+/* '' */
+/* line 276, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-rocket:before {
+  content: '\e8df';
+}
+
+/* '' */
+/* line 277, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-twitter:before {
+  content: '\e8e0';
+}
+
+/* '' */
+/* line 278, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-twitter-circled:before {
+  content: '\e8e1';
+}
+
+/* '' */
+/* line 279, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-gauge:before {
+  content: '\e8e2';
+}
+
+/* '' */
+/* line 280, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-rdio-circled:before {
+  content: '\e8e3';
+}
+
+/* '' */
+/* line 281, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-spotify:before {
+  content: '\e8e4';
+}
+
+/* '' */
+/* line 282, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-spotify-circled:before {
+  content: '\e8e5';
+}
+
+/* '' */
+/* line 283, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-facebook:before {
+  content: '\e8e6';
+}
+
+/* '' */
+/* line 284, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-traffic-cone:before {
+  content: '\e8e7';
+}
+
+/* '' */
+/* line 285, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc:before {
+  content: '\e8e8';
+}
+
+/* '' */
+/* line 286, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-facebook-circled:before {
+  content: '\e8e9';
+}
+
+/* '' */
+/* line 287, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-qq:before {
+  content: '\e8ea';
+}
+
+/* '' */
+/* line 288, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-instagram:before {
+  content: '\e8eb';
+}
+
+/* '' */
+/* line 289, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-facebook-squared:before {
+  content: '\e8ec';
+}
+
+/* '' */
+/* line 290, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-by:before {
+  content: '\e8ed';
+}
+
+/* '' */
+/* line 291, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-nc:before {
+  content: '\e8ee';
+}
+
+/* '' */
+/* line 292, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-gplus:before {
+  content: '\e8ef';
+}
+
+/* '' */
+/* line 293, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dropbox:before {
+  content: '\e8f0';
+}
+
+/* '' */
+/* line 294, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-evernote:before {
+  content: '\e8f1';
+}
+
+/* '' */
+/* line 295, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-gplus-circled:before {
+  content: '\e8f2';
+}
+
+/* '' */
+/* line 296, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-nc-eu:before {
+  content: '\e8f3';
+}
+
+/* '' */
+/* line 297, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-nc-jp:before {
+  content: '\e8f4';
+}
+
+/* '' */
+/* line 298, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-pinterest:before {
+  content: '\e8f5';
+}
+
+/* '' */
+/* line 299, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flattr:before {
+  content: '\e8f6';
+}
+
+/* '' */
+/* line 300, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-skype:before {
+  content: '\e8f7';
+}
+
+/* '' */
+/* line 301, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-pinterest-circled:before {
+  content: '\e8f8';
+}
+
+/* '' */
+/* line 302, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-sa:before {
+  content: '\e8f9';
+}
+
+/* '' */
+/* line 303, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-nd:before {
+  content: '\e8fa';
+}
+
+/* '' */
+/* line 304, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-tumblr:before {
+  content: '\e8fb';
+}
+
+/* '' */
+/* line 305, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-skype-circled:before {
+  content: '\e8fc';
+}
+
+/* '' */
+/* line 306, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-renren:before {
+  content: '\e8fd';
+}
+
+/* '' */
+/* line 307, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-tumblr-circled:before {
+  content: '\e8fe';
+}
+
+/* '' */
+/* line 308, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-pd:before {
+  content: '\e8ff';
+}
+
+/* '' */
+/* line 309, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-zero:before {
+  content: '\e900';
+}
+
+/* '' */
+/* line 310, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-linkedin:before {
+  content: '\e901';
+}
+
+/* '' */
+/* line 311, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-sina-weibo:before {
+  content: '\e902';
+}
+
+/* '' */
+/* line 312, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-paypal:before {
+  content: '\e903';
+}
+
+/* '' */
+/* line 313, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-linkedin-circled:before {
+  content: '\e904';
+}
+
+/* '' */
+/* line 314, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-share:before {
+  content: '\e905';
+}
+
+/* '' */
+/* line 315, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-cc-remix:before {
+  content: '\e906';
+}
+
+/* '' */
+/* line 316, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dribbble:before {
+  content: '\e907';
+}
+
+/* '' */
+/* line 317, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-picasa:before {
+  content: '\e908';
+}
+
+/* '' */
+/* line 318, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-soundcloud:before {
+  content: '\e909';
+}
+
+/* '' */
+/* line 319, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-dribbble-circled:before {
+  content: '\e90a';
+}
+
+/* '' */
+/* line 320, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-github:before {
+  content: '\e90b';
+}
+
+/* '' */
+/* line 321, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-github-circled:before {
+  content: '\e90c';
+}
+
+/* '' */
+/* line 322, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-stumbleupon:before {
+  content: '\e90d';
+}
+
+/* '' */
+/* line 323, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-mixi:before {
+  content: '\e90e';
+}
+
+/* '' */
+/* line 324, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-behance:before {
+  content: '\e90f';
+}
+
+/* '' */
+/* line 325, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-stumbleupon-circled:before {
+  content: '\e910';
+}
+
+/* '' */
+/* line 326, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flickr:before {
+  content: '\e911';
+}
+
+/* '' */
+/* line 327, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-flickr-circled:before {
+  content: '\e912';
+}
+
+/* '' */
+/* line 328, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lastfm:before {
+  content: '\e913';
+}
+
+/* '' */
+/* line 329, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-google-circles:before {
+  content: '\e914';
+}
+
+/* '' */
+/* line 330, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-vkontakte:before {
+  content: '\e915';
+}
+
+/* '' */
+/* line 331, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-lastfm-circled:before {
+  content: '\e916';
+}
+
+/* '' */
+/* line 332, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-vimeo:before {
+  content: '\e917';
+}
+
+/* '' */
+/* line 333, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-smashing:before {
+  content: '\e918';
+}
+
+/* '' */
+/* line 334, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-sweden:before {
+  content: '\e919';
+}
+
+/* '' */
+/* line 335, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-db-shape:before {
+  content: '\e91a';
+}
+
+/* '' */
+/* line 336, /home/yuva/Desktop/new-clay/clay/dashboard/vendor/assets/stylesheets/fontello.scss */
+.icon-logo-db:before {
+  content: '\e91b';
+}
+
+/* '' */

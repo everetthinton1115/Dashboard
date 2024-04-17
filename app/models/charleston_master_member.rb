@@ -1,0 +1,2 @@
+class CharlestonMasterMember < ApplicationRecord
+end

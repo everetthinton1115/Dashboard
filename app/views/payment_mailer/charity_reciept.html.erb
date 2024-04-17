@@ -1,0 +1,22 @@
+
+<div>
+
+<p style="margin-bottom: 25px;">Dear <%=@user.name %>.</p>
+
+<p style="margin-bottom: 25px;">This is the receipt for a donation you received.</p>
+
+<p style="margin-bottom: 25px;">Here is a summary of your donation.</p>
+
+<p style="margin-bottom: 25px;">Campaign: <%=@campaign.name %></p>
+<% if @symbol == 'btc' %>
+  <p style="margin-bottom: 25px;">Amount: <%= @charity_amount %> BTC</p>
+<% elsif @symbol == 'good' %>
+  <p style="margin-bottom: 25px;"><%= @charity_amount %> $GOOD</p>
+<% end %>  
+
+<p style="margin-bottom: 25px;">Donated At: <%= Time.now %></p>
+
+
+<p style="margin-bottom: 25px;">Best regards,</p>
+
+</div>

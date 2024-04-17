@@ -1,0 +1,186 @@
+/* line 1, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  min-height: 75px;
+  position: relative;
+}
+
+/* line 8, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer:before {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* line 19, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer.footer-home {
+  background-color: #060807;
+  background-image: none;
+  color: #efefef;
+  font-size: 0.875em;
+  height: auto;
+  line-height: 30px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* line 31, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer.footer-home:before {
+  display: none;
+}
+
+/* line 34, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer.footer-home p {
+  margin: 0;
+}
+
+/* line 37, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer p {
+  color: #97a7b6;
+  margin-top: 30px;
+}
+
+/* line 41, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer .address {
+  float: right;
+}
+
+/* line 44, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* line 48, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+footer .copy {
+  float: left;
+}
+
+/* line 52, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.btn.btn-make-donation {
+  background-color: #eb4b4b;
+  border: 2px solid #eb4b4b;
+  -webkit-border-radius: 33px;
+  border-radius: 33px !important;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  height: 66px;
+  line-height: 62px;
+  margin: 30px 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* line 68, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.btn.btn-make-donation:hover {
+  background-color: transparent;
+  color: #eb4b4b;
+}
+
+/***
+Social Icons
+***/
+/* line 76, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 79, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons:before, .social-icons:after {
+  content: " ";
+  display: table;
+}
+
+/* line 82, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons:after {
+  clear: both;
+}
+
+/* line 84, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li {
+  float: left;
+  display: inline;
+  list-style: none;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-indent: -9999px;
+}
+
+/* line 91, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li > a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  width: 28px;
+  height: 28px;
+  display: block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* line 107, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li:hover > a {
+  background-position: 0 -38px;
+}
+
+/* line 109, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons.social-icons-color > li > a {
+  opacity: 0.7;
+  background-position: 0 -38px !important;
+}
+
+/* line 112, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons.social-icons-color > li > a:hover {
+  opacity: 1;
+}
+
+/* line 114, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons.social-icons-circle > li > a {
+  border-radius: 25px !important;
+}
+
+/* line 117, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li .facebook {
+  background: url(/images/social/facebook.png) no-repeat;
+}
+
+/* line 121, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li .twitter {
+  background: url(/images/social/twitter.png) no-repeat;
+}
+
+/* line 125, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li .linkedin {
+  background: url(/images/social/linkedin.png) no-repeat;
+}
+
+/* line 129, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li .youtube {
+  background: url(/images/social/youtube.png) no-repeat;
+}
+
+/* line 133, /home/yuva/Desktop/commitgood/dashboard/app/assets/stylesheets/footer.scss */
+.social-icons li .instagram {
+  background: url(/images/social/instagram.png) no-repeat;
+}

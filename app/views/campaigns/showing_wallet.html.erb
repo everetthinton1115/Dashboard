@@ -1,0 +1,995 @@
+<!-- FLASH ERROR HANDLING -->
+<% flash.each do |name, msg| %>
+	<% if msg != true %>
+		<%if name == "success" %>
+			<div class="shadow-lg alert alert-success alert-dismissible fade show">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span></button>
+				<% if msg.class == Array %>
+					<% msg.each do |message| %>
+						<%= content_tag :div, message, :id => "flash_#{name}" %>
+					<% end %>
+				<% else %>
+					<%= content_tag :div, msg, :id => "flash_#{name}" %>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="shadow-lg alert alert-danger alert-dismissible fade show">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span></button>
+				<% if msg.class == Array %>
+					<% msg.each do |message| %>
+						<%= content_tag :div, message, :id => "flash_#{name}" %>
+					<% end %>
+				<% else %>
+					<%= content_tag :div, msg, :id => "flash_#{name}" %>
+				<% end %>
+			</div>
+		<%end%>	
+	<% end %>
+<% end %>
+<section class="mt-5 crypto_balance">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+    		<div class="main-body">
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+              	<div class="card-header">
+                  <h4>Account Balance and History</h4>
+                </div>
+                <div class="card-header" style="padding-top: 5px;">
+                	<h4>$GOOD Token is currently only listed on Azbit and will need to be purchased or exchanged here with BTC - https://azbit.com/exchange/GOOD_BTC </h4>
+                	<h4>$GOOD Token is an ERC-20 token and will require and ETH transaction fee so you will need a small amount of ETH to process the transaction.</h4>
+                </div>
+                <div class="card-body">
+                  <div class="balance-body-head">
+                  	<span class="balance-txt">BTC Balance</span>
+                  	<div class="available-bal">
+                  	  <h3><%= @btc_wallet %></h3>
+                  	</div>  
+                  </div>
+                  
+                  <div class="balance-body-head">
+                  	<span class="balance-txt">GOOD Balance</span>
+                  	<div class="available-bal">
+                  	  <h3><%= @good_wallet %></h3>
+                  	</div> 
+                  </div>
+                  <div class="balance-body-head">
+                  	<span class="balance-txt">ETH Balance</span>
+                  	<div class="available-bal">
+                  	  <h3><%= @eth_wallet %></h3>
+                  	</div> 
+                  </div>
+                  <div class="d-inline-block" style="width: 100%;">
+	                  <button class="btn token-btn" data-target="#sendModal" data-toggle="modal">Send</button>
+	                  <button class="btn token-btn" data-target="#receiveModal" data-toggle="modal">Receive</button>
+	                </div>  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card">
+              	<div class="card-header">
+              		<h4><b>Wallet Address:</b> <span id="selected_wallet_address"> <%= current_user.bitcoin_address %> </span> </h4>
+                </div>
+                <div class="card-body tabs-body">
+                	<h5>Wallets</h5>
+	                <ul class="nav nav-tabs" role="tablist">
+								    <li class="nav-item">
+								      <a class="nav-link active" data-toggle="tab" href="#home">BTC</a>
+								    </li>
+								    <li class="nav-item">
+								      <a class="nav-link" data-toggle="tab" href="#menu1">GOOD</a>
+								    </li>
+								    <li class="nav-item">
+								      <a class="nav-link" data-toggle="tab" href="#menu2">ETH</a>
+								    </li>
+								  </ul>
+								  <div style="padding-top: 16px; padding-bottom: 16px;">
+								    GOOD and ETH will have the same wallet address
+								  </div>
+								  <!-- Tab panes -->
+								  <div class="tab-content">
+								    <div id="home" class="container tab-pane active"><br>
+			                <% @btc_transactions.each do |transaction| %> 
+								        <div class="table-wrapper">
+								            <table class="table table-striped">
+								                <tbody>
+								                    
+						                        <% if current_user.charity_admin? %>
+						                          <% if transaction.charity_id ==  current_user.id %>
+							                          <tr>
+							                            <td>
+							                            	<%= number_to_currency(transaction.charity_amount, unit: "", precision: 8) %>
+							                            </td>
+							                            <td>
+									                        	Credit Transfer <br/>
+									                        	<label class="badge badge-success">
+										                      		Done
+										                  			</label>
+									                        </td>
+									                      </tr>
+									                    <% else %>
+									                      <tr>
+							                            <td>
+							                            	<%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+							                            </td>
+							                            <td>
+									                        	Deposit Transfer <br/>
+									                        	<label class="badge badge-success">
+										                      		Done
+										                  			</label>
+									                        </td>
+									                      </tr>
+									                    <% end %>  
+						                        <% elsif current_user.charity_coordinator? %>
+						                          <% if transaction.campaign_coordinator_id ==  current_user.id %>
+							                          <tr>
+							                            <td>
+							                            	<%= number_to_currency(transaction.charity_coordinator_amount, unit: "", precision: 8) %>
+							                            </td>
+							                            <td>
+									                        	Credit Transfer <br/>
+									                        	<label class="badge badge-success">
+										                      		Done
+										                  			</label>
+									                        </td>
+							                          </tr>
+							                        <% else %>
+									                      <tr>
+							                            <td>
+							                            	<%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+							                            </td>
+							                            <td>
+									                        	Deposit Transfer <br/>
+									                        	<label class="badge badge-success">
+										                      		Done
+										                  			</label>
+									                        </td>
+									                      </tr>
+									                    <% end %>  
+						                        <% else %>
+						                          <tr>
+						                            <td>
+						                            	<%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Deposit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+								                      </tr>  
+						                        <% end %>
+								                    </tr> 
+								                </tbody>
+								            </table>
+							        	</div>
+							        <% end %>
+								    </div>
+								    <div id="menu1" class="container tab-pane fade"><br>
+								    	<% @good_transactions.each do |transaction| %> 
+								        <div class="table-wrapper">
+								            <table class="table table-striped">
+								                <tbody>
+								                    <tr>
+							                        <% if current_user.charity_admin? %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.charity_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Credit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+						                          <% elsif current_user.charity_coordinator? %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.charity_coordinator_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Credit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+								                        <%= number_to_currency(transaction.charity_coordinator_amount, unit: "", precision: 8) %>
+						                          <% else %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Deposit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+						                          <% end %>
+								                    </tr>        
+								                </tbody>
+								            </table>
+							        	</div>
+							        <% end %> 	
+								    </div>
+								    <div id="menu2" class="container tab-pane fade"><br>
+								    	<% @good_transactions.each do |transaction| %> 
+								        <div class="table-wrapper">
+								            <table class="table table-striped">
+								                <tbody>
+								                    <tr>
+							                        <% if current_user.charity_admin? %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.charity_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Credit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+						                          <% elsif current_user.charity_coordinator? %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.charity_coordinator_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Credit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+								                        <%= number_to_currency(transaction.charity_coordinator_amount, unit: "", precision: 8) %>
+						                          <% else %>
+						                          <%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+						                            <td>
+						                            	<%= number_to_currency(transaction.donation_amount, unit: "", precision: 8) %>
+						                            </td>
+						                            <td>
+								                        	Deposit Transfer <br/>
+								                        	<label class="badge badge-success">
+									                      		Done
+									                  			</label>
+								                        </td>
+						                          <% end %>
+								                    </tr>     
+								                </tbody>
+								            </table>
+							        	</div>
+							        <% end %>	
+								    </div>
+								  </div>
+								</div>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<%= form_tag send_amount_campaigns_path do %>
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Send Amount</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div id="volunteer-msgs"></div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="form-group">
+						<%= hidden_field_tag :user_id, value: current_user.try(:id) %>
+						<%= hidden_field_tag :email, value: current_user.try(:email) %>
+						<%= hidden_field_tag :btc_grand_total_amount %>
+						<%= hidden_field_tag :eth_grand_total_amount %>
+						<div class="currency_amout-_box">
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Select Currency Mode</label>
+										<select class="form-control select_symbol" name="symbol">
+									      <option value="btc" selected>BTC</option>
+									      <option value="good">GOOD</option>
+									    </select>
+									</div>
+							  </div>
+						   </div>
+							<div class="row">
+						    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Enter Wallet Address</label>
+										<%= text_field_tag :wallet_address, '', class: "form-control", :required => true %>
+									</div>
+								</div>
+						  </div>
+						  <div class="btc_container">
+	            <div class="row">
+								<div class="col">
+									<div class="form-group">
+										<label for="usd_input">USD</label>
+										<input type="number" step="0.01" name="" class="form-control" id="usd_input">
+									</div>
+								</div>
+								<div class="col-1 text-center" style="padding-top: 36px;">
+									<span><%= icon('fas', 'exchange-alt') %></span>
+								</div>
+								<div class="col">
+									<div class="form-group">
+										<%= label_tag :donation_amount, "BTC", class: "control-label" %>
+										<%= text_field_tag :btc_amount, '', class: "form-control required", id: 'btc_input' %>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">BTC Send Amount</label>
+										<%= text_field_tag :bit_donation_amount, '', class: "form-control", :readonly => true %>
+									</div>
+								</div>
+						  </div>
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Select Bitcoin Blockchain Transaction Mode</label>
+										<%= select_tag "select_bitcoin_mode", options_for_select(@bit_transaction_fee, @bit_transaction_fee[0]), :class => "form-control" %>
+									</div>
+							  </div>
+					    </div>
+							<div class="row">
+						    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Bitcoin Blockchain Transaction Fee</label>
+										<%= text_field_tag :bit_transaction_fee, @bit_transaction_fee[0][1], class: "form-control", :readonly => true %>
+									</div>
+								</div>
+						  </div>
+						  </div>
+						  <div style="display: none;" class="token_container">
+						  	<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label class="control-label">Number of $GOOD tokens to be sent:</label>
+									  	<%= text_field_tag :token_amount, '', class: "form-control campaign_donation_donation_amount", placeholder: "Number of tokens", number: true, min: 1 %>
+									  </div>
+									</div>  
+								</div>
+								<div class="row">
+						    	<div class="col">
+										<div class="form-group">
+											<label for="usd_input">Select Ethereum (ETH) Blockchain Transaction Mode</label>
+											<%= select_tag "select_ethereum_mode", options_for_select(@eth_transaction_fee, @eth_transaction_fee[0]), :class => "form-control" %>
+										</div>
+								  </div>
+						    </div>
+								<div class="row">
+							    	<div class="col">
+											<div class="form-group">
+												<label for="usd_input">Ethereum (ETH) Blockchain Transaction Fee</label>
+												<%= text_field_tag :eth_transaction_fee, @eth_transaction_fee[0][1], class: "form-control", :readonly => true %>
+											</div>
+									</div>
+							  </div>
+						  </div>
+						</div>
+    					<div class="currency-content-details">
+    						<div class="row ">
+						    	<div class="col">
+									<label class="mb-0 p-2 font-weight-bold" for="usd_input">Total Amount</label>
+								</div>
+								<div class="col">
+									<div class="total_btc_amount p-2 font-weight-bold"><%= @bit_transaction_fee %></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			
+			<%= submit_tag "Ok", class: "btn btn-outline-primary donate-submit" %>
+
+			<a class="btn btn-outline-danger" href="javascript:void(0)" data-dismiss="modal">
+				<span>Cancel</span>
+			</a>
+		</div>
+	<% end %>
+</div>
+</div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="receiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+		<%= form_tag receive_amount_campaigns_path do %>
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Receive Amount</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div id="volunteer-msgs"></div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="form-group">
+						<%= hidden_field_tag :user_id, value: current_user.try(:id) %>
+						<%= hidden_field_tag :email, value: current_user.try(:email) %>
+						<%= hidden_field_tag :receive_btc_grand_total_amount %>
+						<%= hidden_field_tag :receive_eth_grand_total_amount %>
+						<div class="currency_amout-_box">
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Select Currency Mode</label>
+										<select class="form-control receive_select_symbol" name="receive_symbol">
+									      <option value="btc" selected>BTC</option>
+									      <option value="good">GOOD</option>
+									    </select>
+									</div>
+							  </div>
+						   </div>
+							<div class="row">
+						    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Enter Wallet Address</label>
+										<%= text_field_tag :receive_wallet_address, '', class: "form-control", :required => true %>
+									</div>
+								</div>
+						  </div>
+						  <div class="btc_container">
+	            <div class="row">
+								<div class="col">
+									<div class="form-group">
+										<label for="receive_usd_input">USD</label>
+										<input type="number" step="0.01" name="" class="form-control" id="receive_usd_input">
+									</div>
+								</div>
+								<div class="col-1 text-center" style="padding-top: 36px;">
+									<span><%= icon('fas', 'exchange-alt') %></span>
+								</div>
+								<div class="col">
+									<div class="form-group">
+										<%= label_tag :receive_donation_amount, "BTC", class: "control-label" %>
+										<%= text_field_tag :receive_btc_amount, '', class: "form-control required", id: 'receive_btc_input' %>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">BTC Send Amount</label>
+										<%= text_field_tag :receive_bit_donation_amount, '', class: "form-control", :readonly => true %>
+									</div>
+								</div>
+						  </div>
+							<div class="row">
+					    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Select Bitcoin Blockchain Transaction Mode</label>
+										<%= select_tag "receive_select_bitcoin_mode", options_for_select(@bit_transaction_fee, @bit_transaction_fee[0]), :class => "form-control" %>
+									</div>
+							  </div>
+					    </div>
+							<div class="row">
+						    	<div class="col">
+									<div class="form-group">
+										<label for="usd_input">Bitcoin Blockchain Transaction Fee</label>
+										<%= text_field_tag :receive_bit_transaction_fee, @bit_transaction_fee[0][1], class: "form-control", :readonly => true %>
+									</div>
+								</div>
+						  </div>
+						  </div>
+						  <div style="display: none;" class="token_container">
+						  	<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label class="control-label">Number of $GOOD tokens to be sent:</label>
+									  	<%= text_field_tag :receive_token_amount, '', class: "form-control campaign_receive_amount", placeholder: "Number of tokens", number: true, min: 1 %>
+									  </div>
+									</div>  
+								</div>
+								<div class="row">
+						    	<div class="col">
+										<div class="form-group">
+											<label for="usd_input">Select Ethereum (ETH) Blockchain Transaction Mode</label>
+											<%= select_tag "receive_select_ethereum_mode", options_for_select(@eth_transaction_fee, @eth_transaction_fee[0]), :class => "form-control" %>
+										</div>
+								  </div>
+						    </div>
+								<div class="row">
+							    	<div class="col">
+											<div class="form-group">
+												<label for="usd_input">Ethereum (ETH) Blockchain Transaction Fee</label>
+												<%= text_field_tag :receive_eth_transaction_fee, @eth_transaction_fee[0][1], class: "form-control", :readonly => true %>
+											</div>
+									</div>
+							  </div>
+						  </div>
+						</div>
+    					<div class="currency-content-details">
+    						<div class="row ">
+						    	<div class="col">
+									<label class="mb-0 p-2 font-weight-bold" for="usd_input">Total Amount</label>
+								</div>
+								<div class="col">
+									<div class="receive_total_btc_amount p-2 font-weight-bold"><%= @bit_transaction_fee %></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			
+			<%= submit_tag "Ok", class: "btn btn-outline-primary receive-submit" %>
+
+			<a class="btn btn-outline-danger" href="javascript:void(0)" data-dismiss="modal">
+				<span>Cancel</span>
+			</a>
+		</div>
+	<% end %>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+const usdTag = '#usd_input';
+const usdLabelTag = 'label[for="usd_input"]';
+const btcTag = '#btc_input';
+const btcLabelTag = 'label[for="campaign_goal_amount"]';
+const usdReceiveTag = '#receive_usd_input';
+const btcReceiveTag = '#receive_btc_input';
+
+$(document).ready(function () {
+	// Need the current USD to bitcoin conversion rate
+	var bitcoinValue = ""
+	$.ajax({
+		url: 'https://cex.io/api/last_price/BTC/USD',
+		method: 'GET',
+		success: function (res) {
+			bitcoinValue = res.lprice
+
+			// Fill in usd amount based on your btc amount for edit
+			if ($(btcTag).val() > 0) {
+				$(btcTag).trigger("change");
+			}
+		}
+	});
+
+// Modify wallet address on the basis of selected tab, namely btc, good, eth
+if (<%= session[:user_id].present? %>){
+	<% current_user = User.find_by(id: session[:user_id]) %>
+	$('.nav-item').click(function(){
+		setTimeout(function() {
+			if ($('#home').hasClass('active')){
+				$('#selected_wallet_address').text("<%= current_user.bitcoin_address %>");
+			} else if ($('#menu1').hasClass('active') || $('#menu2').hasClass('active')){
+				$('#selected_wallet_address').text("<%= current_user.ethereum_address %>");
+			}
+  	}, 200);
+	});
+}
+
+  if ($('.select_symbol').val() == "good"){
+    $('.token_container').show();
+    $('.btc_container').hide();
+    $(".campaign_donation_donation_amount").val('');
+    var total_price = parseFloat($("#eth_transaction_fee").val());
+		$(".total_btc_amount").html(total_price);
+  } else {
+    $('.token_container').hide();
+    $('.btc_container').show();
+    $(usdTag).val('');
+    var total_price = parseFloat($("#bit_transaction_fee").val());
+		$(".total_btc_amount").html(total_price);
+  }
+
+  if ($('.receive_select_symbol').val() == "good"){
+    $('.token_container').show();
+    $('.btc_container').hide();
+    $(".campaign_receive_amount").val('');
+    var total_price = parseFloat($("#receive_eth_transaction_fee").val());
+		$(".receive_total_btc_amount").html(total_price);
+  } else {
+    $('.token_container').hide();
+    $('.btc_container').show();
+    $(usdTag).val('');
+    var total_price = parseFloat($("#receive_bit_transaction_fee").val());
+		$(".receive_total_btc_amount").html(total_price);
+  }
+
+  $('.donate-submit').click(function() {
+	  $('#donateModal').modal('toggle');
+	});
+
+	$('#select_ethereum_mode').click(function() {
+	  $("#eth_transaction_fee").val($(this).val());
+	  var value = $(".campaign_donation_donation_amount").val() || 0
+    var total_price = parseFloat(value) + parseFloat($("#eth_transaction_fee").val());
+	  $(".total_btc_amount").html(total_price);
+	});
+
+	$('#receive_select_ethereum_mode').click(function() {
+	  $("#receive_eth_transaction_fee").val($(this).val());
+	  var value = $(".campaign_receive_amount").val() || 0
+    var total_price = parseFloat(value) + parseFloat($("#receive_eth_transaction_fee").val());
+	  $(".receive_total_btc_amount").html(total_price);
+	});
+  
+  $('#select_bitcoin_mode').click(function() {
+	  $("#bit_transaction_fee").val($(this).val());
+	  var value = $(usdTag).val() || 0
+    var total_price = parseFloat(value) + parseFloat($("#bit_transaction_fee").val());
+	  $(".total_btc_amount").html(total_price);
+	});
+
+	$('#receive_select_bitcoin_mode').click(function() {
+	  $("#receive_bit_transaction_fee").val($(this).val());
+	  var value = $(usdReceiveTag).val() || 0
+    var total_price = parseFloat(value) + parseFloat($("#receive_bit_transaction_fee").val());
+	  $(".receive_total_btc_amount").html(total_price);
+	});
+
+	$('.select_symbol').click(function() {
+	  if ($(this).val() == "good"){
+      $('.token_container').show();
+      $('.btc_container').hide();
+      var value = $(".campaign_donation_donation_amount").val() || 0
+      var total_price = parseFloat(value) + parseFloat($("#eth_transaction_fee").val());
+		  $(".total_btc_amount").html(total_price);
+	  } else {
+      $('.token_container').hide();
+      $('.btc_container').show();
+      var value = $(usdTag).val() || 0
+      var total_price = parseFloat(value) + parseFloat($("#bit_transaction_fee").val());
+		  $(".total_btc_amount").html(total_price);
+	  }
+	});
+
+	$('.receive_select_symbol').click(function() {
+	  if ($(this).val() == "good"){
+      $('.token_container').show();
+      $('.btc_container').hide();
+      var value = $(".campaign_receive_amount").val() || 0
+      var total_price = parseFloat(value) + parseFloat($("#receive_eth_transaction_fee").val());
+		  $(".receive_total_btc_amount").html(total_price);
+	  } else {
+      $('.token_container').hide();
+      $('.btc_container').show();
+      var value = $(usdReceiveTag).val() || 0
+      var total_price = parseFloat(value) + parseFloat($("#receive_bit_transaction_fee").val());
+		  $(".receive_total_btc_amount").html(total_price);
+	  }
+	});
+	
+	// Listen to keep btc and usd in sync
+	$(usdTag).keyup(function (e) {
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcTag).val(btc);
+		$("#bit_donation_amount").val(btc);
+		validateBtc();
+		var total_price = truncateDecimals(parseFloat($(usdTag).val()) + parseFloat($("#bit_transaction_fee").val()), 8);
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+	$(usdReceiveTag).keyup(function (e) {
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcReceiveTag).val(btc);
+		$("#receive_bit_donation_amount").val(btc);
+		validateBtc();
+		var total_price = truncateDecimals(parseFloat($(usdReceiveTag).val()) + parseFloat($("#receive_bit_transaction_fee").val()), 8);
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+	$(btcTag).keyup(function (e) {
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdTag).val(usd);
+		$("#bit_donation_amount").val(e.target.value);
+		validateUsd();
+		var total_price = truncateDecimals(parseFloat($(usdTag).val()) + parseFloat($("#bit_transaction_fee").val()), 8);
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+	$(btcReceiveTag).keyup(function (e) {
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdReceiveTag).val(usd);
+		$("#receive_bit_donation_amount").val(e.target.value);
+		validateUsd();
+		var total_price = truncateDecimals(parseFloat($(usdReceiveTag).val()) + parseFloat($("#receive_bit_transaction_fee").val()), 8);
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+	$(usdTag).change(function (e) {
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcTag).val(btc);
+		$("#bit_donation_amount").val(btc);
+		validateBtc();
+		var total_price = truncateDecimals(parseFloat($(usdTag).val()) + parseFloat($("#bit_transaction_fee").val()), 8);
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+	$(btcTag).change(function (e) {
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdTag).val(usd);
+		$("#bit_donation_amount").val(e.target.value);
+		validateUsd();
+		var total_price = truncateDecimals(parseFloat($(usdTag).val()) + parseFloat($("#bit_transaction_fee").val()), 8);
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+	$(usdReceiveTag).change(function (e) {
+		var btc = truncateDecimals(e.target.value / bitcoinValue, 8);
+		$(btcReceiveTag).val(btc);
+		$("#receive_bit_donation_amount").val(btc);
+		validateBtc();
+		var total_price = truncateDecimals(parseFloat($(usdReceiveTag).val()) + parseFloat($("#receive_bit_transaction_fee").val()), 8);
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+  $(btcReceiveTag).change(function (e) {
+		var usd = truncateDecimals(e.target.value * bitcoinValue, 2);
+		$(usdReceiveTag).val(usd);
+		$("#receive_bit_donation_amount").val(e.target.value);
+		validateUsd();
+		var total_price = truncateDecimals(parseFloat($(usdReceiveTag).val()) + parseFloat($("#receive_bit_transaction_fee").val()), 8);
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+	
+	// Validation for Project USD Goal Amount
+	$(usdTag).on('input blur keypress', function () {
+		validateUsd();
+	});
+
+
+	$(".campaign_donation_donation_amount").change(function (e) {
+		var total_price = parseFloat($(".campaign_donation_donation_amount").val()) + parseFloat($("#eth_transaction_fee").val());
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+  
+  $(".campaign_receive_amount").change(function (e) {
+		var total_price = parseFloat($(".campaign_receive_amount").val()) + parseFloat($("#receive_eth_transaction_fee").val());
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+
+	$(".campaign_receive_amount").keyup(function (e) {
+		var total_price = parseFloat($(".campaign_receive_amount").val()) + parseFloat($("#receive_eth_transaction_fee").val());
+		$(".receive_total_btc_amount").html(total_price);
+		$('#receive_btc_grand_total_amount').val(total_price);
+	});
+
+	$(".campaign_donation_donation_amount").keyup(function (e) {
+		var total_price = parseFloat($(".campaign_donation_donation_amount").val()) + parseFloat($("#eth_transaction_fee").val());
+		$(".total_btc_amount").html(total_price);
+		$('#btc_grand_total_amount').val(total_price);
+	});
+
+	function validateUsd() {
+		let valid = $(usdTag).val() > 0;
+		toggleInvalidClass(usdTag, usdLabelTag, valid);
+		return valid;
+	}
+
+	// Validation for Project BTC Goal Amount
+	$(btcTag).on('blur keypress', function () {
+		validateBtc();
+	});
+	function validateBtc() {
+		let valid = $(btcTag).val() > 0;
+		toggleInvalidClass(btcTag, btcLabelTag, valid);
+		return valid;
+	}
+
+	truncateDecimals = function (number, digits) {
+    var multiplier = Math.pow(10, digits),
+        adjustedNum = number * multiplier,
+        truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+    return truncatedNum / multiplier;
+	};
+
+	// Validation for Project Volunteers
+	function validateVolunteers() {
+		let volunteersValid = true;
+
+		// Loop over all sets of volunteer fields
+		let volOpportunityCount = $(volunteersTag).children().length;
+		for (let i = 0; i < volOpportunityCount; i++) {
+
+			// Get Volunteer Title
+			let title = $(volunteersTag).find(volunteerTitleTag).eq(i);
+			let titleLabel = $(volunteersTag).find(volunteerTitleLabelTag).eq(i);
+			let titleValid = volunteersValid = title.val().length > 0;
+			toggleInvalidClass(title, titleLabel, titleValid);
+
+			// Get Volunteer Description
+			let description = $(volunteersTag).find(volunteerDescTag).eq(i);
+			let descriptionLabel = $(volunteersTag).find(volunteerDescLabelTag).eq(i);
+			let descriptionValid = volunteersValid = description.val().length > 0;
+			toggleInvalidClass(description, descriptionLabel, descriptionValid);
+
+			// Get Volunteer Number Needed
+			let number = $(volunteersTag).find(volunteerNumberTag).eq(i);
+			let numberLabel = $(volunteersTag).find(volunteerNumberLabelTag).eq(i);
+			let numberValid = volunteersValid = number.val() > 0;
+			toggleInvalidClass(number, numberLabel, numberValid);
+
+			// Get Volunteer Hours Needed
+			let hours = $(volunteersTag).find(volunteerHoursTag).eq(i);
+			let hoursLabel = $(volunteersTag).find(volunteerHoursLabelTag).eq(i);
+			let hoursValid = volunteersValid = hours.val() > 0;
+			toggleInvalidClass(hours, hoursLabel, hoursValid);
+		}
+
+		return volunteersValid;
+	}
+	// Helper function for setting classes
+	function toggleInvalidClass(tag, label, valid) {
+		if (valid) {
+			$(tag).removeClass('is-invalid')
+		} else {
+			$(tag).addClass('is-invalid');
+		}
+	}
+});
+</script>
+<style type="text/css">
+	#sendModal .modal-header {
+		background: #353637;
+	    padding: 10px;
+	    color: #fff;
+	    border-top-right-radius: 10px;
+	    border-top-left-radius: 10px;
+	}
+	
+	#sendModal .modal-content {
+	    border: none;
+	    border-radius: 15px;
+	    outline: 0;
+	}
+	#sendModal .modal-title {
+		font-size: 16px;
+	}
+	#sendModal  .modal-header .close {
+		padding: 0px;
+		color: #ddd;
+		opacity: 1;
+		margin: 0px;
+	}
+	.currency_amout-_box{
+		border-radius: 4px;
+	    padding: 15px;
+	    margin-bottom: 15px;
+	    box-shadow: 1px 1px 14px #ddd;
+	}
+	.currency_amout-_box .form-control {
+		height: 45px;
+	    border: 1px solid #ddd;
+	    box-shadow: 0px 2px 5px #d4d4d4;
+	}
+	#sendModal .currency-content-details {
+		border-radius: 4px;
+	    padding: 15px;
+	    margin-bottom: 15px;
+	    box-shadow: 1px 1px 14px #ddd;
+	}
+	#sendModal .currency-content-details label {
+		font-size: 14px;
+    	font-weight: bold;
+	}
+	.total_btc_amount {
+		font-size: 14px;
+	}
+	.currency-content-details .text-content, .currency_amout-_box .text-content{
+		font-size: 14px;
+		color: #666;
+	}
+	.currency_amout-_box label {
+		font-size: 14px;
+    	font-weight: bold;
+	}
+	#sendModal .currency_amout-_box i.fa-exchange-alt{
+	    background: #353637;
+	    color: #fff;
+	    width: 40px;
+	    height: 40px;
+	    line-height: 40px;
+	    border-radius: 50%;
+	}
+	.box-shadow {
+		box-shadow: 0px 2px 5px #d4d4d4;
+	}
+
+	.crypto_balance .card {
+		background: #1b1e63;
+	  margin: 10px;
+	  box-shadow: 0 1px 10px rgb(43 59 93 / 30%);
+	  padding: 15px 20px;
+	  border-radius: 10px;
+	  color: #fff;
+	}
+	.crypto_balance .card .card-header h4 {
+	  font-size: 16px;
+	  margin: 0 0 12px;
+	}
+
+	.crypto_balance .card .card-header {
+	  padding: 0;
+	  margin-bottom: 0;
+	  background-color: rgba(0,0,0,.03);
+	  border-bottom: 1px solid #ddd;
+	}
+	.crypto_balance .card-body {
+		padding: 0px;
+	}
+	.card-body.tabs-body {
+		padding: 15px;
+    	margin-top: 15px;
+	}
+
+	.tabs-body .tab-content {
+		border:1px solid #ddd;
+	}
+	.tabs-body .nav-tabs {
+		border-bottom: none;
+	}
+	.tabs-body .nav-tabs .nav-item.show .nav-link, .tabs-body .nav-tabs .nav-link.active {
+	    color: #fff;
+	    background-color: #f8993e;
+	    border-color: #f8993e #f8993e #fff;
+	}
+
+	.tabs-body .nav-tabs .nav-link {
+	    border: 1px solid #fff;
+	    border-top-left-radius: .25rem;
+	    border-top-right-radius: .25rem;
+	    margin-right: 5px;
+	    color: #fff;
+	    font-size: 14px;
+	}
+	.balance-body-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 12px 0px;
+		border-bottom: 1px solid #ddd;
+	}
+	.balance-txt {
+	  font-size: 20px;
+	}
+	.balance-body-head i {
+	  font-size: 26px;
+	  color: #ff993e;
+	}
+	.available-bal h3 {
+	  margin: 0;
+	  color: green;
+	  font-weight: normal;
+	}
+	.btn.token-btn {
+	  background: #ff993e;
+	  color: #fff;
+	  text-transform: uppercase;
+	  margin-top: 10px;
+	  width: 49%;
+	  font-size: 14px;
+	  border:none;
+	}
+	.table-wrapper .table td {
+		color: #fff;
+	}
+</style>

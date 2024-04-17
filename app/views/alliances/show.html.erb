@@ -1,0 +1,32 @@
+<div class="container-fluid" id="charity_show">
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card campaign-card px-0">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0 bg-white">
+						<li class="breadcrumb-item active" aria-current="page"><%= link_to 'Charities', alliances_path, class: "breadcrumb-item" %></li>
+						<li class="breadcrumb-item active" aria-current="page"><%= @alliance.name %></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<div class="card campaign-card py-4">
+				<div class="row p-5">
+					<div class="col-12 col-md-5">
+						<div class="product-gallery-slider"></div>
+						
+						<%= image_tag load_image(@alliance.try(:logo)), alt: "Alliance Image", class: "img-thumbnail" %>
+					</div>
+					<div class="col-12 col-md-7">
+						<h5 class="card-title"><%= @alliance.name %></h5>
+						<p class="card-text"><%= @alliance.description %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
